@@ -84,12 +84,35 @@ class FT_Widget_CTA extends FT_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$title       = isset( $instance[ 'cta-title' ] ) ? $instance[ 'cta-title' ] : '';
-		$subtitle    = isset( $instance[ 'cta-subtitle' ] ) ? $instance[ 'cta-subtitle' ] : '';
+		$subtitle    = apply_filters( 'widget_text', isset( $instance[ 'cta-subtitle' ] ) ? $instance[ 'cta-subtitle' ] : '', $instance, $this->id_base );
 		$btn1        = isset( $instance[ 'cta-btn1' ] ) ? $instance[ 'cta-btn1' ] : '';
 		$btn1_link   = isset( $instance[ 'cta-btn1-link' ] ) ? $instance[ 'cta-btn1-link' ] : '';
 		$btn2        = isset( $instance[ 'cta-btn2' ] ) ? $instance[ 'cta-btn2' ] : '';
 		$btn2_link   = isset( $instance[ 'cta-btn2-link' ] ) ? $instance[ 'cta-btn2-link' ] : '';
 		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : 'tg-cta-layout-1';
+
+		/*
+		 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+		 *
+		 * 1. Need to register the strings first
+		 * 2. Display the registered strings
+		 */
+
+		// 1. For WPML plugin string register
+		if ( function_exists( 'icl_register_string' ) ) {
+			icl_register_string( 'Flash Toolkit', 'FT: CTA Button 1 Text' . $this->id, $btn1 );
+			icl_register_string( 'Flash Toolkit', 'FT: CTA Button 1 Link' . $this->id, $btn1_link );
+			icl_register_string( 'Flash Toolkit', 'FT: CTA Button 2 Text' . $this->id, $btn2 );
+			icl_register_string( 'Flash Toolkit', 'FT: CTA Button 2 Link' . $this->id, $btn2_link );
+		}
+
+		// 2. For WPML plugin translated string display
+		if ( function_exists( 'icl_t' ) ) {
+			$btn1 = icl_t( 'Flash Toolkit', 'FT: CTA Button 1 Text' . $this->id, $btn1 );
+			$btn1_link = icl_t( 'Flash Toolkit', 'FT: CTA Button 1 Link' . $this->id, $btn1_link );
+			$btn2 = icl_t( 'Flash Toolkit', 'FT: CTA Button 2 Text' . $this->id, $btn2 );
+			$btn2_link = icl_t( 'Flash Toolkit', 'FT: CTA Button 2 Link' . $this->id, $btn2_link );
+		}
 
 		$this->widget_start( $args, $instance );
 

@@ -55,7 +55,7 @@ class FT_Widget_Heading extends FT_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$heading    = isset( $instance[ 'heading-title' ] ) ? $instance[ 'heading-title' ] : '';
-		$subheading = isset( $instance[ 'subheading' ] ) ? $instance[ 'subheading' ] : '';
+		$subheading = apply_filters( 'widget_text', isset( $instance[ 'subheading' ] ) ? $instance[ 'subheading' ] : '', $instance, $this->id_base );
 
 		$this->widget_start( $args, $instance );
 

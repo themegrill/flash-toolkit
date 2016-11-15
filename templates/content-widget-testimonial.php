@@ -23,7 +23,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="tg-testimonial-widget">
 	<div class="testimonial-container swiper-container">
 		<div class="testimonial-wrapper swiper-wrapper">
-			<?php foreach ($repeatable_testimonial as $testimonial) { ?>
+			<?php
+			$i = 1;
+			foreach ($repeatable_testimonial as $testimonial) {
+			/*
+			 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+			 *
+			 * 1. Need to register the strings first
+			 * 2. Display the registered strings
+			 */
+
+			// 1. For WPML plugin string register
+			if ( function_exists( 'icl_register_string' ) ) {
+				icl_register_string( 'Flash Toolkit', 'FT: Testimonial Name'.$i, $testimonial['name'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Testimonial Image'.$i, $testimonial['image'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Testimonial Designation'.$i, $testimonial['designation'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Testimonial Description'.$i, $testimonial['description'] );
+			}
+
+			// 2. For WPML plugin translated string display
+			if ( function_exists( 'icl_t' ) ) {
+				$testimonial['name'] = icl_t( 'Flash Toolkit', 'FT: Testimonial Name'.$i, $testimonial['name'] );
+				$testimonial['image'] = icl_t( 'Flash Toolkit', 'FT: Testimonial Image'.$i, $testimonial['image'] );
+				$testimonial['designation'] = icl_t( 'Flash Toolkit', 'FT: Testimonial Designation'.$i, $testimonial['designation'] );
+				$testimonial['description'] = icl_t( 'Flash Toolkit', 'FT: Testimonial Description'.$i, $testimonial['description'] );
+			}
+			?>
 			<div class="testimonial-slide swiper-slide">
 				<div class="testominial-content-wrapper">
 					<div class="testimonial-icon"><i class="fa fa-quote-left"></i> </div>
@@ -45,7 +70,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 				</div>
 			</div>
-			<?php } ?>
+			<?php $i++;
+			} ?>
 		</div>
 		<div class="swiper-pagination testimonial-pager"></div>
 	</div>

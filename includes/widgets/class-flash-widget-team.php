@@ -91,12 +91,31 @@ class FT_Widget_Team extends FT_Widget {
 	public function widget( $args, $instance ) {
 		$title       = isset( $instance[ 'team-title' ] ) ? $instance[ 'team-title' ] : '';
 		$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
-		$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+		$text        = apply_filters( 'widget_text', isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '', $instance, $this->id_base );
 		$designation = isset( $instance[ 'designation' ] ) ? $instance[ 'designation' ] : '';
 		$facebook    = isset( $instance[ 'facebook' ] ) ? $instance[ 'facebook' ] : '';
 		$twitter     = isset( $instance[ 'twitter' ] ) ? $instance[ 'twitter' ] : '';
 		$linkedin    = isset( $instance[ 'linkedin' ] ) ? $instance[ 'linkedin' ] : '';
 		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
+
+		/*
+		 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+		 *
+		 * 1. Need to register the strings first
+		 * 2. Display the registered strings
+		 */
+
+		// 1. For WPML plugin string register
+		if ( function_exists( 'icl_register_string' ) ) {
+			icl_register_string( 'Flash Toolkit', 'FT: Team Image' . $this->id, $image );
+			icl_register_string( 'Flash Toolkit', 'FT: Team Designation' . $this->id, $designation );
+		}
+
+		// 2. For WPML plugin translated string display
+		if ( function_exists( 'icl_t' ) ) {
+			$image = icl_t( 'Flash Toolkit', 'FT: Team Image' . $this->id, $image );
+			$designation = icl_t( 'Flash Toolkit', 'FT: Team Designation' . $this->id, $designation );
+		}
 
 		$this->widget_start( $args, $instance );
 

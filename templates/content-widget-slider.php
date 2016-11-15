@@ -23,8 +23,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="tg-slider-widget <?php echo esc_attr( $color ); ?> <?php echo esc_attr( $align ); ?> <?php echo esc_attr( $controls ); ?>">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			<?php foreach ($repeatable_slider as $slider) {
-			if( $slider['image'] != '' ) { ?>
+			<?php
+			$i = 1;
+			foreach ($repeatable_slider as $slider) {
+			if( $slider['image'] != '' ) {
+			/*
+			 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+			 *
+			 * 1. Need to register the strings first
+			 * 2. Display the registered strings
+			 */
+
+			// 1. For WPML plugin string register
+			if ( function_exists( 'icl_register_string' ) ) {
+				icl_register_string( 'Flash Toolkit', 'FT: Slider Title'.$i, $slider['title'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Slider Description'.$i, $slider['description'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Slider Image'.$i, $slider['image'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Slider Button Text'.$i, $slider['button_text'] );
+				icl_register_string( 'Flash Toolkit', 'FT: Slider Button Link'.$i, $slider['button_link'] );
+			}
+
+			// 2. For WPML plugin translated string display
+			if ( function_exists( 'icl_t' ) ) {
+				$slider['title'] = icl_t( 'Flash Toolkit', 'FT: Slider Title'.$i, $slider['title'] );
+				$slider['description'] = icl_t( 'Flash Toolkit', 'FT: Slider Description'.$i, $slider['description'] );
+				$slider['image'] = icl_t( 'Flash Toolkit', 'FT: Slider Image'.$i, $slider['image'] );
+				$slider['button_text'] = icl_t( 'Flash Toolkit', 'FT: Slider Button Text'.$i, $slider['button_text'] );
+				$slider['button_link'] = icl_t( 'Flash Toolkit', 'FT: Slider Button Link'.$i, $slider['button_link'] );
+			}
+			?>
 			<div class="swiper-slide">
 				<figure class="slider-image">
 					<img src="<?php echo esc_html( $slider[ 'image' ] ); ?>"/>
@@ -43,6 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 			<?php }
+			$i++;
 			} ?>
 		</div>
 		<div class="swiper-pagination"></div>
