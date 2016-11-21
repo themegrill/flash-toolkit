@@ -29,7 +29,7 @@ class FT_Widget_Counter extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_counter';
 		$this->widget_name        = __( 'FT: Animated Number Counter', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'counter-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
@@ -58,7 +58,7 @@ class FT_Widget_Counter extends FT_Widget {
 					'tg-fun-facts-layout-2' => __( 'Style 2', 'flash-toolkit' ),
 				)
 			),
-		);
+		) );
 
 		parent::__construct();
 

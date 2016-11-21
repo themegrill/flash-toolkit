@@ -29,7 +29,7 @@ class FT_Widget_Heading extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_heading';
 		$this->widget_name        = __( 'FT: Heading', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'heading-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
@@ -40,7 +40,7 @@ class FT_Widget_Heading extends FT_Widget {
 				'std'   => '',
 				'label' => __( 'Sub Heading', 'flash-toolkit' )
 			),
-		);
+		) );
 
 		parent::__construct();
 	}

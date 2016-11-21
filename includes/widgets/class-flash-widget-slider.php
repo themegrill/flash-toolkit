@@ -29,7 +29,7 @@ class FT_Widget_Slider extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_slider';
 		$this->widget_name        = __( 'FT: Slider', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'repeatable_slider' => array(
 				'type'   => 'repeater',
 				'label'  => __( 'Sortable Sliders', 'flash-toolkit' ),
@@ -98,7 +98,7 @@ class FT_Widget_Slider extends FT_Widget {
 					'slider-control-bottom-right'    => __( 'Bottom Right Align', 'flash-toolkit' ),
 				)
 			),
-		);
+		) );
 
 		parent::__construct();
 
