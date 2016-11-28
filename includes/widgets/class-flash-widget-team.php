@@ -29,7 +29,7 @@ class FT_Widget_Team extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_team';
 		$this->widget_name        = __( 'FT: Team', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'team-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
@@ -75,7 +75,7 @@ class FT_Widget_Team extends FT_Widget {
 					'tg-team-layout-3' => __( 'Style 3', 'flash-toolkit' )
 				)
 			),
-		);
+		) );
 
 		parent::__construct();
 	}

@@ -29,7 +29,7 @@ class FT_Widget_Logo extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_logo';
 		$this->widget_name        = __( 'FT: Logo', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'title'  => array(
 				'type'  => 'text',
 				'std'   => '',
@@ -63,7 +63,7 @@ class FT_Widget_Logo extends FT_Widget {
 					),
 				),
 			),
-		);
+		) );
 
 		parent::__construct();
 

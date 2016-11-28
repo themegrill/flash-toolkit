@@ -29,7 +29,7 @@ class FT_Widget_Testimonial extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_testimonial';
 		$this->widget_name        = __( 'FT: Testimonial', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'repeatable_testimonial' => array(
 				'type'   => 'repeater',
 				'label'  => __( 'Sortable Testimonials', 'flash-toolkit' ),
@@ -66,7 +66,21 @@ class FT_Widget_Testimonial extends FT_Widget {
 					),
 				),
 			),
-		);
+			'enable_slider' => array(
+				'type'  => 'checkbox',
+				'class' => 'availability',
+				'std'   => 1,
+				'label' => __( 'Check to make the testimonial slider.', 'flash-toolkit' ),
+			),
+			'carousel_num'  => array(
+				'type'  => 'number',
+				'step'  => 1,
+				'min'   => 1,
+				'max'   => 4,
+				'std'   => 3,
+				'label' => __( 'Carousel Number', 'flash-toolkit' )
+			),
+		) );
 
 		parent::__construct();
 

@@ -29,7 +29,7 @@ class FT_Widget_CTA extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_cta';
 		$this->widget_name        = __( 'FT: CTA', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'cta-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
@@ -69,7 +69,7 @@ class FT_Widget_CTA extends FT_Widget {
 					'call-to-action-section-layout-2' => __( 'Style 2', 'flash-toolkit' ),
 				)
 			)
-		);
+		) );
 
 		parent::__construct();
 	}

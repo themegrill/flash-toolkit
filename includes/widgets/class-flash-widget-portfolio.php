@@ -29,7 +29,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 		$this->widget_id          = 'themegrill_flash_portfolio';
 		$this->widget_name        = __( 'FT: Portfolio', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
-		$this->settings           = array(
+		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
 			'categories'  => array(
 				'type'  => 'select_categories',
 				'std'   => '',
@@ -73,7 +73,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 					'tg-column-4' => __( '4 Column', 'flash-toolkit' ),
 				)
 			),
-		);
+		) );
 
 		parent::__construct();
 
