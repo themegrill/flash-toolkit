@@ -100,10 +100,31 @@ class FT_Widget_Service extends FT_Widget {
 		$icon_type   = isset( $instance[ 'icon_type' ] ) ? $instance[ 'icon_type' ] : 'icon';
 		$icon        = isset( $instance[ 'icon' ] ) ? $instance[ 'icon' ] : '';
 		$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
-		$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+		$text        = apply_filters( 'widget_title', isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '', $instance, $this->id_base );
 		$more_text   = isset( $instance[ 'more_text' ] ) ? $instance[ 'more_text' ] : '';
 		$more_url    = isset( $instance[ 'more_url' ] ) ? $instance[ 'more_url' ] : '';
 		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
+
+		/*
+		 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+		 *
+		 * 1. Need to register the strings first
+		 * 2. Display the registered strings
+		 */
+
+		// 1. For WPML plugin string register
+		if ( function_exists( 'icl_register_string' ) ) {
+			icl_register_string( 'Flash Toolkit', 'FT: Service Image' . $this->id, $image );
+			icl_register_string( 'Flash Toolkit', 'FT: Service Read More Text' . $this->id, $more_text );
+			icl_register_string( 'Flash Toolkit', 'FT: Service Read More URL'. $this->id, $more_url );
+		}
+
+		// 2. For WPML plugin translated string display
+		if ( function_exists( 'icl_t' ) ) {
+			$image = icl_t( 'Flash Toolkit', 'FT: Service Image' . $this->id, $image );
+			$more_text = icl_t( 'Flash Toolkit', 'FT: Service Read More Text' . $this->id, $more_text );
+			$more_url = icl_t( 'Flash Toolkit', 'FT: Service Read More URL' . $this->id, $more_url );
+		}
 
 		$this->widget_start( $args, $instance );
 

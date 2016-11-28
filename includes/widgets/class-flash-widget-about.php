@@ -70,11 +70,31 @@ class FT_Widget_About extends FT_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$title       = isset( $instance[ 'about-title' ] ) ? $instance[ 'about-title' ] : '';
-		$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+		$text        = apply_filters( 'widget_text', isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '', $instance, $this->id_base );
 		$more_text   = isset( $instance[ 'more_text' ] ) ? $instance[ 'more_text' ] : '';
 		$more_url    = isset( $instance[ 'more_url' ] ) ? $instance[ 'more_url' ] : '';
 		$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
 
+		/*
+		 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+		 *
+		 * 1. Need to register the strings first
+		 * 2. Display the registered strings
+		 */
+
+		// 1. For WPML plugin string register
+		if ( function_exists( 'icl_register_string' ) ) {
+			icl_register_string( 'Flash Toolkit', 'FT: About More Text' . $this->id, $more_text );
+			icl_register_string( 'Flash Toolkit', 'FT: About More URL' . $this->id, $more_url );
+			icl_register_string( 'Flash Toolkit', 'FT: About Image'. $this->id, $image );
+		}
+
+		// 2. For WPML plugin translated string display
+		if ( function_exists( 'icl_t' ) ) {
+			$more_text = icl_t( 'Flash Toolkit', 'FT: About More Text' . $this->id, $more_text );
+			$more_url = icl_t( 'Flash Toolkit', 'FT: About More URL' . $this->id, $more_url );
+			$image = icl_t( 'Flash Toolkit', 'FT: About Image' . $this->id, $image );
+		}
 
 		$this->widget_start( $args, $instance );
 

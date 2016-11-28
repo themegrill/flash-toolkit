@@ -25,13 +25,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="client-container swiper-container">
 		<div class="client-wrapper swiper-wrapper">
 <?php
+$i =  1;
 foreach ($repeatable_logo as $logo) {
-	if( $logo['image'] != '' ) { ?>
+	if( $logo['image'] != '' ) {
+	/*
+	 * WPML plugin compatibility. To make it compatible, these below two steps needs to be done:
+	 *
+	 * 1. Need to register the strings first
+	 * 2. Display the registered strings
+	 */
+
+	// 1. For WPML plugin string register
+	if ( function_exists( 'icl_register_string' ) ) {
+		icl_register_string( 'Flash Toolkit', 'FT: Logo Image'.$i, $logo['image'] );
+		icl_register_string( 'Flash Toolkit', 'FT: Logo Title'.$i, $logo['title'] );
+	}
+
+	// 2. For WPML plugin translated string display
+	if ( function_exists( 'icl_t' ) ) {
+		$logo['image'] = icl_t( 'Flash Toolkit', 'FT: Logo Image'.$i, $logo['image'] );
+		$logo['title'] = icl_t( 'Flash Toolkit', 'FT: Logo Title'.$i, $logo['title'] );
+	}
+	?>
+
 	<div class="client-slide swiper-slide">
 		<img src="<?php echo $logo['image']; ?>" alt="<?php echo $logo['title']; ?>" />
 	</div>
 	<?php
 	}
+
+	$i++;
 }
 ?>
 		</div>

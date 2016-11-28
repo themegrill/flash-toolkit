@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if( !empty( $link ) ) { ?>
-	<a href="<?php echo esc_url( $link ); ?><img src="<?php echo esc_url( $image ); ?>" /></a>
+	<a href="<?php echo esc_url( $link ); ?>"><img src="<?php echo esc_url( $image ); ?>" /></a>
 <?php } else { ?>
 	<img src="<?php echo esc_url( $image ); ?>" />
 <?php } ?>
