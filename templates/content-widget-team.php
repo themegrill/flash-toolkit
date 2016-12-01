@@ -19,8 +19,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-?>
 
+$title       = isset( $instance[ 'team-title' ] ) ? $instance[ 'team-title' ] : '';
+$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
+$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+$designation = isset( $instance[ 'designation' ] ) ? $instance[ 'designation' ] : '';
+$facebook    = isset( $instance[ 'facebook' ] ) ? $instance[ 'facebook' ] : '';
+$twitter     = isset( $instance[ 'twitter' ] ) ? $instance[ 'twitter' ] : '';
+$linkedin    = isset( $instance[ 'linkedin' ] ) ? $instance[ 'linkedin' ] : '';
+$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
+?>
 <div class="tg-team-widget <?php echo esc_attr( $style ); ?>">
 	<div class="team-wrapper">
 		<?php if(!empty($image)) { ?>
@@ -42,11 +50,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 			<?php } } ?>
-			<img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($name); ?>"/>
+			<img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>"/>
 		</div>
 		<?php } ?>
 		<div class="team-content-wrapper">
-			<h3 class="team-title"><?php echo esc_html($name); ?></h3>
+			<h3 class="team-title"><?php echo esc_html($title); ?></h3>
 			<div class="team-designation"><?php echo esc_html($designation); ?></div>
 			<div class="team-content"><?php echo esc_html($text); ?></div>
 			<?php

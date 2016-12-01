@@ -19,21 +19,22 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-?>
 
+$repeatable_logo = isset( $instance['repeatable_logo'] ) ? $instance['repeatable_logo'] : array();
+?>
 <div class="tg-client-widget">
 	<div class="client-container swiper-container">
 		<div class="client-wrapper swiper-wrapper">
-<?php
-foreach ($repeatable_logo as $logo) {
-	if( $logo['image'] != '' ) { ?>
-	<div class="client-slide swiper-slide">
-		<img src="<?php echo $logo['image']; ?>" alt="<?php echo $logo['title']; ?>" />
-	</div>
-	<?php
-	}
-}
-?>
+		<?php
+		foreach ($repeatable_logo as $logo) {
+			if( $logo['image'] != '' ) { ?>
+			<div class="client-slide swiper-slide">
+				<img src="<?php echo $logo['image']; ?>" alt="<?php echo $logo['title']; ?>" />
+			</div>
+			<?php
+			}
+		}
+		?>
 		</div>
 	</div>
 </div>

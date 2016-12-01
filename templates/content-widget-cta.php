@@ -19,6 +19,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$title       = isset( $instance[ 'cta-title' ] ) ? $instance[ 'cta-title' ] : '';
+$subtitle    = isset( $instance[ 'cta-subtitle' ] ) ? $instance[ 'cta-subtitle' ] : '';
+$btn1        = isset( $instance[ 'cta-btn1' ] ) ? $instance[ 'cta-btn1' ] : '';
+$btn1_link   = isset( $instance[ 'cta-btn1-link' ] ) ? $instance[ 'cta-btn1-link' ] : '';
+$btn2        = isset( $instance[ 'cta-btn2' ] ) ? $instance[ 'cta-btn2' ] : '';
+$btn2_link   = isset( $instance[ 'cta-btn2-link' ] ) ? $instance[ 'cta-btn2-link' ] : '';
+$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : 'tg-cta-layout-1';
 ?>
 <div class="cta-wrapper <?php echo esc_attr( $style ); ?>">
 	<div class="section-title-wrapper">

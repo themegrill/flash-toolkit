@@ -89,18 +89,10 @@ class FT_Widget_Team extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$title       = isset( $instance[ 'team-title' ] ) ? $instance[ 'team-title' ] : '';
-		$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
-		$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
-		$designation = isset( $instance[ 'designation' ] ) ? $instance[ 'designation' ] : '';
-		$facebook    = isset( $instance[ 'facebook' ] ) ? $instance[ 'facebook' ] : '';
-		$twitter     = isset( $instance[ 'twitter' ] ) ? $instance[ 'twitter' ] : '';
-		$linkedin    = isset( $instance[ 'linkedin' ] ) ? $instance[ 'linkedin' ] : '';
-		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-team.php', array( 'name' => $title,  'image' => $image, 'text' => $text, 'designation' => $designation, 'facebook' => $facebook, 'twitter' => $twitter, 'linkedin' => $linkedin, 'style' => $style ) );
+		flash_get_template( 'content-widget-team.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

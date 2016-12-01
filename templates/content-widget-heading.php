@@ -19,7 +19,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+$heading    = isset( $instance[ 'heading-title' ] ) ? $instance[ 'heading-title' ] : '';
+$subheading = isset( $instance[ 'subheading' ] ) ? $instance[ 'subheading' ] : '';
+?>
+<?php
 if( !empty( $heading ) ) { ?>
 	<h3 class="section-title"><?php echo esc_html($heading); ?></h3>
 <?php } ?>

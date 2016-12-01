@@ -20,6 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$categories    = isset( $instance[ 'categories' ] ) ? $instance[ 'categories' ] : '';
+$number        = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
+$filter        = empty( $instance[ 'filter' ] ) ? 0 : 1;
+$style         = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : 'tg-feature-product-layout-1';
+$column        = isset( $instance[ 'column' ] ) ? $instance[ 'column' ] : 'tg-column-3';
+?>
+<?php
 $output = ''; //Start output
 $output .= '<div class="'.$style.' tg-feature-product-filter-layout">';
 $output .= '<div class="tg-container">';

@@ -19,8 +19,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+$title       = isset( $instance[ 'about-title' ] ) ? $instance[ 'about-title' ] : '';
+$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+$more_text   = isset( $instance[ 'more_text' ] ) ? $instance[ 'more_text' ] : '';
+$more_url    = isset( $instance[ 'more_url' ] ) ? $instance[ 'more_url' ] : '';
+$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
 ?>
-
 <div class="tg-column-wrapper">
 	<div class="about-content-wrapper tg-column-2">
 		<?php if( !empty( $title ) ) { ?>
