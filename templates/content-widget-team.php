@@ -50,11 +50,11 @@ $style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 				</div>
 			</div>
 			<?php } } ?>
-			<img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($name); ?>"/>
+			<img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>"/>
 		</div>
 		<?php } ?>
 		<div class="team-content-wrapper">
-			<h3 class="team-title"><?php echo esc_html($name); ?></h3>
+			<h3 class="team-title"><?php echo esc_html($title); ?></h3>
 			<div class="team-designation"><?php echo esc_html($designation); ?></div>
 			<div class="team-content"><?php echo esc_html($text); ?></div>
 			<?php
