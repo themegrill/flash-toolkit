@@ -19,6 +19,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$text       = isset( $instance[ 'counter-title' ] ) ? $instance[ 'counter-title' ] : '';
+$icon       = isset( $instance[ 'icon' ] ) ? $instance[ 'icon' ] : '';
+$number     = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
+$style      = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 ?>
 <div class="fun-facts-section">
 	<div class="tg-fun-facts-widget <?php echo esc_attr( $style ); ?>">

@@ -99,15 +99,10 @@ class FT_Widget_Portfolio extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$categories    = isset( $instance[ 'categories' ] ) ? $instance[ 'categories' ] : '';
-		$number        = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
-		$filter        = empty( $instance[ 'filter' ] ) ? 0 : 1;
-		$style         = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : 'tg-feature-product-layout-1';
-		$column        = isset( $instance[ 'column' ] ) ? $instance[ 'column' ] : 'tg-column-3';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-portfolio.php', array( 'categories' => $categories, 'number' => $number, 'filter' => $filter, 'style' => $style, 'column' => $column ) );
+		flash_get_template( 'content-widget-portfolio.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

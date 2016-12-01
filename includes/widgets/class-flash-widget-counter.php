@@ -85,14 +85,10 @@ class FT_Widget_Counter extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$text       = isset( $instance[ 'counter-title' ] ) ? $instance[ 'counter-title' ] : '';
-		$icon       = isset( $instance[ 'icon' ] ) ? $instance[ 'icon' ] : '';
-		$number     = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
-		$style      = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-counter.php', array( 'text' => $text, 'icon' => $icon, 'number' => $number, 'style' => $style ) );
+		flash_get_template( 'content-widget-counter.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

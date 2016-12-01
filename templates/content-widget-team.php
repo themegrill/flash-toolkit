@@ -19,8 +19,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-?>
 
+$title       = isset( $instance[ 'team-title' ] ) ? $instance[ 'team-title' ] : '';
+$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
+$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+$designation = isset( $instance[ 'designation' ] ) ? $instance[ 'designation' ] : '';
+$facebook    = isset( $instance[ 'facebook' ] ) ? $instance[ 'facebook' ] : '';
+$twitter     = isset( $instance[ 'twitter' ] ) ? $instance[ 'twitter' ] : '';
+$linkedin    = isset( $instance[ 'linkedin' ] ) ? $instance[ 'linkedin' ] : '';
+$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
+?>
 <div class="tg-team-widget <?php echo esc_attr( $style ); ?>">
 	<div class="team-wrapper">
 		<?php if(!empty($image)) { ?>

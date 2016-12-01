@@ -54,12 +54,10 @@ class FT_Widget_Heading extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$heading    = isset( $instance[ 'heading-title' ] ) ? $instance[ 'heading-title' ] : '';
-		$subheading = isset( $instance[ 'subheading' ] ) ? $instance[ 'subheading' ] : '';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-heading.php', array( 'heading' => $heading, 'subheading' => $subheading ) );
+		flash_get_template( 'content-widget-heading.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

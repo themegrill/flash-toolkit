@@ -107,11 +107,10 @@ class FT_Widget_Testimonial extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instance['repeatable_testimonial'] : array();
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-testimonial.php', array( 'repeatable_testimonial' => $repeatable_testimonial ) );
+		flash_get_template( 'content-widget-testimonial.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

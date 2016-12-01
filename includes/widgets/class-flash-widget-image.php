@@ -54,12 +54,10 @@ class FT_Widget_Image extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$image    = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
-		$link     = isset( $instance[ 'image_link' ] ) ? $instance[ 'image_link' ] : '';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-image.php', array( 'image' => $image, 'link' => $link ) );
+		flash_get_template( 'content-widget-image.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

@@ -20,6 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$image    = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
+$link     = isset( $instance[ 'image_link' ] ) ? $instance[ 'image_link' ] : '';
+?>
+
+<?php
 if( !empty( $link ) ) { ?>
 	<a href="<?php echo esc_url( $link ); ?><img src="<?php echo esc_url( $image ); ?>" /></a>
 <?php } else { ?>
