@@ -26,7 +26,7 @@ $repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instan
 		<div class="testimonial-wrapper swiper-wrapper">
 			<?php foreach ($repeatable_testimonial as $testimonial) { ?>
 			<div class="testimonial-slide swiper-slide">
-				<div class="testominial-content-wrapper">
+				<div class="testimonial-content-wrapper">
 					<div class="testimonial-icon"><i class="fa fa-quote-left"></i> </div>
 					<?php if( !empty( $testimonial['description'] ) ) { ?>
 					<div class="testimonial-content"><?php echo esc_html($testimonial['description']); ?></div>
