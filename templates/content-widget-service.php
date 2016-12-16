@@ -19,7 +19,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$title       = isset( $instance[ 'service-title' ] ) ? $instance[ 'service-title' ] : '';
+$icon_type   = isset( $instance[ 'icon_type' ] ) ? $instance[ 'icon_type' ] : 'icon';
+$icon        = isset( $instance[ 'icon' ] ) ? $instance[ 'icon' ] : '';
+$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
+$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
+$more_text   = isset( $instance[ 'more_text' ] ) ? $instance[ 'more_text' ] : '';
+$more_url    = isset( $instance[ 'more_url' ] ) ? $instance[ 'more_url' ] : '';
+$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 ?>
+
 <div class="tg-service-widget <?php echo esc_attr( $style ); ?>">
 	<div class="service-wrapper">
 		<div class="service-icon-title-wrapper clearfix">

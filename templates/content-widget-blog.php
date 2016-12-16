@@ -19,8 +19,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-?>
 
+$number      = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
+$source      = isset( $instance[ 'source' ] ) ? $instance[ 'source' ] : '';
+$category    = isset( $instance[ 'category' ] ) ? $instance[ 'category' ] : '';
+$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
+?>
 <?php
 if($style == 'tg-blog-widget-layout-1' ) {
 	$image_size = 'flash-square';

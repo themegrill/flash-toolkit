@@ -96,18 +96,10 @@ class FT_Widget_Service extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$title       = isset( $instance[ 'service-title' ] ) ? $instance[ 'service-title' ] : '';
-		$icon_type   = isset( $instance[ 'icon_type' ] ) ? $instance[ 'icon_type' ] : 'icon';
-		$icon        = isset( $instance[ 'icon' ] ) ? $instance[ 'icon' ] : '';
-		$image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
-		$text        = isset( $instance[ 'text' ] ) ? $instance[ 'text' ] : '';
-		$more_text   = isset( $instance[ 'more_text' ] ) ? $instance[ 'more_text' ] : '';
-		$more_url    = isset( $instance[ 'more_url' ] ) ? $instance[ 'more_url' ] : '';
-		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-service.php', array( 'title' => $title, 'icon_type' => $icon_type, 'icon' => $icon, 'image' => $image, 'text' => $text, 'more_text' => $more_text, 'more_url' => $more_url, 'style' => $style ) );
+		flash_get_template( 'content-widget-service.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

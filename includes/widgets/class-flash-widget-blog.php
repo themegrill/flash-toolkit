@@ -80,15 +80,10 @@ class FT_Widget_Blog extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$number      = isset( $instance[ 'number' ] ) ? $instance[ 'number' ] : '';
-		$source      = isset( $instance[ 'source' ] ) ? $instance[ 'source' ] : '';
-		$category    = isset( $instance[ 'category' ] ) ? $instance[ 'category' ] : '';
-		$style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
-
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-blog.php', array( 'number' => $number, 'source' => $source, 'category' => $category, 'style' => $style ) );
+		flash_get_template( 'content-widget-blog.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

@@ -90,11 +90,10 @@ class FT_Widget_Logo extends FT_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		$repeatable_logo = isset( $instance['repeatable_logo'] ) ? $instance['repeatable_logo'] : array();
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-logo.php', array( 'repeatable_logo' => $repeatable_logo ) );
+		flash_get_template( 'content-widget-logo.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

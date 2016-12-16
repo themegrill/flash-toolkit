@@ -19,13 +19,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+$repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instance['repeatable_testimonial'] : array();
 ?>
 <div class="tg-testimonial-widget">
 	<div class="testimonial-container swiper-container">
 		<div class="testimonial-wrapper swiper-wrapper">
 			<?php foreach ($repeatable_testimonial as $testimonial) { ?>
 			<div class="testimonial-slide swiper-slide">
-				<div class="testominial-content-wrapper">
+				<div class="testimonial-content-wrapper">
 					<div class="testimonial-icon"><i class="fa fa-quote-left"></i> </div>
 					<?php if( !empty( $testimonial['description'] ) ) { ?>
 					<div class="testimonial-content"><?php echo esc_html($testimonial['description']); ?></div>
