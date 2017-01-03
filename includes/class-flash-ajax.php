@@ -34,6 +34,7 @@ class FT_AJAX {
 		// flash_toolkit_EVENT => nopriv
 		$ajax_events = array(
 			'delete_custom_sidebar' => false,
+			'rated'                 => false,
 		);
 
 		foreach ( $ajax_events as $ajax_event => $nopriv ) {
@@ -64,6 +65,18 @@ class FT_AJAX {
 			wp_send_json_success( array( $sidebar ) );
 		}
 
+		die();
+	}
+
+	/**
+	 * Triggered when clicking the rating footer.
+	 */
+	public static function rated() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			die( -1 );
+		}
+
+		update_option( 'flash_toolkit_admin_footer_text_rated', 1 );
 		die();
 	}
 }
