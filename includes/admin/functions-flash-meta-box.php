@@ -209,7 +209,7 @@ function flash_toolkit_wp_radio( $field ) {
 	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
 
-	echo '<fieldset class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><legend>' . wp_kses_post( $field['label'] ) . '</legend><ul class="rp-radios">';
+	echo '<fieldset class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><legend>' . wp_kses_post( $field['label'] ) . '</legend><ul class="flash-toolkit-radios">';
 
 	foreach ( $field['options'] as $key => $value ) {
 
