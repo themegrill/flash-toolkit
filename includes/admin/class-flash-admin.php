@@ -34,6 +34,7 @@ class FT_Admin {
 	public function includes() {
 		include_once( dirname( __FILE__ ) . '/class-flash-admin-notices.php' );
 		include_once( dirname( __FILE__ ) . '/class-flash-admin-assets.php' );
+		include_once( dirname( __FILE__ ) . '/class-flash-admin-post-types.php' );
 	}
 
 	/**
