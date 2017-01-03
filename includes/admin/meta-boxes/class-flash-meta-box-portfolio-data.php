@@ -27,12 +27,17 @@ class FT_Meta_Box_Portfolio_Data {
 
 		?>
 		<div id="portfolio_options" class="panel-wrap portfolio_data">
-			<ul class="portfolio_data_tabs flash-toolkit-tabs">
+			<ul class="portfolio_data_tabs ft-tabs">
 				<?php
 					$portfolio_data_tabs = apply_filters( 'flash-toolkit_portfolio_data_tabs', array(
 						'general' => array(
 							'label'  => __( 'General', 'flash-toolkit' ),
 							'target' => 'general_portfolio_data',
+							'class'  => array(),
+						),
+						'description' => array(
+							'label'  => __( 'Description', 'flash-toolkit' ),
+							'target' => 'description_portfolio_data',
 							'class'  => array(),
 						),
 					) );
@@ -46,7 +51,7 @@ class FT_Meta_Box_Portfolio_Data {
 					do_action( 'flash_toolkit_portfolio_write_panel_tabs' );
 				?>
 			</ul>
-			<div id="general_portfolio_data" class="panel flash_toolkit_options_panel"><?php
+			<div id="general_portfolio_data" class="panel flash_toolkit_options_panel hidden"><?php
 
 				echo '<div class="options_group">';
 
@@ -57,10 +62,9 @@ class FT_Meta_Box_Portfolio_Data {
 						'options' => array(
 							'one_column' => __( 'One Column', 'flash-toolkit' ),
 							'two_column' => __( 'Two Column', 'flash-toolkit' ),
-							'grid_image' => __( 'Grid Image', 'flash-toolkit' ),
 						),
 						'desc_tip'    => 'true',
-						'description' => __( 'Define whether or not the entire layout should be column based, or just with the grid image.', 'flash-toolkit' )
+						'description' => __( 'Define whether or not the entire layout should be one or two column based.', 'flash-toolkit' )
 					) );
 
 				echo '</div>';
@@ -68,14 +72,24 @@ class FT_Meta_Box_Portfolio_Data {
 				echo '<div class="options_group">';
 
 					// Category Icon
-					flash_toolkit_wp_checkbox( array( 'id' => '_category_icon', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Category Icon', 'flash-toolkit' ), 'description' => __( 'Show category image icon.', 'flash-toolkit' ) ) );
-
-					// Featured Image
-					flash_toolkit_wp_checkbox( array( 'id' => '_featured_image', 'wrapper_class' => 'hide_if_grid_image', 'label' => __( 'Featured Image', 'flash-toolkit' ), 'description' => __( 'Disable the featured image.', 'flash-toolkit' ) ) );
+					flash_toolkit_wp_checkbox( array( 'id' => '_category_icon', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Sample Checkbox', 'flash-toolkit' ), 'description' => __( 'Enable example checkbox.', 'flash-toolkit' ) ) );
 
 				echo '</div>';
 
 				do_action( 'flash_toolkit_portfolio_options_general' );
+
+			?></div>
+			<div id="description_portfolio_data" class="panel flash_toolkit_options_panel hidden"><?php
+
+				echo '<div class="options_group">';
+
+					// Description
+					flash_toolkit_wp_textarea_input( array(
+						'id'    => 'layout_desc',
+						'label' => __( 'Description', 'flash-toolkit' ),
+					) );
+
+				echo '</div>';
 
 			?></div>
 			<?php do_action( 'flash_toolkit_portfolio_data_panels' ); ?>

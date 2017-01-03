@@ -20,7 +20,7 @@
 		overflow: hidden;
 	}
 
-	ul.flash-toolkit-tabs {
+	ul.ft-tabs {
 		margin: 0;
 		width: 20%;
 		float: left;
@@ -66,6 +66,12 @@
 			&.general_options {
 				a:before {
 					content: "\f107";
+				}
+			}
+
+			&.description_options {
+				a::before {
+					content: '\f103';
 				}
 			}
 
@@ -286,6 +292,19 @@
 	}
 }
 
+img.help_tip {
+	margin: 0 0 0 9px;
+	vertical-align: middle;
+}
+
+.postbox img.help_tip {
+	margin-top: 0;
+}
+
+.postbox .flash-toolkit-help-tip {
+	margin: 0 0 0 9px;
+}
+
 /**
  * Tooltips
  */
@@ -348,7 +367,8 @@ img.tips {
 	}
 }
 
-#tiptip_content {
+#tiptip_content,
+.ft_error_tip {
 	color: #fff;
 	font-size: .8em;
 	max-width: 150px;
@@ -372,6 +392,29 @@ img.tips {
 	border-width: 6px;
 	height: 0;
 	width: 0;
+}
+
+.ft_error_tip {
+	max-width: 20em;
+	line-height: 1.8em;
+	position: absolute;
+	white-space: normal;
+	background: #d82223;
+	margin: 1.5em 1px 0 -1em;
+	z-index: 9999999;
+
+	&::after {
+		content: '';
+		display: block;
+		border: 8px solid #d82223;
+		border-right-color: transparent;
+		border-left-color: transparent;
+		border-top-color: transparent;
+		position: absolute;
+		top: -3px;
+		left: 50%;
+		margin: -1em 0 0 -3px;
+	}
 }
 
 /**
