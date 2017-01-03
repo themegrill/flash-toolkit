@@ -46,10 +46,9 @@ class FT_Admin_Assets {
 		wp_register_style( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/css/widgets.css', array( 'font-awesome' ), FT_VERSION );
 
 		// Admin styles for FT pages only
-		if ( in_array( $screen_id, array( $screen_id, array( 'edit-portfolio', 'portfolio' ) ) ) ) {
+		if ( in_array( $screen_id, array( $screen_id, flash_toolkit_get_screen_ids() ) ) ) {
 			wp_enqueue_style( 'flash-toolkit-admin' );
 			wp_enqueue_style( 'jquery-ui-style' );
-			wp_enqueue_style( 'wp-color-picker' );
 		}
 
 		// Widgets Specific enqueue.
@@ -93,9 +92,15 @@ class FT_Admin_Assets {
 			'i18n_max_field_message' => esc_js( sprintf( __( 'You can add upto %s fields.', 'flash-toolkit' ), apply_filters( 'flash_toolkit_maximum_repeater_field_entries', 5 ) ) ),
 		) );
 
+		// FlashToolkit admin pages.
+		if ( in_array( $screen_id, flash_toolkit_get_screen_ids() ) ) {
+			wp_enqueue_script( 'flash-toolkit-admin' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-autocomplete' );
+		}
+
 		// Meta boxes
 		if ( in_array( $screen_id, array( 'portfolio', 'edit-portfolio' ) ) ) {
-			wp_enqueue_script( 'flash-toolkit-admin' );
 			wp_enqueue_script( 'flash-toolkit-admin-meta-boxes' );
 		}
 
