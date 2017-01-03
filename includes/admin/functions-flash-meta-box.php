@@ -31,7 +31,7 @@ function flash_toolkit_wp_text_input( $field ) {
 
 	switch ( $data_type ) {
 		case 'url' :
-			$field['class'] .= ' flash_toolkit_input_url';
+			$field['class'] .= ' ft_input_url';
 			$field['value']  = esc_url( $field['value'] );
 			break;
 
@@ -209,7 +209,7 @@ function flash_toolkit_wp_radio( $field ) {
 	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
 
-	echo '<fieldset class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><legend>' . wp_kses_post( $field['label'] ) . '</legend><ul class="flash-toolkit-radios">';
+	echo '<fieldset class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><legend>' . wp_kses_post( $field['label'] ) . '</legend><ul class="ft-radios">';
 
 	foreach ( $field['options'] as $key => $value ) {
 

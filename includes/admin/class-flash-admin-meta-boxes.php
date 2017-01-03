@@ -1,6 +1,6 @@
 <?php
 /**
- * Social Icons Meta Boxes
+ * FlashToolkit Meta Boxes
  *
  * Sets up the write panels used by custom post types.
  *
@@ -43,7 +43,7 @@ class FT_Admin_Meta_Boxes {
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ), 1, 2 );
 
 		// Save Portfolio Meta Boxes
-		add_action( 'flash_toolkit_process_portfolio_meta', 'SI_Meta_Box_Portfolio_Data::save', 10, 2 );
+		add_action( 'flash_toolkit_process_portfolio_meta', 'FT_Meta_Box_Portfolio_Data::save', 10, 2 );
 
 		// Error handling (for showing errors from meta boxes on next page load)
 		add_action( 'admin_notices', array( $this, 'output_errors' ) );

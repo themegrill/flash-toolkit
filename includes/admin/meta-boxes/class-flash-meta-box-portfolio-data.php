@@ -71,8 +71,8 @@ class FT_Meta_Box_Portfolio_Data {
 
 				echo '<div class="options_group">';
 
-					// Category Icon
-					flash_toolkit_wp_checkbox( array( 'id' => '_category_icon', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Sample Checkbox', 'flash-toolkit' ), 'description' => __( 'Enable example checkbox.', 'flash-toolkit' ) ) );
+					// Example Checkbox
+					flash_toolkit_wp_checkbox( array( 'id' => '_example_cb', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Sample Checkbox', 'flash-toolkit' ), 'description' => __( 'Enable example checkbox.', 'flash-toolkit' ) ) );
 
 				echo '</div>';
 
@@ -83,7 +83,7 @@ class FT_Meta_Box_Portfolio_Data {
 
 				echo '<div class="options_group">';
 
-					// Description
+					// Description Textarea
 					flash_toolkit_wp_textarea_input( array(
 						'id'    => 'layout_desc',
 						'label' => __( 'Description', 'flash-toolkit' ),
@@ -103,6 +103,16 @@ class FT_Meta_Box_Portfolio_Data {
 	 * @param int $post_id
 	 */
 	public static function save( $post_id ) {
+		// Add/replace data to array
+		$layout_type = flash_clean( $_POST['layout_type'] );
+		$layout_desc = esc_textarea( $_POST['layout_desc'] );
+		$_example_cb = isset( $_POST['_example_cb'] ) ? 'yes' : 'no';
 
+		// Save
+		update_post_meta( $post_id, 'layout_type', $layout_type );
+		update_post_meta( $post_id, 'layout_desc', $layout_desc );
+		update_post_meta( $post_id, '_example_cb', $_example_cb );
+
+		do_action( 'flash_toolkit_portfolio_options_save', $post_id );
 	}
 }
