@@ -31,6 +31,9 @@ class FT_Admin_Post_Types {
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 		add_filter( 'default_hidden_meta_boxes', array( $this, 'hidden_meta_boxes' ), 10, 2 );
 
+		// Meta-Box Class
+		include_once( dirname( __FILE__ ) . '/class-flash-admin-meta-boxes.php' );
+
 		// Disable DFW feature pointer
 		add_action( 'admin_footer', array( $this, 'disable_dfw_feature_pointer' ) );
 

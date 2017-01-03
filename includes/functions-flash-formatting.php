@@ -24,6 +24,27 @@ function flash_clean( $var ) {
 }
 
 /**
+ * Sanitize a string destined to be a tooltip.
+ *
+ * @since  1.1.0  Tooltips are encoded with htmlspecialchars to prevent XSS. Should not be used in conjunction with esc_attr()
+ * @param  string $var
+ * @return string
+ */
+function flash_toolkit_sanitize_tooltip( $var ) {
+	return htmlspecialchars( wp_kses( html_entity_decode( $var ), array(
+		'br'     => array(),
+		'em'     => array(),
+		'strong' => array(),
+		'small'  => array(),
+		'span'   => array(),
+		'ul'     => array(),
+		'li'     => array(),
+		'ol'     => array(),
+		'p'      => array(),
+	) ) );
+}
+
+/**
  * Sanitize permalink values before insertion into DB.
  *
  * Cannot use flash_clean because it sometimes strips % chars and breaks the user's setting.

@@ -43,7 +43,7 @@ class FT_Autoloader {
 	 * @return string
 	 */
 	private function get_file_name_from_class( $class ) {
-        return 'class-' . str_replace( '_', '-', $class ) . '.php';
+        return 'class-' . str_replace( array( '_', 'ft' ), array( '-', 'flash' ), $class ) . '.php';
     }
 
 	/**
