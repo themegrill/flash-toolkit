@@ -53,14 +53,14 @@ class FT_Meta_Box_Portfolio_Data {
 					// Layout Type
 					flash_toolkit_wp_select( array(
 						'id'    => 'layout_type',
-						'label' => __( 'Layout Type', 'restaurantpress' ),
+						'label' => __( 'Layout Type', 'flash-toolkit' ),
 						'options' => array(
-							'one_column' => __( 'One Column', 'restaurantpress' ),
-							'two_column' => __( 'Two Column', 'restaurantpress' ),
-							'grid_image' => __( 'Grid Image', 'restaurantpress' ),
+							'one_column' => __( 'One Column', 'flash-toolkit' ),
+							'two_column' => __( 'Two Column', 'flash-toolkit' ),
+							'grid_image' => __( 'Grid Image', 'flash-toolkit' ),
 						),
 						'desc_tip'    => 'true',
-						'description' => __( 'Define whether or not the entire layout should be column based, or just with the grid image.', 'restaurantpress' )
+						'description' => __( 'Define whether or not the entire layout should be column based, or just with the grid image.', 'flash-toolkit' )
 					) );
 
 				echo '</div>';
@@ -68,10 +68,10 @@ class FT_Meta_Box_Portfolio_Data {
 				echo '<div class="options_group">';
 
 					// Category Icon
-					flash_toolkit_wp_checkbox( array( 'id' => '_category_icon', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Category Icon', 'restaurantpress' ), 'description' => __( 'Show category image icon.', 'restaurantpress' ) ) );
+					flash_toolkit_wp_checkbox( array( 'id' => '_category_icon', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Category Icon', 'flash-toolkit' ), 'description' => __( 'Show category image icon.', 'flash-toolkit' ) ) );
 
 					// Featured Image
-					flash_toolkit_wp_checkbox( array( 'id' => '_featured_image', 'wrapper_class' => 'hide_if_grid_image', 'label' => __( 'Featured Image', 'restaurantpress' ), 'description' => __( 'Disable the featured image.', 'restaurantpress' ) ) );
+					flash_toolkit_wp_checkbox( array( 'id' => '_featured_image', 'wrapper_class' => 'hide_if_grid_image', 'label' => __( 'Featured Image', 'flash-toolkit' ), 'description' => __( 'Disable the featured image.', 'flash-toolkit' ) ) );
 
 				echo '</div>';
 
