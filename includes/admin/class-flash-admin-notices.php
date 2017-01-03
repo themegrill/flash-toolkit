@@ -98,8 +98,8 @@ class FT_Admin_Notices {
 	 * Hide a notice if the GET variable is set.
 	 */
 	public static function hide_notices() {
-		if ( isset( $_GET['flash-hide-notice'] ) && isset( $_GET['_flash_notice_nonce'] ) ) {
-			if ( ! wp_verify_nonce( $_GET['_flash_notice_nonce'], 'flash_toolkit_hide_notices_nonce' ) ) {
+		if ( isset( $_GET['flash-toolkit-hide-notice'] ) && isset( $_GET['_flash_toolkit_notice_nonce'] ) ) {
+			if ( ! wp_verify_nonce( $_GET['_flash_toolkit_notice_nonce'], 'flash_toolkit_hide_notices_nonce' ) ) {
 				wp_die( __( 'Action failed. Please refresh the page and retry.', 'flash-toolkit' ) );
 			}
 
@@ -107,7 +107,7 @@ class FT_Admin_Notices {
 				wp_die( __( 'Cheatin&#8217; huh?', 'flash-toolkit' ) );
 			}
 
-			$hide_notice = sanitize_text_field( $_GET['flash-hide-notice'] );
+			$hide_notice = sanitize_text_field( $_GET['flash-toolkit-hide-notice'] );
 			self::remove_notice( $hide_notice );
 			do_action( 'flash_toolkit_hide_' . $hide_notice . '_notice' );
 		}

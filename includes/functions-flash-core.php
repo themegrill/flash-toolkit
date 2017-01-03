@@ -20,6 +20,116 @@ include( 'functions-flash-formatting.php' );
 include( 'functions-flash-portfolio.php' );
 
 /**
+ * Queue some JavaScript code to be output in the footer.
+ * @param string $code
+ */
+function flash_enqueue_js( $code ) {
+	global $flash_toolkit_queued_js;
+
+	if ( empty( $flash_toolkit_queued_js ) ) {
+		$flash_toolkit_queued_js = '';
+	}
+
+	$flash_toolkit_queued_js .= "\n" . $code . "\n";
+}
+
+/**
+ * Output any queued javascript code in the footer.
+ */
+function flash_print_js() {
+	global $flash_toolkit_queued_js;
+
+	if ( ! empty( $flash_toolkit_queued_js ) ) {
+		// Sanitize.
+		$flash_toolkit_queued_js = wp_check_invalid_utf8( $flash_toolkit_queued_js );
+		$flash_toolkit_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $flash_toolkit_queued_js );
+		$flash_toolkit_queued_js = str_replace( "\r", '', $flash_toolkit_queued_js );
+
+		$js = "<!-- Flash Toolkit JavaScript -->\n<script type=\"text/javascript\">\njQuery(function($) { $flash_toolkit_queued_js });\n</script>\n";
+
+		/**
+		 * social_icons_queued_js filter.
+		 * @param string $js JavaScript code.
+		 */
+		echo apply_filters( 'flash_toolkit_queued_js', $js );
+
+		unset( $flash_toolkit_queued_js );
+	}
+}
+
+/**
+ * Get and include template files.
+ *
+ * @param string $template_name
+ * @param array  $args (default: array())
+ * @param string $template_path (default: '')
+ * @param string $default_path (default: '')
+ */
+function flash_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	if ( ! empty( $args ) && is_array( $args ) ) {
+		extract( $args );
+	}
+
+	$located = flash_locate_template( $template_name, $template_path, $default_path );
+
+	if ( ! file_exists( $located ) ) {
+		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '1.0' );
+		return;
+	}
+
+	// Allow 3rd party plugin filter template file from their plugin.
+	$located = apply_filters( 'flash_get_template', $located, $template_name, $args, $template_path, $default_path );
+
+	do_action( 'flash_toolkit_before_template_part', $template_name, $template_path, $located, $args );
+
+	include( $located );
+
+	do_action( 'flash_toolkit_after_template_part', $template_name, $template_path, $located, $args );
+}
+
+/**
+ * Locate a template and return the path for inclusion.
+ *
+ * Note: FT_TEMPLATE_DEBUG_MODE will prevent overrides in themes from taking priority.
+ *
+ * This is the load order:
+ *
+ *      yourtheme       /   $template_path   /   $template_name
+ *      yourtheme       /   $template_name
+ *      $default_path   /   $template_name
+ *
+ * @param  string $template_name
+ * @param  string $template_path (default: '')
+ * @param  string $default_path (default: '')
+ * @return string
+ */
+function flash_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+	if ( ! $template_path ) {
+		$template_path = FT()->template_path();
+	}
+
+	if ( ! $default_path ) {
+		$default_path = FT()->plugin_path() . '/templates/';
+	}
+
+	// Look within passed path within the theme - this is priority.
+	$template = locate_template(
+		array(
+			trailingslashit( $template_path ) . $template_name,
+			$template_name,
+		)
+	);
+
+	// Get default template/
+	if ( ! $template || FT_TEMPLATE_DEBUG_MODE ) {
+		$template = $default_path . $template_name;
+	}
+
+	// Return what we found.
+	return apply_filters( 'flash_toolkit_locate_template', $template, $template_name, $template_path );
+}
+
+/**
  * Get fontawesome icon lists.
  * @return array
  */
@@ -742,76 +852,4 @@ function flash_get_fontawesome_icons() {
 		'fa-youtube-play'                        => __( 'Youtube Play', 'flash-toolkit' ),
 		'fa-youtube-square'                      => __( 'Youtube Square', 'flash-toolkit' ),
 	) );
-}
-
-/**
- * Get and include template files.
- *
- * @param string $template_name
- * @param array  $args (default: array())
- * @param string $template_path (default: '')
- * @param string $default_path (default: '')
- */
-function flash_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
-	if ( ! empty( $args ) && is_array( $args ) ) {
-		extract( $args );
-	}
-
-	$located = flash_locate_template( $template_name, $template_path, $default_path );
-
-	if ( ! file_exists( $located ) ) {
-		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '1.0' );
-		return;
-	}
-
-	// Allow 3rd party plugin filter template file from their plugin.
-	$located = apply_filters( 'flash_get_template', $located, $template_name, $args, $template_path, $default_path );
-
-	do_action( 'flash_toolkit_before_template_part', $template_name, $template_path, $located, $args );
-
-	include( $located );
-
-	do_action( 'flash_toolkit_after_template_part', $template_name, $template_path, $located, $args );
-}
-
-/**
- * Locate a template and return the path for inclusion.
- *
- * Note: FT_TEMPLATE_DEBUG_MODE will prevent overrides in themes from taking priority.
- *
- * This is the load order:
- *
- *      yourtheme       /   $template_path   /   $template_name
- *      yourtheme       /   $template_name
- *      $default_path   /   $template_name
- *
- * @param  string $template_name
- * @param  string $template_path (default: '')
- * @param  string $default_path (default: '')
- * @return string
- */
-function flash_locate_template( $template_name, $template_path = '', $default_path = '' ) {
-	if ( ! $template_path ) {
-		$template_path = FT()->template_path();
-	}
-
-	if ( ! $default_path ) {
-		$default_path = FT()->plugin_path() . '/templates/';
-	}
-
-	// Look within passed path within the theme - this is priority.
-	$template = locate_template(
-		array(
-			trailingslashit( $template_path ) . $template_name,
-			$template_name,
-		)
-	);
-
-	// Get default template/
-	if ( ! $template || FT_TEMPLATE_DEBUG_MODE ) {
-		$template = $default_path . $template_name;
-	}
-
-	// Return what we found.
-	return apply_filters( 'flash_toolkit_locate_template', $template, $template_name, $template_path );
 }

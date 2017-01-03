@@ -54,26 +54,28 @@ $style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 		</div>
 		<?php } ?>
 		<div class="team-content-wrapper">
-			<h3 class="team-title"><?php echo esc_html($title); ?></h3>
-			<div class="team-designation"><?php echo esc_html($designation); ?></div>
-			<div class="team-content"><?php echo esc_html($text); ?></div>
-			<?php
-			if( $style != 'tg-team-layout-3') {
-			if( (!empty($facebook) || !empty($twitter) || !empty($linkedin) ) ) { ?>
-			<div class="team-social">
-				<div class="team-social-block">
-					<?php if(!empty($facebook)) { ?>
-					<a href="<?php echo esc_url($facebook); ?>"><i class="fa fa-facebook"></i></a>
-					<?php } ?>
-					<?php if(!empty($twitter)) { ?>
-					<a href="<?php echo esc_url($twitter); ?>"><i class="fa fa-twitter"></i></a>
-					<?php } ?>
-					<?php if(!empty($linkedin)) { ?>
-					<a href="<?php echo esc_url($linkedin); ?>"><i class="fa fa-linkedin"></i></a>
-					<?php } ?>
+			<div class="team-desc-wrapper">
+				<h3 class="team-title"><?php echo esc_html($title); ?></h3>
+				<div class="team-designation"><?php echo esc_html($designation); ?></div>
+				<div class="team-content"><?php echo esc_html($text); ?></div>
+				<?php
+				if( $style != 'tg-team-layout-3') {
+				if( (!empty($facebook) || !empty($twitter) || !empty($linkedin) ) ) { ?>
+				<div class="team-social">
+					<div class="team-social-block">
+						<?php if(!empty($facebook)) { ?>
+						<a href="<?php echo esc_url($facebook); ?>"><i class="fa fa-facebook"></i></a>
+						<?php } ?>
+						<?php if(!empty($twitter)) { ?>
+						<a href="<?php echo esc_url($twitter); ?>"><i class="fa fa-twitter"></i></a>
+						<?php } ?>
+						<?php if(!empty($linkedin)) { ?>
+						<a href="<?php echo esc_url($linkedin); ?>"><i class="fa fa-linkedin"></i></a>
+						<?php } ?>
+					</div>
 				</div>
-			</div>
 			<?php } } ?>
+			</div>
 		</div>
 	</div>
 </div>

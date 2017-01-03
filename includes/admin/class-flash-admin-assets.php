@@ -56,6 +56,7 @@ class FT_Admin_Assets {
 
 		// Register admin scripts.
 		wp_register_script( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/js/admin/widgets' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'wp-util', 'underscore', 'backbone', 'flash-enhanced-select' ), FT_VERSION );
+		wp_register_script( 'flash-toolkit-admin-sidebars', FT()->plugin_url() . '/assets/js/admin/sidebars' . $suffix . '.js', array( 'jquery' ), FT_VERSION );
 		wp_register_script( 'select2', FT()->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), '3.5.4' );
 		wp_register_script( 'flash-enhanced-select', FT()->plugin_url() . '/assets/js/admin/enhanced-select' . $suffix . '.js', array( 'jquery', 'select2' ), FT_VERSION );
 		wp_localize_script( 'flash-enhanced-select', 'flash_enhanced_select_params', array(
@@ -81,6 +82,15 @@ class FT_Admin_Assets {
 		if ( in_array( $screen_id, array( 'widgets', 'customize' ) ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'flash-toolkit-admin-widgets' );
+
+			if ( 'widgets' === $screen_id ) {
+				wp_enqueue_script( 'flash-toolkit-admin-sidebars' );
+				wp_localize_script( 'flash-toolkit-admin-sidebars',	'flash_toolkit_admin_sidebars', array(
+					'ajax_url'                           => admin_url( 'admin-ajax.php' ),
+					'delete_custom_sidebar_nonce'        => wp_create_nonce( 'delete-custom-sidebar' ),
+					'i18n_confirm_delete_custom_sidebar' => __( 'Delete this Sidebar Permanently and store all widgets in Inactive Sidebar. Are you positive you want to delete this Sidebar?', 'flash-toolkit' ),
+				) );
+			}
 		}
 	}
 

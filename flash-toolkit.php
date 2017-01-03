@@ -130,11 +130,13 @@ final class FlashToolkit {
 		include_once( FT_ABSPATH . 'includes/functions-flash-core.php' );
 		include_once( FT_ABSPATH . 'includes/functions-flash-widget.php' );
 		include_once( FT_ABSPATH . 'includes/class-flash-install.php' );
+		include_once( FT_ABSPATH . 'includes/class-flash-ajax.php' );
 
 		if ( $this->is_request( 'admin' ) ) {
 			include_once( FT_ABSPATH . 'includes/admin/class-flash-admin.php' );
 		}
 
+		include_once( FT_ABSPATH . 'includes/class-flash-sidebars.php' );   // Sidebar Builder
 		include_once( FT_ABSPATH . 'includes/class-flash-post-types.php' ); // Registers post types
 	}
 
