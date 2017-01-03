@@ -1,5 +1,5 @@
 === Flash Toolkit ===
-Contributors: ThemeGrill
+Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 4.6
