@@ -45,6 +45,9 @@ class FT_Admin_Meta_Boxes {
 		// Save Portfolio Meta Boxes
 		add_action( 'flash_toolkit_process_portfolio_meta', 'FT_Meta_Box_Portfolio_Data::save', 10, 2 );
 
+		// Save Layout Meta Boxes
+		add_action( 'flash_toolkit_process_layout_meta', 'FT_Meta_Box_Layout_Data::save', 10, 2 );
+
 		// Error handling (for showing errors from meta boxes on next page load)
 		add_action( 'admin_notices', array( $this, 'output_errors' ) );
 		add_action( 'shutdown', array( $this, 'save_errors' ) );
@@ -152,6 +155,12 @@ class FT_Admin_Meta_Boxes {
 		// Check the post type
 		if ( in_array( $post->post_type, array( 'portfolio' ) ) ) {
 			do_action( 'flash_toolkit_process_' . $post->post_type . '_meta', $post_id, $post );
+		}
+
+		// Trigger action
+		$process_actions = array( 'layout' );
+		foreach ( $process_actions as $process_action ) {
+			do_action( 'flash_toolkit_process_' . $process_action . '_meta', $post_id, $post );
 		}
 	}
 }
