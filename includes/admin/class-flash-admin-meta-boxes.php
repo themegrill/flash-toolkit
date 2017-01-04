@@ -111,7 +111,9 @@ class FT_Admin_Meta_Boxes {
 	public function remove_meta_boxes() {
 		global $post;
 
-		remove_meta_box( 'postexcerpt', 'portfolio', 'normal' );
+		remove_meta_box( 'page-layout', 'post', 'side' );
+		remove_meta_box( 'page-layout', 'page', 'side' );
+		remove_meta_box( 'header-transparency', 'page', 'side' );
 
 		if ( 'portfolio' === $post->post_type && 0 === count( get_page_templates( $post ) ) ) {
 			remove_meta_box( 'pageparentdiv', 'portfolio', 'side' );
