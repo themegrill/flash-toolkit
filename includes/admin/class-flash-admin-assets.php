@@ -42,8 +42,12 @@ class FT_Admin_Assets {
 		// Register admin styles.
 		wp_register_style( 'font-awesome', FT()->plugin_url() . '/assets/css/fontawesome.css', array(), '4.6.3' );
 		wp_register_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
+		wp_register_style( 'flash-toolkit-menu', FT()->plugin_url() . '/assets/css/menu.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/css/admin.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/css/widgets.css', array( 'font-awesome' ), FT_VERSION );
+
+		// Sitewide menu CSS
+		wp_enqueue_style( 'flash-toolkit-menu' );
 
 		// Admin styles for FT pages only
 		if ( in_array( $screen_id, array( $screen_id, flash_toolkit_get_screen_ids() ) ) ) {
@@ -102,6 +106,11 @@ class FT_Admin_Assets {
 		// Meta boxes
 		if ( in_array( $screen_id, array( 'portfolio', 'edit-portfolio' ) ) ) {
 			wp_enqueue_script( 'flash-toolkit-admin-meta-boxes' );
+		}
+
+		if ( in_array( $screen_id, flash_toolkit_get_layout_supported_screens() ) ) {
+			wp_register_script( 'flash-toolkit-admin-layout-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes-layout' . $suffix . '.js', array( 'flash-toolkit-admin-meta-boxes' ), FT_VERSION );
+			wp_enqueue_script( 'flash-toolkit-admin-layout-meta-boxes' );
 		}
 
 		// Widgets Specific enqueue.

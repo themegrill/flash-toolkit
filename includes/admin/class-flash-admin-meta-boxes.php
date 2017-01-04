@@ -90,7 +90,16 @@ class FT_Admin_Meta_Boxes {
 	 * Add SI Meta boxes.
 	 */
 	public function add_meta_boxes() {
+		// Portfolio
 		add_meta_box( 'flash-toolkit-portfolio-data', __( 'Portfolio Data', 'flash-toolkit' ), 'FT_Meta_Box_Portfolio_Data::output', 'portfolio', 'normal', 'high' );
+
+		// Layouts
+		foreach ( flash_toolkit_get_layout_supported_screens() as $post_type ) {
+			if ( post_type_exists( $post_type ) ) {
+				$post_type_object = get_post_type_object( $post_type );
+				add_meta_box( 'flash-toolkit-layout-data', sprintf( __( '%s Layout', 'flash-toolkit' ), $post_type_object->labels->singular_name ), 'FT_Meta_Box_Layout_Data::output', $post_type, 'side', 'default' );
+			}
+		}
 	}
 
 	/**

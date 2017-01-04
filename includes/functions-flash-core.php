@@ -75,6 +75,31 @@ function flash_toolkit_help_tip( $tip, $allow_html = false ) {
 }
 
 /**
+ * Get all available sidebars.
+ * @param  array $sidebars
+ * @return array
+ */
+function flash_toolkit_get_sidebars( $sidebars = array() ) {
+	global $wp_registered_sidebars;
+
+	foreach ( $wp_registered_sidebars as $sidebar ) {
+		if ( ! in_array( $sidebar['name'], apply_filters( 'flash_toolkit_sidebars_exclude', array( 'Display Everywhere' ) ) ) ) {
+			$sidebars[ $sidebar['id'] ] = $sidebar['name'];
+		}
+	}
+
+	return $sidebars;
+}
+
+/**
+ * FlashToolkit Layout Supported Screens or Post types.
+ * @return array
+ */
+function flash_toolkit_get_layout_supported_screens() {
+	return (array) apply_filters( 'flash_toolkit_layout_supported_screens', array( 'post', 'page', 'portfolio', 'jetpack-portfolio' ) );
+}
+
+/**
  * Get and include template files.
  *
  * @param string $template_name

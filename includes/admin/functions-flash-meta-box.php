@@ -162,6 +162,8 @@ function flash_toolkit_wp_select( $field ) {
 	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'select short';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
+	$field['desc_side']     = isset( $field['desc_side'] ) ? $field['desc_side'] : false;
+	$field['desc_class']    = isset( $field['desc_class'] ) ? $field['desc_class'] : '';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
@@ -176,7 +178,25 @@ function flash_toolkit_wp_select( $field ) {
 		}
 	}
 
-	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><select id="' . esc_attr( $field['id'] ) . '" name="' . esc_attr( $field['name'] ) . '" class="' . esc_attr( $field['class'] ) . '" style="' . esc_attr( $field['style'] ) . '" ' . implode( ' ', $custom_attributes ) . '>';
+	// Description handling
+	$description = '';
+
+	if ( ! empty( $field['description'] ) ) {
+
+		if ( isset( $field['desc_tip'] ) && false !== $field['desc_tip'] ) {
+			$description = flash_toolkit_help_tip( $field['description'] );
+		} else {
+			$description = '<span class="description ' . esc_attr( $field['desc_class'] ) . '">' . wp_kses_post( $field['description'] ) . '</span>';
+		}
+	}
+
+	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label>';
+
+	if ( isset( $field['desc_side'] ) && true === $field['desc_side'] ) {
+		echo $description;
+	}
+
+	echo '<select id="' . esc_attr( $field['id'] ) . '" name="' . esc_attr( $field['name'] ) . '" class="' . esc_attr( $field['class'] ) . '" style="' . esc_attr( $field['style'] ) . '" ' . implode( ' ', $custom_attributes ) . '>';
 
 	foreach ( $field['options'] as $key => $value ) {
 		echo '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $field['value'] ), esc_attr( $key ), false ) . '>' . esc_html( $value ) . '</option>';
@@ -184,14 +204,10 @@ function flash_toolkit_wp_select( $field ) {
 
 	echo '</select> ';
 
-	if ( ! empty( $field['description'] ) ) {
-
-		if ( isset( $field['desc_tip'] ) && false !== $field['desc_tip'] ) {
-			echo flash_toolkit_help_tip( $field['description'] );
-		} else {
-			echo '<span class="description">' . wp_kses_post( $field['description'] ) . '</span>';
-		}
+	if ( isset( $field['desc_side'] ) && false === $field['desc_side'] ) {
+		echo $description;
 	}
+
 	echo '</p>';
 }
 
