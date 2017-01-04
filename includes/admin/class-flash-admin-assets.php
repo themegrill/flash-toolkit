@@ -33,12 +33,27 @@ class FT_Admin_Assets {
 	 * Enqueue styles.
 	 */
 	public function admin_styles() {
-		$screen    = get_current_screen();
-		$screen_id = $screen ? $screen->id : '';
+		global $wp_scripts;
+
+		$screen         = get_current_screen();
+		$screen_id      = $screen ? $screen->id : '';
+		$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.9.2';
 
 		// Register admin styles.
 		wp_register_style( 'font-awesome', FT()->plugin_url() . '/assets/css/fontawesome.css', array(), '4.6.3' );
+		wp_register_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
+		wp_register_style( 'flash-toolkit-menu', FT()->plugin_url() . '/assets/css/menu.css', array(), FT_VERSION );
+		wp_register_style( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/css/admin.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/css/widgets.css', array( 'font-awesome' ), FT_VERSION );
+
+		// Sitewide menu CSS
+		wp_enqueue_style( 'flash-toolkit-menu' );
+
+		// Admin styles for FT pages only
+		if ( in_array( $screen_id, array( $screen_id, flash_toolkit_get_screen_ids() ) ) ) {
+			wp_enqueue_style( 'flash-toolkit-admin' );
+			wp_enqueue_style( 'jquery-ui-style' );
+		}
 
 		// Widgets Specific enqueue.
 		if ( in_array( $screen_id, array( 'widgets', 'customize' ) ) ) {
@@ -55,8 +70,11 @@ class FT_Admin_Assets {
 		$suffix    = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Register admin scripts.
+		wp_register_script( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/js/admin/admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-tiptip' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/js/admin/widgets' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'wp-util', 'underscore', 'backbone', 'flash-enhanced-select' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-sidebars', FT()->plugin_url() . '/assets/js/admin/sidebars' . $suffix . '.js', array( 'jquery' ), FT_VERSION );
+		wp_register_script( 'flash-toolkit-admin-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'jquery-tiptip', 'flash-enhanced-select' ), FT_VERSION );
+		wp_register_script( 'jquery-tiptip', FT()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), FT_VERSION, true );
 		wp_register_script( 'select2', FT()->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), '3.5.4' );
 		wp_register_script( 'flash-enhanced-select', FT()->plugin_url() . '/assets/js/admin/enhanced-select' . $suffix . '.js', array( 'jquery', 'select2' ), FT_VERSION );
 		wp_localize_script( 'flash-enhanced-select', 'flash_enhanced_select_params', array(
@@ -77,6 +95,23 @@ class FT_Admin_Assets {
 			'i18n_max_field_entries' => apply_filters( 'flash_toolkit_maximum_repeater_field_entries', 5 ),
 			'i18n_max_field_message' => esc_js( sprintf( __( 'You can add upto %s fields.', 'flash-toolkit' ), apply_filters( 'flash_toolkit_maximum_repeater_field_entries', 5 ) ) ),
 		) );
+
+		// FlashToolkit admin pages.
+		if ( in_array( $screen_id, flash_toolkit_get_screen_ids() ) ) {
+			wp_enqueue_script( 'flash-toolkit-admin' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-autocomplete' );
+		}
+
+		// Meta boxes
+		if ( in_array( $screen_id, array( 'portfolio', 'edit-portfolio' ) ) ) {
+			wp_enqueue_script( 'flash-toolkit-admin-meta-boxes' );
+		}
+
+		if ( in_array( $screen_id, flash_toolkit_get_layout_supported_screens() ) ) {
+			wp_register_script( 'flash-toolkit-admin-layout-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes-layout' . $suffix . '.js', array( 'flash-toolkit-admin-meta-boxes' ), FT_VERSION );
+			wp_enqueue_script( 'flash-toolkit-admin-layout-meta-boxes' );
+		}
 
 		// Widgets Specific enqueue.
 		if ( in_array( $screen_id, array( 'widgets', 'customize' ) ) ) {

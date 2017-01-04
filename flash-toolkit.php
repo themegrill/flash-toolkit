@@ -129,6 +129,7 @@ final class FlashToolkit {
 	private function includes() {
 		include_once( FT_ABSPATH . 'includes/functions-flash-core.php' );
 		include_once( FT_ABSPATH . 'includes/functions-flash-widget.php' );
+		include_once( FT_ABSPATH . 'includes/class-flash-autoloader.php' );
 		include_once( FT_ABSPATH . 'includes/class-flash-install.php' );
 		include_once( FT_ABSPATH . 'includes/class-flash-ajax.php' );
 

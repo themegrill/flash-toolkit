@@ -23,7 +23,7 @@ include( 'functions-flash-portfolio.php' );
  * Queue some JavaScript code to be output in the footer.
  * @param string $code
  */
-function flash_enqueue_js( $code ) {
+function flash_toolkit_enqueue_js( $code ) {
 	global $flash_toolkit_queued_js;
 
 	if ( empty( $flash_toolkit_queued_js ) ) {
@@ -36,7 +36,7 @@ function flash_enqueue_js( $code ) {
 /**
  * Output any queued javascript code in the footer.
  */
-function flash_print_js() {
+function flash_toolkit_print_js() {
 	global $flash_toolkit_queued_js;
 
 	if ( ! empty( $flash_toolkit_queued_js ) ) {
@@ -55,6 +55,48 @@ function flash_print_js() {
 
 		unset( $flash_toolkit_queued_js );
 	}
+}
+
+/**
+ * Display a FlashToolkit help tip.
+ *
+ * @param  string $tip Help tip text
+ * @param  bool   $allow_html Allow sanitized HTML if true or escape
+ * @return string
+ */
+function flash_toolkit_help_tip( $tip, $allow_html = false ) {
+	if ( $allow_html ) {
+		$tip = flash_toolkit_sanitize_tooltip( $tip );
+	} else {
+		$tip = esc_attr( $tip );
+	}
+
+	return '<span class="flash-toolkit-help-tip" data-tip="' . $tip . '"></span>';
+}
+
+/**
+ * Get all available sidebars.
+ * @param  array $sidebars
+ * @return array
+ */
+function flash_toolkit_get_sidebars( $sidebars = array() ) {
+	global $wp_registered_sidebars;
+
+	foreach ( $wp_registered_sidebars as $sidebar ) {
+		if ( ! in_array( $sidebar['name'], apply_filters( 'flash_toolkit_sidebars_exclude', array( 'Display Everywhere' ) ) ) ) {
+			$sidebars[ $sidebar['id'] ] = $sidebar['name'];
+		}
+	}
+
+	return $sidebars;
+}
+
+/**
+ * FlashToolkit Layout Supported Screens or Post types.
+ * @return array
+ */
+function flash_toolkit_get_layout_supported_screens() {
+	return (array) apply_filters( 'flash_toolkit_layout_supported_screens', array( 'post', 'page', 'portfolio', 'jetpack-portfolio' ) );
 }
 
 /**

@@ -42,6 +42,7 @@ module.exports = function( grunt ){
 			},
 			vendor: {
 				files: {
+					'<%= dirs.js %>/jquery-tiptip/jquery.tipTip.min.js': ['<%= dirs.js %>/jquery-tiptip/jquery.tipTip.js'],
 					'<%= dirs.js %>/select2/select2.min.js': ['<%= dirs.js %>/select2/select2.js']
 				}
 			}
