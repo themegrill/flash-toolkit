@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $repeater_field_id = strtolower( str_replace( ' ', '-', $setting['title'] ) ) . '-{{ data.field_id }}';
-$max_field_entries = count( $value ) <= apply_filters( 'flash_toolkit_maximum_repeater_field_entries', 5 ) ? 'disabled' : 'enabled';
+$max_field_entries = count( $value ) >= apply_filters( 'flash_toolkit_maximum_repeater_field_entries', 5 ) ? 'disabled' : 'enabled';
 
 ?>
 <div id="tg-widget-repeater-field" class="accordion-sortables">
