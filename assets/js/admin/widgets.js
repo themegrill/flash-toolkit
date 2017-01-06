@@ -77,6 +77,16 @@ jQuery( function ( $ ) {
 			}
 		}).change();
 
+		$( 'select.media_chooser' ).change( function() {
+			if ( $( this ).val() === 'image' ) {
+				$( this ).closest( 'p' ).next( '.show_if_image' ).show();
+				$( this ).closest( 'p' ).nextUntil( '.show_if_video' ).closest( 'p' ).hide();
+			} else {
+				$( this ).closest( 'p' ).next( '.show_if_image' ).hide();
+				$( this ).closest( 'p' ).nextUntil( '.show_if_video' ).closest( 'p' ).show();
+			}
+		}).change();
+
 		$( 'input.availability' ).change( function() {
 			if ( $( this ).is( ':checked' ) ) {
 				$( this ).closest( 'p' ).next( 'p' ).hide();

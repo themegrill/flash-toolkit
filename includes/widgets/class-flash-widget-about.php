@@ -52,6 +52,7 @@ class FT_Widget_About extends FT_Widget {
 			),
 			'image' => array(
 				'type'  => 'image',
+				'class' => 'show_if_image',
 				'std'   => '',
 				'label' => __( 'Image', 'flash-toolkit' )
 			),
