@@ -79,11 +79,19 @@ jQuery( function ( $ ) {
 
 		$( 'select.media_chooser' ).change( function() {
 			if ( $( this ).val() === 'image' ) {
-				$( this ).closest( 'p' ).next( '.show_if_image' ).show();
-				$( this ).closest( 'p' ).nextUntil( '.show_if_video' ).closest( 'p' ).hide();
+				$( this ).closest( '.widget-content' ).find( '.show_if_image' ).show();
+				$( this ).closest( '.widget-content' ).find( '.show_if_video' ).closest( 'p' ).hide();
 			} else {
-				$( this ).closest( 'p' ).next( '.show_if_image' ).hide();
-				$( this ).closest( 'p' ).nextUntil( '.show_if_video' ).closest( 'p' ).show();
+				$( this ).closest( '.widget-content' ).find( '.show_if_image' ).hide();
+				$( this ).closest( '.widget-content' ).find( '.show_if_video' ).closest( 'p' ).show();
+			}
+		}).change();
+
+		$( 'select.filter_availability' ).change( function() {
+			if ( $( this ).val() === '0' ) {
+				$( this ).closest( '.widget-content' ).find( '.show_if_all_category' ).closest( 'p' ).show();
+			} else {
+				$( this ).closest( '.widget-content' ).find( '.show_if_all_category' ).closest( 'p' ).hide();
 			}
 		}).change();
 

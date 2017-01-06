@@ -33,6 +33,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 			'categories'  => array(
 				'type'  => 'select_categories',
 				'std'   => '',
+				'class' => 'filter_availability',
 				'label' => __( 'Select Project Category', 'flash-toolkit' ),
 				'args'  => array(
 					'hide_empty'       => 0,
@@ -52,6 +53,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 			'filter' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
+				'class' => 'show_if_all_category',
 				'label' => __( 'Show navigation filter.', 'flash-toolkit' ),
 			),
 			'style' => array(
