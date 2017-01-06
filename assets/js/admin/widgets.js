@@ -95,6 +95,14 @@ jQuery( function ( $ ) {
 			}
 		}).change();
 
+		$( 'select.availability' ).change( function() {
+			if ( $( this ).val() === 'latest' ) {
+				$( this ).closest( 'p' ).next( 'p' ).hide();
+			} else {
+				$( this ).closest( 'p' ).next( 'p' ).show();
+			}
+		}).change();
+
 		$( 'input.availability' ).change( function() {
 			if ( $( this ).is( ':checked' ) ) {
 				$( this ).closest( 'p' ).next( 'p' ).hide();
