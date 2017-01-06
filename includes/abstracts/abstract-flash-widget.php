@@ -173,7 +173,11 @@ abstract class FT_Widget extends WP_Widget {
 					}
 				break;
 				case 'textarea' :
-					$instance[ $key ] = wp_kses( trim( wp_unslash( $new_instance[ $key ] ) ), wp_kses_allowed_html( 'post' ) );
+					if ( current_user_can( 'unfiltered_html' ) ) {
+						$instance[ $key ] = $new_instance[ $key ];
+					} else {
+						$instance[ $key ] = wp_kses( trim( wp_unslash( $new_instance[ $key ] ) ), wp_kses_allowed_html( 'post' ) );
+					}
 				break;
 				case 'checkbox' :
 					$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
