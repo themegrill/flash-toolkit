@@ -62,8 +62,9 @@ class FT_Meta_Box_Layout_Data {
 
 				// Top Sidebar Position
 				flash_toolkit_wp_select( array( 'id' => 'flash_top_sidebar_position', 'class' => 'select side', 'label' => __( 'Top Sidebar Position', 'flash-toolkit' ), 'options' => array(
-					'above-header'     => __( 'Above Header', 'flash-toolkit' ),
-					'below-header'     => __( 'Below Header', 'flash-toolkit' ),
+					'none'             => __( 'None', 'flash-toolkit' ),
+					'above_header'     => __( 'Above Header', 'flash-toolkit' ),
+					'below_header'     => __( 'Below Header', 'flash-toolkit' ),
 				), 'desc_side' => true, 'desc_tip' => false, 'desc_class' => 'side', 'description' => __( 'Top Sidebar Position options on this page.', 'flash-toolkit' ) ) );
 
 				do_action( 'flash_toolkit_layout_data_end', $post->ID );
@@ -77,7 +78,7 @@ class FT_Meta_Box_Layout_Data {
 	 * @param int $post_id
 	 */
 	public static function save( $post_id ) {
-		$layout_post_meta = array( 'flash_layout', 'flash_sidebar', 'flash_footer', 'flash_transparency' );
+		$layout_post_meta = array( 'flash_layout', 'flash_sidebar', 'flash_footer', 'flash_transparency', 'flash_top_sidebar_position' );
 
 		foreach ( $layout_post_meta as $post_meta ) {
 			if ( isset( $_POST[ $post_meta ] ) ) {
