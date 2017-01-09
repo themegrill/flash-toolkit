@@ -60,6 +60,12 @@ class FT_Meta_Box_Layout_Data {
 					'transparent'     => __( 'Transparent Header', 'flash-toolkit' ),
 				), 'desc_side' => true, 'desc_tip' => false, 'desc_class' => 'side', 'description' => __( 'Header transparency options on this page.', 'flash-toolkit' ) ) );
 
+				// Top Sidebar Position
+				flash_toolkit_wp_select( array( 'id' => 'flash_top_sidebar_position', 'class' => 'select side', 'label' => __( 'Top Sidebar Position', 'flash-toolkit' ), 'options' => array(
+					'above-header'     => __( 'Above Header', 'flash-toolkit' ),
+					'below-header'     => __( 'Below Header', 'flash-toolkit' ),
+				), 'desc_side' => true, 'desc_tip' => false, 'desc_class' => 'side', 'description' => __( 'Top Sidebar Position options on this page.', 'flash-toolkit' ) ) );
+
 				do_action( 'flash_toolkit_layout_data_end', $post->ID );
 			?>
 		</ul>
