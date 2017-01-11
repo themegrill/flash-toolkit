@@ -59,24 +59,25 @@ class FT_Admin {
 	 * @return string
 	 */
 	public function admin_footer_text( $footer_text ) {
-		if ( current_user_can( 'manage_options' ) && function_exists( 'flash_toolkit_get_screen_ids' ) ) {
-			$current_screen = get_current_screen();
-			$ft_pages       = flash_toolkit_get_screen_ids();
+		if ( ! current_user_can( 'manage_options' ) || ! function_exists( 'flash_toolkit_get_screen_ids' ) ) {
+			return $footer_text;
+		}
+		$current_screen = get_current_screen();
+		$ft_pages       = flash_toolkit_get_screen_ids();
 
-			// Check to make sure we're on a Flash Toolkit admin page.
-			if ( isset( $current_screen->id ) && apply_filters( 'flash_toolkit_display_admin_footer_text', in_array( $current_screen->id, $ft_pages ) ) ) {
-				// Change the footer text.
-				if ( ! get_option( 'flash_toolkit_admin_footer_text_rated' ) ) {
-					$footer_text = sprintf( __( 'If you like <strong>Flash Toolkit</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thanks in advance!', 'flash-toolkit' ), '<a href="https://wordpress.org/support/view/plugin-reviews/flash-toolkit?filter=5#postform" target="_blank" class="flash-toolkit-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'flash-toolkit' ) . '">', '</a>' );
-					flash_toolkit_enqueue_js( "
-						jQuery( 'a.flash-toolkit-rating-link' ).click( function() {
-							jQuery.post( '" . FT()->ajax_url() . "', { action: 'flash_toolkit_rated' } );
-							jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
-						});
-					" );
-				} else {
-					$footer_text = __( 'Thank you for creating with Flash Toolkit.', 'flash-toolkit' );
-				}
+		// Check to make sure we're on a Flash Toolkit admin page.
+		if ( isset( $current_screen->id ) && apply_filters( 'flash_toolkit_display_admin_footer_text', in_array( $current_screen->id, $ft_pages ) ) ) {
+			// Change the footer text.
+			if ( ! get_option( 'flash_toolkit_admin_footer_text_rated' ) ) {
+				$footer_text = sprintf( __( 'If you like <strong>Flash Toolkit</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thanks in advance!', 'flash-toolkit' ), '<a href="https://wordpress.org/support/view/plugin-reviews/flash-toolkit?filter=5#postform" target="_blank" class="flash-toolkit-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'flash-toolkit' ) . '">', '</a>' );
+				flash_toolkit_enqueue_js( "
+					jQuery( 'a.flash-toolkit-rating-link' ).click( function() {
+						jQuery.post( '" . FT()->ajax_url() . "', { action: 'flash_toolkit_rated' } );
+						jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
+					});
+				" );
+			} else {
+				$footer_text = __( 'Thank you for creating with Flash Toolkit.', 'flash-toolkit' );
 			}
 		}
 
