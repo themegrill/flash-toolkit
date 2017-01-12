@@ -113,7 +113,7 @@ class FT_Install {
 		self::update_ft_version();
 
 		// Flush rules after install
-		flush_rewrite_rules();
+		do_action( 'flash_toolkit_flush_rewrite_rules' );
 
 		/*
 		 * Deletes all expired transients. The multi-table delete syntax is used
