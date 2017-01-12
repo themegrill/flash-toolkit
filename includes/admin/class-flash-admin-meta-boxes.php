@@ -98,7 +98,7 @@ class FT_Admin_Meta_Boxes {
 
 		// Layouts
 		foreach ( flash_toolkit_get_layout_supported_screens() as $post_type ) {
-			if ( post_type_exists( $post_type ) ) {
+			if ( post_type_exists( $post_type ) && is_flash_pro_active() ) {
 				$post_type_object = get_post_type_object( $post_type );
 				add_meta_box( 'flash-toolkit-layout-data', sprintf( __( '%s Layout', 'flash-toolkit' ), $post_type_object->labels->singular_name ), 'FT_Meta_Box_Layout_Data::output', $post_type, 'side', 'default' );
 			}
@@ -111,9 +111,11 @@ class FT_Admin_Meta_Boxes {
 	public function remove_meta_boxes() {
 		global $post;
 
-		remove_meta_box( 'page-layout', 'post', 'side' );
-		remove_meta_box( 'page-layout', 'page', 'side' );
-		remove_meta_box( 'header-transparency', 'page', 'side' );
+		if ( is_flash_pro_active() ) {
+			remove_meta_box( 'page-layout', 'post', 'side' );
+			remove_meta_box( 'page-layout', 'page', 'side' );
+			remove_meta_box( 'header-transparency', 'page', 'side' );
+		}
 
 		if ( 'portfolio' === $post->post_type && 0 === count( get_page_templates( $post ) ) ) {
 			remove_meta_box( 'pageparentdiv', 'portfolio', 'side' );
