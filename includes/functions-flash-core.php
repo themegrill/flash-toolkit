@@ -20,6 +20,14 @@ include( 'functions-flash-formatting.php' );
 include( 'functions-flash-portfolio.php' );
 
 /**
+ * is_flash_pro_active - Check if Flash Pro is active.
+ * @return bool
+ */
+function is_flash_pro_active() {
+	return false !== strpos( get_option( 'template' ), 'flash-pro' );
+}
+
+/**
  * Queue some JavaScript code to be output in the footer.
  * @param string $code
  */

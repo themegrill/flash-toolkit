@@ -137,7 +137,10 @@ final class FlashToolkit {
 			include_once( FT_ABSPATH . 'includes/admin/class-flash-admin.php' );
 		}
 
-		include_once( FT_ABSPATH . 'includes/class-flash-sidebars.php' );   // Sidebar Builder
+		if ( is_flash_pro_active() ) {
+			include_once( FT_ABSPATH . 'includes/class-flash-sidebars.php' );
+		}
+
 		include_once( FT_ABSPATH . 'includes/class-flash-post-types.php' ); // Registers post types
 	}
 

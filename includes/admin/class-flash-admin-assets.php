@@ -118,7 +118,7 @@ class FT_Admin_Assets {
 			wp_enqueue_media();
 			wp_enqueue_script( 'flash-toolkit-admin-widgets' );
 
-			if ( 'widgets' === $screen_id ) {
+			if ( 'widgets' === $screen_id && is_flash_pro_active() ) {
 				wp_enqueue_script( 'flash-toolkit-admin-sidebars' );
 				wp_localize_script( 'flash-toolkit-admin-sidebars',	'flash_toolkit_admin_sidebars', array(
 					'ajax_url'                           => admin_url( 'admin-ajax.php' ),
