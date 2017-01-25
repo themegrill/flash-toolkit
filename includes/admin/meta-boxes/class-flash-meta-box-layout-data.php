@@ -78,7 +78,7 @@ class FT_Meta_Box_Layout_Data {
 	 * @param int $post_id
 	 */
 	public static function save( $post_id ) {
-		$layout_post_meta = array( 'flash_layout', 'flash_sidebar', 'flash_footer', 'flash_transparency', 'flash_top_sidebar_position' );
+		$layout_post_meta = array( 'flash_page_layout', 'flash_sidebar', 'flash_footer', 'flash_transparency', 'flash_top_sidebar_position' );
 
 		foreach ( $layout_post_meta as $post_meta ) {
 			if ( isset( $_POST[ $post_meta ] ) ) {
