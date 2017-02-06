@@ -128,7 +128,7 @@ class FT_Widget_Slider extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-slider.php', array( 'instance' => $instance ) );
+		flash_get_template( 'content-widget-slider.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}
