@@ -88,7 +88,7 @@ class FT_Widget_Counter extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-counter.php', array( 'instance' => $instance ) );
+		flash_get_template( 'content-widget-counter.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}
