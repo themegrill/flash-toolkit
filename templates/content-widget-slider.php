@@ -19,13 +19,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+$screen            = isset( $instance[ 'full-screen'] ) ? $instance[ 'full-screen' ] : '' ;
 $color             = isset( $instance['color'] ) ? $instance['color'] : 'slider-dark';
 $align             = isset( $instance['align'] ) ? $instance['align'] : 'slider-content-center';
 $controls          = isset( $instance['controls'] ) ? $instance['controls'] : 'slider-control-center';
 $repeatable_slider = isset( $instance['repeatable_slider'] ) ? $instance['repeatable_slider'] : array();
+
+if($screen) {
+	$slide_status = 'full-screen';
+} else {
+	$slide_status = 'full-width';
+}
 ?>
-<div class="tg-slider-widget <?php echo esc_attr( $color ); ?> <?php echo esc_attr( $align ); ?> <?php echo esc_attr( $controls ); ?>">
+<div class="tg-slider-widget <?php echo esc_attr( $color ); ?> <?php echo esc_attr( $align ); ?> <?php echo esc_attr( $controls ); ?> <?php echo esc_attr( $slide_status) ; ?>">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<?php foreach ($repeatable_slider as $slider) {

@@ -98,6 +98,11 @@ class FT_Widget_Slider extends FT_Widget {
 					'slider-control-bottom-right'    => __( 'Bottom Right Align', 'flash-toolkit' ),
 				)
 			),
+			'full-screen' => array(
+				'type'  => 'checkbox',
+				'std'   => 1,
+				'label' => __( 'Check to make slide full screen.', 'flash-toolkit' ),
+			),
 		) );
 
 		parent::__construct();
