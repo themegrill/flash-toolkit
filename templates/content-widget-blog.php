@@ -67,7 +67,7 @@ $get_featured_posts = new WP_Query( array(
 			</figure>
 			<?php if($style == 'tg-blog-widget-layout-2' ) { ?>
 			<span class="entry-date">
-				<i class="fa fa-clock-o"></i><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html ( get_the_modified_date() ); ?></a>
+				<i class="fa fa-clock-o"></i><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html ( get_the_date() ); ?></a>
 			</span>
 			<?php } ?>
 		</div>
@@ -76,7 +76,7 @@ $get_featured_posts = new WP_Query( array(
 			<?php if($style == 'tg-blog-widget-layout-1' ) { ?>
 			<div class="entry-meta">
 				<span class="entry-date">
-					<i class="fa fa-clock-o"></i><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html ( get_the_modified_date() ); ?></a>
+					<i class="fa fa-clock-o"></i><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html ( get_the_date() ); ?></a>
 				</span>
 				<span class="entry-author">
 					<i class="fa fa-user"></i><a class="url fn n" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php echo esc_html( get_the_author() ); ?></a>
