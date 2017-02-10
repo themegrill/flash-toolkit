@@ -96,7 +96,7 @@ class FT_Widget_Testimonial extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-testimonial.php', array( 'instance' => $instance ) );
+		flash_get_template( 'content-widget-testimonial.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}

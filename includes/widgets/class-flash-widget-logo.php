@@ -30,11 +30,6 @@ class FT_Widget_Logo extends FT_Widget {
 		$this->widget_name        = __( 'FT: Logo', 'flash-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
 		$this->settings           = apply_filters( 'flash_toolkit_widget_settings_' . $this->widget_id, array(
-			'title'  => array(
-				'type'  => 'text',
-				'std'   => '',
-				'label' => __( 'Title', 'flash-toolkit' ),
-			),
 			'repeatable_logo' => array(
 				'type'   => 'repeater',
 				'label'  => __( 'Sortable Logos', 'flash-toolkit' ),
@@ -93,7 +88,7 @@ class FT_Widget_Logo extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		flash_get_template( 'content-widget-logo.php', array( 'instance' => $instance ) );
+		flash_get_template( 'content-widget-logo.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );
 	}
