@@ -68,7 +68,6 @@ jQuery( function ( $ ) {
 	$( document.body ).on( 'panelsopen', function() {
 
 		$( 'input.flash-datetime-picker' ).each( function() {
-			console.log("hello");
 			$('input.flash-datetime-picker').datetimepicker();
 		});
 	});
