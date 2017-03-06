@@ -235,6 +235,15 @@ abstract class FT_Widget extends WP_Widget {
 					<?php
 				break;
 
+				case 'datetimepicker' :
+					?>
+					<p>
+						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
+						<input class="widefat datetime <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="date" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+				break;
+
 				case 'select' :
 					?>
 					<p>
