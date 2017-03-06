@@ -42,7 +42,7 @@ class FT_Admin_Assets {
 		// Register admin styles.
 		wp_register_style( 'font-awesome', FT()->plugin_url() . '/assets/css/fontawesome.css', array(), '4.6.3' );
 		wp_register_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
-		wp_register_style( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/css/jquery-ui-timepicker-addon.css', array( 'jquery-ui-style' ), FT_VERSION );
+		wp_register_style( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/css/jquery-ui-timepicker-addon.css', array( 'jquery-ui-style' ), '1.6.3' );
 		wp_register_style( 'flash-toolkit-menu', FT()->plugin_url() . '/assets/css/menu.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/css/admin.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/css/widgets.css', array( 'font-awesome' ), FT_VERSION );
@@ -54,11 +54,11 @@ class FT_Admin_Assets {
 		if ( in_array( $screen_id, array( $screen_id, flash_toolkit_get_screen_ids() ) ) ) {
 			wp_enqueue_style( 'flash-toolkit-admin' );
 			wp_enqueue_style( 'jquery-ui-style' );
-			wp_enqueue_style( 'jquery-ui-timepicker-addon' );
 		}
 
 		// Widgets Specific enqueue.
 		if ( in_array( $screen_id, array( 'widgets', 'customize' ) ) ) {
+			wp_enqueue_style( 'jquery-ui-timepicker-addon' );
 			wp_enqueue_style( 'flash-toolkit-admin-widgets' );
 		}
 	}
@@ -72,7 +72,7 @@ class FT_Admin_Assets {
 		$suffix    = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Register admin scripts.
-		wp_register_script( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/js/admin/jquery-ui-timepicker-addon' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-core' ), FT_VERSION );
+		wp_register_script( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/js/admin/jquery-ui-timepicker-addon' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-core' ), '1.6.3' );
 		wp_register_script( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/js/admin/admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-tiptip' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/js/admin/widgets' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'wp-util', 'underscore', 'backbone', 'flash-enhanced-select' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-sidebars', FT()->plugin_url() . '/assets/js/admin/sidebars' . $suffix . '.js', array( 'jquery' ), FT_VERSION );
@@ -104,7 +104,6 @@ class FT_Admin_Assets {
 			wp_enqueue_script( 'flash-toolkit-admin' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
 			wp_enqueue_script( 'jquery-ui-autocomplete' );
-			wp_enqueue_script( 'jquery-ui-datepicker' );
 		}
 
 		// Meta boxes
@@ -120,6 +119,7 @@ class FT_Admin_Assets {
 		// Widgets Specific enqueue.
 		if ( in_array( $screen_id, array( 'widgets', 'customize' ) ) ) {
 			wp_enqueue_media();
+			wp_enqueue_script( 'jquery-ui-timepicker-addon' );
 			wp_enqueue_script( 'flash-toolkit-admin-widgets' );
 
 			if ( 'widgets' === $screen_id && is_flash_pro_active() ) {
@@ -137,6 +137,8 @@ class FT_Admin_Assets {
 	 * Enqueue siteorigin panel scripts.
 	 */
 	public function siteorigin_panel_scripts() {
+		wp_enqueue_style( 'jquery-ui-timepicker-addon' );
+		wp_enqueue_script( 'jquery-ui-timepicker-addon' );
 		wp_enqueue_style( 'flash-toolkit-admin-widgets' );
 		wp_enqueue_script( 'flash-toolkit-admin-widgets' );
 	}

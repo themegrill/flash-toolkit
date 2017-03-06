@@ -43,7 +43,8 @@ module.exports = function( grunt ){
 			vendor: {
 				files: {
 					'<%= dirs.js %>/jquery-tiptip/jquery.tipTip.min.js': ['<%= dirs.js %>/jquery-tiptip/jquery.tipTip.js'],
-					'<%= dirs.js %>/select2/select2.min.js': ['<%= dirs.js %>/select2/select2.js']
+					'<%= dirs.js %>/select2/select2.min.js': ['<%= dirs.js %>/select2/select2.js'],
+					'<%= dirs.js %>/admin/jquery-ui-timepicker-addon.min.js': ['<%= dirs.js %>/admin/jquery-ui-timepicker-addon.js']
 				}
 			}
 		},

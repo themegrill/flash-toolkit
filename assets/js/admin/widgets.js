@@ -65,6 +65,14 @@ jQuery( function ( $ ) {
 		});
 	}).trigger( 'flash-toolkit-init-media-preview' );
 
+	$( document.body ).on( 'panelsopen', function() {
+
+		$( 'input.flash-datetime-picker' ).each( function() {
+			console.log("hello");
+			$('input.flash-datetime-picker').datetimepicker();
+		});
+	});
+
 	// Availability options.
 	$( document.body ).on( 'flash-toolkit-init-availability', function() {
 		$( 'select.icon_chooser' ).change( function() {
