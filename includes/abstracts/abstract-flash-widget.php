@@ -182,6 +182,10 @@ abstract class FT_Widget extends WP_Widget {
 				case 'checkbox' :
 					$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
 				break;
+				case 'datetimepicker' :
+					$sanitized_date   = DateTime::createFromFormat( "Y-m-d H:i", $new_instance[ $key ] );
+					$instance[ $key ] = $sanitized_date->format("Y-m-d H:i");
+				break;
 				default:
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean( $new_instance[ $key ] ) : '';
 				break;
@@ -231,6 +235,15 @@ abstract class FT_Widget extends WP_Widget {
 					<p>
 						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="number" step="<?php echo esc_attr( $setting['step'] ); ?>" min="<?php echo esc_attr( $setting['min'] ); ?>" max="<?php echo esc_attr( $setting['max'] ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+				break;
+
+				case 'datetimepicker' :
+					?>
+					<p>
+						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
+						<input class="widefat flash-datetime-picker <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
 					</p>
 					<?php
 				break;
