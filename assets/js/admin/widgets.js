@@ -71,7 +71,7 @@ jQuery( function ( $ ) {
 			$('input.flash-datetime-picker').datetimepicker({
 				dateFormat: 'yy-mm-dd ',
 				timeFormat: 'HH:mm'
-			});;
+			});
 		});
 	});
 

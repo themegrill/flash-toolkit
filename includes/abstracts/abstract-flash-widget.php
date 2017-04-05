@@ -336,7 +336,7 @@ abstract class FT_Widget extends WP_Widget {
 					?>
 					<div id="tg-widget-icon-picker" class="flash-icon <?php echo esc_attr( $class ); ?>">
 						<p><label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo esc_html( $setting['label'] ); ?></label></p>
-						<select class="widefat flash-enhanced-select-icons" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" data-placeholder="<?php esc_attr_e( 'Choose icons&hellip;', 'flash-toolkit' ); ?>" title="<?php esc_attr_e( 'Icon', 'flash-toolkit' ) ?>">
+						<select class="widefat flash-enhanced-select-icons" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" data-placeholder="<?php esc_attr_e( 'Choose icons&hellip;', 'flash-toolkit' ); ?>" title="<?php esc_attr_e( 'Icon', 'flash-toolkit' ) ?>" style="width: 100%">
 							<option value=""></option>
 							<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
 								<option value="<?php echo esc_attr( $option_key ); ?>" data-icon="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
@@ -478,7 +478,7 @@ abstract class FT_Widget extends WP_Widget {
 					?>
 					<div id="tg-widget-icon-picker" class="flash-icon <?php echo esc_attr( $class ); ?>">
 						<p><label for="<?php echo $field_id; ?>"><?php echo esc_html( $setting['label'] ); ?></label></p>
-						<select class="widefat flash-enhanced-select-icons" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo $field_name; ?>" data-placeholder="<?php esc_attr_e( 'Choose icons&hellip;', 'flash-toolkit' ); ?>" title="<?php esc_attr_e( 'Icon', 'flash-toolkit' ) ?>">
+						<select class="widefat flash-enhanced-select-icons" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo $field_name; ?>" data-placeholder="<?php esc_attr_e( 'Choose icons&hellip;', 'flash-toolkit' ); ?>" title="<?php esc_attr_e( 'Icon', 'flash-toolkit' ) ?>" style="width: 100%">
 							<option value=""></option>
 							<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
 								<option value="<?php echo esc_attr( $option_key ); ?>" data-icon="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
