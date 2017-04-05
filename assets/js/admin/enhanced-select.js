@@ -64,27 +64,6 @@ jQuery( function( $ ) {
 
 		.on( 'flash-enhanced-select-init', function() {
 
-			// Regular select boxes
-			$( ':input.flash-enhanced-select' ).filter( ':not(.enhanced)' ).each( function() {
-				var select2_args = $.extend({
-					minimumResultsForSearch: 10,
-					allowClear:  $( this ).data( 'allow_clear' ) ? true : false,
-					placeholder: $( this ).data( 'placeholder' )
-				}, getEnhancedSelectFormatString() );
-
-				$( this ).select2( select2_args ).addClass( 'enhanced' );
-			});
-
-			$( ':input.flash-enhanced-select-nostd' ).filter( ':not(.enhanced)' ).each( function() {
-				var select2_args = $.extend({
-					minimumResultsForSearch: 10,
-					allowClear:  true,
-					placeholder: $( this ).data( 'placeholder' )
-				}, getEnhancedSelectFormatString() );
-
-				$( this ).select2( select2_args ).addClass( 'enhanced' );
-			});
-
 			$( ':input.flash-enhanced-select-icons' ).filter( ':not(.enhanced)' ).each( function() {
 				var select2_args = $.extend({
 					minimumResultsForSearch: 10,
