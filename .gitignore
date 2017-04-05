@@ -21,3 +21,6 @@ Thumbs.db
 
 # Composer
 /vendor/
+
+# Zip
+flash-toolkit.zip
