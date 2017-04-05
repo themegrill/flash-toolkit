@@ -78,7 +78,7 @@ class FT_Admin_Assets {
 		wp_register_script( 'flash-toolkit-admin-sidebars', FT()->plugin_url() . '/assets/js/admin/sidebars' . $suffix . '.js', array( 'jquery' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'jquery-tiptip', 'flash-enhanced-select' ), FT_VERSION );
 		wp_register_script( 'jquery-tiptip', FT()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), FT_VERSION, true );
-		wp_register_script( 'select2', FT()->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), '3.5.4' );
+		wp_register_script( 'select2', FT()->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), '4.0.3' );
 		wp_register_script( 'flash-enhanced-select', FT()->plugin_url() . '/assets/js/admin/enhanced-select' . $suffix . '.js', array( 'jquery', 'select2' ), FT_VERSION );
 		wp_localize_script( 'flash-enhanced-select', 'flash_enhanced_select_params', array(
 			'i18n_matches_1'            => _x( 'One result is available, press enter to select it.', 'enhanced select', 'flash-toolkit' ),
