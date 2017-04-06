@@ -68,8 +68,9 @@ jQuery( function( $ ) {
 				var select2_args = $.extend({
 					minimumResultsForSearch: 10,
 					allowClear:  true,
+               escapeMarkup: function (m) {return m;},
 					placeholder: $( this ).data( 'placeholder' ),
-					formatResult: getEnhancedSelectFormatResult
+					templateResult: getEnhancedSelectFormatResult
 				}, getEnhancedSelectFormatString() );
 
 				$( this ).select2( select2_args ).addClass( 'enhanced' );
