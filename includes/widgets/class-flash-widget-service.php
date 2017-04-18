@@ -33,7 +33,8 @@ class FT_Widget_Service extends FT_Widget {
 			'service-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title', 'flash-toolkit' )
+				'label' => __( 'Title', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'icon_type' => array(
 				'type'    => 'select',
@@ -43,35 +44,41 @@ class FT_Widget_Service extends FT_Widget {
 				'options' => array(
 					'icon'  => __( 'Icon Picker', 'flash-toolkit' ),
 					'image' => __( 'Image Uploader', 'flash-toolkit' )
-				)
+				),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'icon'  => array(
 				'type'  => 'icon_picker',
 				'class' => 'show_if_icon',
 				'std'   => '',
 				'label' => __( 'FontAwesome Icon', 'flash-toolkit' ),
-				'options' => flash_get_fontawesome_icons()
+				'options' => flash_get_fontawesome_icons(),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'image'  => array(
 				'type'  => 'image',
 				'class' => 'show_if_image',
 				'std'   => '',
-				'label' => __( 'Upload an Image', 'flash-toolkit' )
+				'label' => __( 'Upload an Image', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'text'  => array(
 				'type'  => 'textarea',
 				'std'   => '',
-				'label' => __( 'Text', 'flash-toolkit' )
+				'label' => __( 'Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'more_text'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Read More Text', 'flash-toolkit' )
+				'label' => __( 'Read More Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'more_url'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Read More URL', 'flash-toolkit' )
+				'label' => __( 'Read More URL', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
 				'type'    => 'select',
@@ -80,7 +87,8 @@ class FT_Widget_Service extends FT_Widget {
 				'options' => array(
 					'tg-service-layout-1' => __( 'Style 1', 'flash-toolkit' ),
 					'tg-service-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 

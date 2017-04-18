@@ -33,32 +33,38 @@ class FT_Widget_CTA extends FT_Widget {
 			'cta-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Call to action Title', 'flash-toolkit' )
+				'label' => __( 'Call to action Title', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'cta-subtitle'  => array(
 				'type'  => 'textarea',
 				'std'   => '',
-				'label' => __( 'Call to Action Subtitle', 'flash-toolkit' )
+				'label' => __( 'Call to Action Subtitle', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'cta-btn1'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Call to Action Button 1 Text', 'flash-toolkit' )
+				'label' => __( 'Call to Action Button 1 Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'cta-btn1-link'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Call to Action Button 1 Link', 'flash-toolkit' )
+				'label' => __( 'Call to Action Button 1 Link', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'cta-btn2'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Call to Action Button 2 Text', 'flash-toolkit' )
+				'label' => __( 'Call to Action Button 2 Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'cta-btn2-link'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Call to Action Button 2 Link', 'flash-toolkit' )
+				'label' => __( 'Call to Action Button 2 Link', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
 				'type'    => 'select',
@@ -67,7 +73,8 @@ class FT_Widget_CTA extends FT_Widget {
 				'options' => array(
 					'call-to-action-section-layout-1' => __( 'Style 1', 'flash-toolkit' ),
 					'call-to-action-section-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			)
 		) );
 

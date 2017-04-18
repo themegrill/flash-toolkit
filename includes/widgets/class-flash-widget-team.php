@@ -33,37 +33,44 @@ class FT_Widget_Team extends FT_Widget {
 			'team-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Name', 'flash-toolkit' )
+				'label' => __( 'Name', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'image'  => array(
 				'type'  => 'image',
 				'std'   => '',
-				'label' => __( 'Image', 'flash-toolkit' )
+				'label' => __( 'Image', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'text'  => array(
 				'type'  => 'textarea',
 				'std'   => '',
-				'label' => __( 'Description', 'flash-toolkit' )
+				'label' => __( 'Description', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'designation'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Designation', 'flash-toolkit' )
+				'label' => __( 'Designation', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'facebook'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Facebook Profile Link', 'flash-toolkit' )
+				'label' => __( 'Facebook Profile Link', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'twitter' => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Twitter Profile Link', 'flash-toolkit' )
+				'label' => __( 'Twitter Profile Link', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'linkedin' => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Linkedin Profile Link', 'flash-toolkit' )
+				'label' => __( 'Linkedin Profile Link', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
 				'type'    => 'select',
@@ -73,7 +80,8 @@ class FT_Widget_Team extends FT_Widget {
 					'tg-team-layout-1' => __( 'Style 1', 'flash-toolkit' ),
 					'tg-team-layout-2' => __( 'Style 2', 'flash-toolkit' ),
 					'tg-team-layout-3' => __( 'Style 3', 'flash-toolkit' )
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 

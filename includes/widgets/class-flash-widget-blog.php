@@ -35,8 +35,9 @@ class FT_Widget_Blog extends FT_Widget {
 				'step'  => 1,
 				'min'   => 1,
 				'max'   => '',
-				'std'   => '',
-				'label' => __( 'Number of Posts', 'flash-toolkit' )
+				'std'   => '','group' => __( 'General', 'flash-toolkit' ),
+				'label' => __( 'Number of Posts', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'source'  => array(
 				'type'    => 'select',
@@ -45,7 +46,8 @@ class FT_Widget_Blog extends FT_Widget {
 				'options' => array(
 					'latest'   => __( 'Latest Posts', 'flash-toolkit' ),
 					'category' => __( 'Specific Category', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'category'  => array(
 				'type'  => 'select_categories',
@@ -55,7 +57,8 @@ class FT_Widget_Blog extends FT_Widget {
 					'hide_empty'       => 0,
 					'taxonomy'         => 'category',
 					'show_option_none' => ''
-				)
+				),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
 				'type'    => 'select',
@@ -64,7 +67,8 @@ class FT_Widget_Blog extends FT_Widget {
 				'options' => array(
 					'tg-blog-widget-layout-1' => __( 'Style 1', 'flash-toolkit' ),
 					'tg-blog-widget-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 
