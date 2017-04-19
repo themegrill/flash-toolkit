@@ -221,7 +221,7 @@ abstract class FT_Widget extends WP_Widget {
 
 		foreach ( $this->settings as $key => $setting ) {
 
-			$group_name = isset( $setting[ group ] ) ? $setting['group'] : '';
+			$group_name = isset( $setting['group'] ) ? $setting['group'] : '';
 
 			if ( ! in_array( $group_name, $group_name_array )) {
 				$group_name_array[] = $group_name;
