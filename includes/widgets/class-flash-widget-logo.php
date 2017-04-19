@@ -35,7 +35,6 @@ class FT_Widget_Logo extends FT_Widget {
 				'label'  => __( 'Sortable Logos', 'flash-toolkit' ),
 				'title'  => __( 'Brand Logo', 'flash-toolkit' ),
 				'button' => __( 'Add New Logo', 'flash-toolkit' ),
-				'group' => __( 'General', 'flash-toolkit' ),
 				'std'    => array(
 					'logo-1' => array(
 						'title' => __( 'Logo 1', 'flash-toolkit' ),

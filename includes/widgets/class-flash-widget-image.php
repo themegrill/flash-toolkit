@@ -34,13 +34,11 @@ class FT_Widget_Image extends FT_Widget {
 				'type'  => 'image',
 				'std'   => '',
 				'label' => __( 'Image', 'flash-toolkit' ),
-				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'image_link'  => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Image Link', 'flash-toolkit' ),
-				'group' => __( 'General', 'flash-toolkit' ),
 			),
 		) );
 
