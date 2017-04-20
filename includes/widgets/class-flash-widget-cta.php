@@ -67,12 +67,12 @@ class FT_Widget_CTA extends FT_Widget {
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-cta-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'call-to-action-section-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'call-to-action-section-layout-2' => __( 'Style 2', 'flash-toolkit' ),
+					'call-to-action-section-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'call-to-action-section-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			)

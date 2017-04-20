@@ -61,12 +61,12 @@ class FT_Widget_Blog extends FT_Widget {
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => '',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-blog-widget-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'tg-blog-widget-layout-2' => __( 'Style 2', 'flash-toolkit' ),
+					'tg-blog-widget-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-blog-widget-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

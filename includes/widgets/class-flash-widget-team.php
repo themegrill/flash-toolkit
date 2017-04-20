@@ -73,13 +73,13 @@ class FT_Widget_Team extends FT_Widget {
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-team-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-team-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'tg-team-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-					'tg-team-layout-3' => __( 'Style 3', 'flash-toolkit' )
+					'tg-team-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-team-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-team-layout-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

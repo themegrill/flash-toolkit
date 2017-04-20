@@ -81,12 +81,12 @@ class FT_Widget_Service extends FT_Widget {
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-service-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-service-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'tg-service-layout-2' => __( 'Style 2', 'flash-toolkit' ),
+					'tg-service-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-service-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
