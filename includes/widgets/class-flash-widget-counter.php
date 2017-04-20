@@ -58,7 +58,7 @@ class FT_Widget_Counter extends FT_Widget {
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
 					'tg-fun-facts-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-fun-facts-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-fun-facts-layout-2' => FT()-> plugin_url() . '/assets/images/counter-rounded.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

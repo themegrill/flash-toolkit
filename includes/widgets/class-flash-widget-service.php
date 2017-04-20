@@ -85,8 +85,8 @@ class FT_Widget_Service extends FT_Widget {
 				'std'     => 'tg-service-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-service-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-service-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-service-layout-1' => FT()-> plugin_url() . '/assets/images/service-roundicon-border.png',
+					'tg-service-layout-2' => FT()-> plugin_url() . '/assets/images/service-smallicon.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
