@@ -31,6 +31,8 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== TBD ==
+*Fix - Get the Excerpt causing infinity loop
 
 = 1.1.1 =
 * Fix - Updated select2.js to 4.0.3
