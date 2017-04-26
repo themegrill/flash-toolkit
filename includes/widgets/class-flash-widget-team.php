@@ -77,9 +77,9 @@ class FT_Widget_Team extends FT_Widget {
 				'std'     => 'tg-team-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-team-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-team-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-team-layout-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-team-layout-1' => FT()-> plugin_url() . '/assets/images/team-default.png',
+					'tg-team-layout-2' => FT()-> plugin_url() . '/assets/images/team-defaultsqure2.png',
+					'tg-team-layout-3' => FT()-> plugin_url() . '/assets/images/team-with-circular-image.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

@@ -35,6 +35,7 @@ class FT_Widget_Slider extends FT_Widget {
 				'label'  => __( 'Sortable Sliders', 'flash-toolkit' ),
 				'title'  => __( 'Brand Slider', 'flash-toolkit' ),
 				'button' => __( 'Add New Slider', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 				'std'    => array(
 					'slider1' => array(
 						'title'       => __( 'Slider 1', 'flash-toolkit' ),
@@ -93,12 +94,12 @@ class FT_Widget_Slider extends FT_Widget {
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'controls' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => __( 'slider-control-center', 'flash-toolkit' ),
 				'label'   => __( 'Slider Controls Position', 'flash-toolkit' ),
 				'options' => array(
-					'slider-control-center'  => __( 'Center Align', 'flash-toolkit' ),
-					'slider-control-bottom-right'    => __( 'Bottom Right Align', 'flash-toolkit' ),
+					'slider-control-center'  => FT()-> plugin_url() . '/assets/images/slider-navagation-center-aligned.png',
+					'slider-control-bottom-right'    => FT()-> plugin_url() . '/assets/images/slider-navagation-bottom-right-aligned.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

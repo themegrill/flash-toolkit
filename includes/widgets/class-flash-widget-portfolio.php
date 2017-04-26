@@ -64,9 +64,9 @@ class FT_Widget_Portfolio extends FT_Widget {
 				'std'     => 'tg-feature-product-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-feature-product-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-feature-product-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-feature-product-layout-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-feature-product-layout-1' => FT()-> plugin_url() . '/assets/images/portfolio-hover.png',
+					'tg-feature-product-layout-2' => FT()-> plugin_url() . '/assets/images/portfolio-full-cover-hover-effect.png',
+					'tg-feature-product-layout-3' => FT()-> plugin_url() . '/assets/images/portfolio-zoom-hover-effect.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
@@ -75,8 +75,8 @@ class FT_Widget_Portfolio extends FT_Widget {
 				'std'     => 'tg-column-3',
 				'label'   => __( 'Columns', 'flash-toolkit' ),
 				'options' => array(
-					'tg-column-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-column-4' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-column-3' => FT()-> plugin_url() . '/assets/images/col-3.png',
+					'tg-column-4' => FT()-> plugin_url() . '/assets/images/col-4.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),

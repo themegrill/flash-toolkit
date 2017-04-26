@@ -71,8 +71,8 @@ class FT_Widget_CTA extends FT_Widget {
 				'std'     => 'tg-cta-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'call-to-action-section-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'call-to-action-section-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'call-to-action-section-layout-1' => FT()-> plugin_url() . '/assets/images/call-to-action-with-two-button.png',
+					'call-to-action-section-layout-2' => FT()-> plugin_url() . '/assets/images/call-to-action-side-by-side-content.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			)

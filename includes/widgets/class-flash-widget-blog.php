@@ -65,8 +65,8 @@ class FT_Widget_Blog extends FT_Widget {
 				'std'     => '',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-blog-widget-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
-					'tg-blog-widget-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-blog-widget-layout-1' => FT()-> plugin_url() . '/assets/images/blog-style-one.png',
+					'tg-blog-widget-layout-2' => FT()-> plugin_url() . '/assets/images/blog-style-two.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
