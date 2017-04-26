@@ -97,7 +97,7 @@ while ( $project_query->have_posts() ): $project_query->the_post();
 		$output .= '<span><a href="' . get_the_permalink( $post->ID ) . '"><i class="fa fa-plus"></i></a></span>';
 		$output .= '<div class="feature-inner-block">';
 		$output .= '<h3 class="feature-title-wrap"><a href="' . get_the_permalink( $post->ID ) . '">' . get_the_title( $post->ID ) . '</a></h3>';
-		$output .= '<h4 class="feature-desc-wrap">' . get_the_excerpt() . '</h4>';
+		$output .= '<h4 class="feature-desc-wrap">' . flash_so_pagebuilder_get_the_excerpt( $post ) . '</h4>';
 		$output .= '</div>';
 		$output .= '</div>';
 		$output .= '</div>';

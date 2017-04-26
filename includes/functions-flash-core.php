@@ -903,3 +903,53 @@ function flash_get_fontawesome_icons() {
 		'fa-youtube-square'                      => __( 'Youtube Square', 'flash-toolkit' ),
 	) );
 }
+
+/**
+ * Check excerpt value in site origin page builder
+ *
+ * @param integer $id Post ID.
+ * @return bool
+ */
+function flash_is_so_pagebuilder_active_page( $id ) {
+	if ( function_exists( 'siteorigin_panels_is_home' ) ) {
+		if ( siteorigin_panels_is_home() || get_post_meta( $id, 'panels_data', true ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Get excerpt from the given post
+ *
+ * @param object $post Post Object.
+ * @return string $excerpt
+ */
+function flash_so_pagebuilder_get_the_excerpt( $post ) {
+
+	$excerpt = '';
+
+	if ( flash_is_so_pagebuilder_active_page( $post->ID ) ) {
+		if ( flash_has_manual_excerpt( $post ) ) {
+			$excerpt = get_the_excerpt( $post );
+		}
+	} else {
+		$excerpt = get_the_excerpt( $post );
+	}
+
+	return $excerpt;
+}
+
+/**
+ * Checks if manual excerpt exists
+ *
+ * @param  object $post Post Object.
+ * @return bool
+ */
+function flash_has_manual_excerpt( $post ) {
+	if ( '' === $post->post_excerpt ) {
+	     return false;
+	}
+	return true;
+}
