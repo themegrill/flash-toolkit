@@ -18,7 +18,9 @@ module.exports = function( grunt ){
 			all: [
 				'Gruntfile.js',
 				'<%= dirs.js %>/admin/*.js',
-				'!<%= dirs.js %>/admin/*.min.js'
+				'!<%= dirs.js %>/admin/*.min.js',
+				'!<%= dirs.js %>/admin/jquery-ui-timepicker-addon.js',
+				'!<%= dirs.js %>/admin/jquery-ui-timepicker-addon.min.js'
 			]
 		},
 

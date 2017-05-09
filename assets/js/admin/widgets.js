@@ -170,6 +170,9 @@ jQuery( function ( $ ) {
 		if ( $size >= flashToolkitLocalizeScript.i18n_max_field_entries ) {
 			$widget.find( '.tg-widget-repeater-field-button a' ).addClass( 'disabled' );
 		}
+
+		// Trigger select2 on item add.
+		$( document.body ).trigger( 'flash-enhanced-select-init' );
 	});
 
 	// Control accordion toggles.
