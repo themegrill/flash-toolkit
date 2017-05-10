@@ -2,54 +2,48 @@
 jQuery( function( $ ) {
 
 	function getEnhancedSelectFormatString() {
-		var formatString = {
-			formatMatches: function( matches ) {
-				if ( 1 === matches ) {
-					return flash_enhanced_select_params.i18n_matches_1;
+		return {
+			'language': {
+				errorLoading: function() {
+					// Workaround for https://github.com/select2/select2/issues/4355 instead of i18n_ajax_error.
+					return flash_enhanced_select_params.i18n_searching;
+				},
+				inputTooLong: function( args ) {
+					var overChars = args.input.length - args.maximum;
+
+					if ( 1 === overChars ) {
+						return flash_enhanced_select_params.i18n_input_too_long_1;
+					}
+
+					return flash_enhanced_select_params.i18n_input_too_long_n.replace( '%qty%', overChars );
+				},
+				inputTooShort: function( args ) {
+					var remainingChars = args.minimum - args.input.length;
+
+					if ( 1 === remainingChars ) {
+						return flash_enhanced_select_params.i18n_input_too_short_1;
+					}
+
+					return flash_enhanced_select_params.i18n_input_too_short_n.replace( '%qty%', remainingChars );
+				},
+				loadingMore: function() {
+					return flash_enhanced_select_params.i18n_load_more;
+				},
+				maximumSelected: function( args ) {
+					if ( args.maximum === 1 ) {
+						return flash_enhanced_select_params.i18n_selection_too_long_1;
+					}
+
+					return flash_enhanced_select_params.i18n_selection_too_long_n.replace( '%qty%', args.maximum );
+				},
+				noResults: function() {
+					return flash_enhanced_select_params.i18n_no_matches;
+				},
+				searching: function() {
+					return flash_enhanced_select_params.i18n_searching;
 				}
-
-				return flash_enhanced_select_params.i18n_matches_n.replace( '%qty%', matches );
-			},
-			formatNoMatches: function() {
-				return flash_enhanced_select_params.i18n_no_matches;
-			},
-			formatAjaxError: function() {
-				return flash_enhanced_select_params.i18n_ajax_error;
-			},
-			formatInputTooShort: function( input, min ) {
-				var number = min - input.length;
-
-				if ( 1 === number ) {
-					return flash_enhanced_select_params.i18n_input_too_short_1;
-				}
-
-				return flash_enhanced_select_params.i18n_input_too_short_n.replace( '%qty%', number );
-			},
-			formatInputTooLong: function( input, max ) {
-				var number = input.length - max;
-
-				if ( 1 === number ) {
-					return flash_enhanced_select_params.i18n_input_too_long_1;
-				}
-
-				return flash_enhanced_select_params.i18n_input_too_long_n.replace( '%qty%', number );
-			},
-			formatSelectionTooBig: function( limit ) {
-				if ( 1 === limit ) {
-					return flash_enhanced_select_params.i18n_selection_too_long_1;
-				}
-
-				return flash_enhanced_select_params.i18n_selection_too_long_n.replace( '%qty%', limit );
-			},
-			formatLoadMore: function() {
-				return flash_enhanced_select_params.i18n_load_more;
-			},
-			formatSearching: function() {
-				return flash_enhanced_select_params.i18n_searching;
 			}
 		};
-
-		return formatString;
 	}
 
 	function getEnhancedSelectFormatResult( icon ) {
@@ -60,23 +54,35 @@ jQuery( function( $ ) {
 		return icon.text;
 	}
 
-	$( document.body )
+	try {
+		$( document.body )
 
-		.on( 'flash-enhanced-select-init', function() {
+			.on( 'flash-enhanced-select-init', function() {
 
-			$( ':input.flash-enhanced-select-icons' ).filter( ':not(.enhanced)' ).each( function() {
-				var select2_args = $.extend({
-					minimumResultsForSearch: 10,
-					allowClear:  true,
-               escapeMarkup: function (m) {return m;},
-					placeholder: $( this ).data( 'placeholder' ),
-					templateResult: getEnhancedSelectFormatResult
-				}, getEnhancedSelectFormatString() );
+				$( ':input.flash-enhanced-select-icons' ).filter( ':not(.enhanced)' ).each( function() {
+					var select2_args = $.extend({
+						minimumResultsForSearch: 10,
+						allowClear:  true,
+						escapeMarkup: function ( m ) {
+							return m;
+						},
+						placeholder: $( this ).data( 'placeholder' ),
+						templateResult: getEnhancedSelectFormatResult
+					}, getEnhancedSelectFormatString() );
 
-				$( this ).select2( select2_args ).addClass( 'enhanced' );
-			});
-		})
+					$( this ).select2( select2_args ).addClass( 'enhanced' );
+				});
+			})
 
-		.trigger( 'flash-enhanced-select-init' );
+			.trigger( 'flash-enhanced-select-init' );
 
+		$( 'html' ).on( 'click', function( event ) {
+			if ( this === event.target ) {
+				$( '.flash-enhanced-select, :input.flash-enhanced-select-icons' ).filter( '.select2-hidden-accessible' ).select2( 'close' );
+			}
+		} );
+	} catch ( err ) {
+		// If select2 failed (conflict?) log the error but don't stop other scripts breaking.
+		window.console.log( err );
+	}
 });
