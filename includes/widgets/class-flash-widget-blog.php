@@ -83,6 +83,8 @@ class FT_Widget_Blog extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
+		$args['widget_id'] = $this->id;
+
 		flash_get_template( 'content-widget-blog.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );
