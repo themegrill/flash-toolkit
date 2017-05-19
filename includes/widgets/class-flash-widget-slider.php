@@ -43,6 +43,7 @@ class FT_Widget_Slider extends FT_Widget {
 						'designation' => '',
 					),
 				),
+				'group' => __( 'General', 'flash-toolkit' ),
 				'fields'  => array(
 					'title' => array(
 						'type'  => 'text',
@@ -78,7 +79,8 @@ class FT_Widget_Slider extends FT_Widget {
 				'options' => array(
 					'slider-dark'   => __( 'Dark Color', 'flash-toolkit' ),
 					'slider-light'  => __( 'Light Color', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'align' => array(
 				'type'    => 'select',
@@ -87,7 +89,8 @@ class FT_Widget_Slider extends FT_Widget {
 				'options' => array(
 					'slider-content-center'  => __( 'Center Align', 'flash-toolkit' ),
 					'slider-content-left'    => __( 'Left Align', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'controls' => array(
 				'type'    => 'select',
@@ -96,12 +99,14 @@ class FT_Widget_Slider extends FT_Widget {
 				'options' => array(
 					'slider-control-center'  => __( 'Center Align', 'flash-toolkit' ),
 					'slider-control-bottom-right'    => __( 'Bottom Right Align', 'flash-toolkit' ),
-				)
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'full-screen' => array(
 				'type'  => 'checkbox',
 				'std'   => '',
 				'label' => __( 'Check to make slide full screen.', 'flash-toolkit' ),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 

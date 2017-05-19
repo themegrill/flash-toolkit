@@ -274,6 +274,15 @@ ul.tg-widget-repeater-field-items {
 	}
 }
 .select2-results .fa {
+/**
+ * Tabs
+ */
+.suffice-toolkit-tab {
+	display: none;
+}
+#suffice-tab-1 {
+	display: block;
+}
 	float: right;
 	position: relative;
 	line-height: 20px;
@@ -283,4 +292,14 @@ ul.tg-widget-repeater-field-items {
 }
 .select2-container--default .select2-selection--single .select2-selection__rendered {
    line-height: 23px;
+}
+
+/**
+ * Tabs
+ */
+.flash-toolkit-tab {
+	display: none;
+}
+#flash-tab-1 {
+	display: block;
 }

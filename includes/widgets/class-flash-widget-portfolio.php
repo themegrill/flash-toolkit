@@ -40,7 +40,8 @@ class FT_Widget_Portfolio extends FT_Widget {
 					'taxonomy'         => 'portfolio_cat',
 					'show_option_all'  => __( 'All category', 'flash-toolkit' ),
 					'show_option_none' => ''
-				)
+				),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'number'  => array(
 				'type'  => 'number',
@@ -48,32 +49,36 @@ class FT_Widget_Portfolio extends FT_Widget {
 				'min'   => 1,
 				'max'   => '30',
 				'std'   => '',
-				'label' => __( 'Number', 'flash-toolkit' )
+				'label' => __( 'Number', 'flash-toolkit' ),'group' => __( 'General', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'filter' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
 				'class' => 'show_if_all_category',
 				'label' => __( 'Show navigation filter.', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-feature-product-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-feature-product-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'tg-feature-product-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-					'tg-feature-product-layout-3' => __( 'Style 3', 'flash-toolkit' )
-				)
+					'tg-feature-product-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-feature-product-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-feature-product-layout-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'column' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-column-3',
 				'label'   => __( 'Columns', 'flash-toolkit' ),
 				'options' => array(
-					'tg-column-3' => __( '3 Column', 'flash-toolkit' ),
-					'tg-column-4' => __( '4 Column', 'flash-toolkit' ),
-				)
+					'tg-column-3' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-column-4' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 

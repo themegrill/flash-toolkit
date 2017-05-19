@@ -33,12 +33,12 @@ class FT_Widget_Heading extends FT_Widget {
 			'heading-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Heading', 'flash-toolkit' )
+				'label' => __( 'Heading', 'flash-toolkit' ),
 			),
 			'subheading'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Sub Heading', 'flash-toolkit' )
+				'label' => __( 'Sub Heading', 'flash-toolkit' ),
 			),
 		) );
 

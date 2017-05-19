@@ -33,13 +33,15 @@ class FT_Widget_Counter extends FT_Widget {
 			'counter-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title', 'flash-toolkit' )
+				'label' => __( 'Title', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'icon'  => array(
 				'type'    => 'icon_picker',
 				'std'     => '',
 				'label'   => __( 'FontAwesome Icon', 'flash-toolkit' ),
-				'options' => flash_get_fontawesome_icons()
+				'options' => flash_get_fontawesome_icons(),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'number'  => array(
 				'type'  => 'number',
@@ -47,16 +49,18 @@ class FT_Widget_Counter extends FT_Widget {
 				'min'   => 1,
 				'max'   => '',
 				'std'   => '',
-				'label' => __( 'Number', 'flash-toolkit' )
+				'label' => __( 'Number', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(
-				'type'    => 'select',
+				'type'    => 'radio-image',
 				'std'     => 'tg-fun-facts-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
-					'tg-fun-facts-layout-1' => __( 'Style 1', 'flash-toolkit' ),
-					'tg-fun-facts-layout-2' => __( 'Style 2', 'flash-toolkit' ),
-				)
+					'tg-fun-facts-layout-1' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+					'tg-fun-facts-layout-2' => FT()-> plugin_url() . '/assets/images/select2x2.png',
+				),
+				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
 

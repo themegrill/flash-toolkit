@@ -40,7 +40,7 @@ class FT_Widget_Testimonial extends FT_Widget {
 						'name'        => __( 'Testimonial 1', 'flash-toolkit' ),
 						'image'       => '',
 						'designation' => '',
-						'description' => ''
+						'description' => '',
 					),
 				),
 				'fields'  => array(
