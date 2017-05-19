@@ -33,28 +33,33 @@ class FT_Widget_About extends FT_Widget {
 			'about-title'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title', 'flash-toolkit' )
+				'label' => __( 'Title', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'text'  => array(
 				'type'  => 'textarea',
 				'std'   => '',
-				'label' => __( 'Text', 'flash-toolkit' )
+				'label' => __( 'Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'more_text'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Read More Text', 'flash-toolkit' )
+				'label' => __( 'Read More Text', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'more_url'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Read More URL', 'flash-toolkit' )
+				'label' => __( 'Read More URL', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'image' => array(
 				'type'  => 'image',
 				'class' => 'show_if_image',
 				'std'   => '',
-				'label' => __( 'Image', 'flash-toolkit' )
+				'label' => __( 'Image', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
 			),
 		) );
 

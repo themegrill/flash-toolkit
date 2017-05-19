@@ -122,6 +122,21 @@ jQuery( function ( $ ) {
 		}).change();
 	}).trigger( 'flash-toolkit-init-availability' );
 
+	// Tabs
+	$( document.body ).on('flash-toolkit-tabs', function() {
+
+		$( document.body ).on('click', '.flash-tab-title-container .flash-tab-title', function(event) {
+			event.preventDefault();
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');
+
+			var tab = $(this).attr('href');
+			$(this).parent().siblings('.flash-toolkit-tab-content-container').find('.flash-toolkit-tab').css('display', 'none');
+			$(this).parent().siblings('.flash-toolkit-tab-content-container').find(tab).fadeIn();
+		});
+
+	}).trigger('flash-toolkit-tabs');
+
 	// Accordion title.
 	// @todo Not loading on customizer.
 	$( document.body ).on( 'flash-toolkit-init-accordion-title', function() {
