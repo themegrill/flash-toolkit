@@ -13,7 +13,7 @@ $max_field_entries = count( $value ) >= apply_filters( 'flash_toolkit_maximum_re
 ?>
 <div id="tg-widget-repeater-field" class="accordion-sortables">
 	<p><label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo esc_html( $setting['label'] ); ?></label></p>
-	<ul class="tg-widget-repeater-field-items" data-widget_id="<?php echo esc_attr( $this->id ); ?>">
+	<ul class="tg-widget-repeater-field-items" data-widget_id="<?php echo esc_attr( $this->widget_id );?>">
 		<?php if ( ! empty( $value ) ) : ?>
 			<?php foreach ( $value as $field_key => $field ) : ?>
 				<li class="tg-widget-accordion-item" data-id="<?php echo esc_attr( $field_key ); ?>">
@@ -40,7 +40,7 @@ $max_field_entries = count( $value ) >= apply_filters( 'flash_toolkit_maximum_re
 	<?php endif; ?>
 </div>
 
-<script type="text/html" id="tmpl-tg-widget-repeater-field-<?php echo esc_attr( $this->id ); ?>">
+<script type="text/html" id="tmpl-tg-widget-repeater-field-<?php echo esc_attr( $this->widget_id );?>">
 	<li class="tg-widget-accordion-item open" data-id="<?php echo esc_attr( $repeater_field_id ); ?>">
 		<div class="accordion-top">
 			<div class="accordion-title-action"><a class="accordion-action" href="#available-fields"></a></div>
