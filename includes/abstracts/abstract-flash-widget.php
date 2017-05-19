@@ -221,7 +221,7 @@ abstract class FT_Widget extends WP_Widget {
 
 		foreach ( $this->settings as $key => $setting ) {
 
-			$group_name = isset( $setting['group'] ) ? $setting['group'] : '';
+			$group_name = isset( $setting['group'] ) ? $setting['group'] : __( 'General', 'flash-toolkit' );
 
 			if ( ! in_array( $group_name, $group_name_array )) {
 				$group_name_array[] = $group_name;
@@ -243,7 +243,7 @@ abstract class FT_Widget extends WP_Widget {
 		foreach ( $group_name_array as $group ) { ?>
 			<div class="flash-toolkit-tab" id="flash-tab-<?php esc_attr_e( $groupcount ); ?>">
 			<?php foreach ( $this->settings as $key => $setting ) {
-				$current_setting_group = isset( $setting['group'] ) ? $setting['group'] : '';
+				$current_setting_group = isset( $setting['group'] ) ? $setting['group'] : __( 'General', 'flash-toolkit' );
 				if ( $current_setting_group == $group || empty( $group_name_array ) ) {
 					$class = isset( $setting['class'] ) ? $setting['class'] : '';
 					$value = isset( $instance[ $key ] ) ? $instance[ $key ] : $setting['std'];
