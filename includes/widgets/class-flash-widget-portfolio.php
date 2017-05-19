@@ -104,6 +104,8 @@ class FT_Widget_Portfolio extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
+		$args['widget_id'] = $this->id;
+
 		flash_get_template( 'content-widget-portfolio.php', array( 'instance' => $instance ) );
 
 		$this->widget_end( $args );

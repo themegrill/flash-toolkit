@@ -86,6 +86,8 @@ class FT_Widget_CTA extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
+		$args['widget_id'] = $this->id;
+
 		flash_get_template( 'content-widget-cta.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );

@@ -57,6 +57,8 @@ class FT_Widget_Heading extends FT_Widget {
 
 		$this->widget_start( $args, $instance );
 
+		$args['widget_id'] = $this->id;
+
 		flash_get_template( 'content-widget-heading.php', array( 'args' => $args, 'instance' => $instance ) );
 
 		$this->widget_end( $args );
