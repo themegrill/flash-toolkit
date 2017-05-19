@@ -227,7 +227,7 @@ abstract class FT_Widget extends WP_Widget {
 				$group_name_array[] = $group_name;
 
 				if( $group_name_array[0] != '' ) { ?>
-					<a class="flash-tab-title button<?php echo ($groupcount == 1 ? ' active' : '' ); ?>" href="#flash-tab-<?php esc_attr_e( $groupcount ); ?>">
+					<a class="flash-tab-title <?php echo ($groupcount == 1 ? ' active' : '' ); ?>" href="#flash-tab-<?php esc_attr_e( $groupcount ); ?>">
 					<?php esc_html_e( $group_name ); ?>
 					</a>
 				<?php
@@ -365,12 +365,14 @@ abstract class FT_Widget extends WP_Widget {
             					?>
             					<p class="flash-radio-image">
             						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
+            						<span class="flash-radio-image-options">
         							<?php foreach ( $setting['options'] as $option_key => $option_image ) : ?>
         								<label>
 	        								<input type="radio" <?php checked( $option_key, $value ); ?> id="<?php echo $this->get_field_id( $option_key ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" value="<?php echo esc_attr( $option_key ); ?>"/>
 	        								<img src="<?php echo esc_url( $option_image ); ?>" />
         								</label>
         							<?php endforeach; ?>
+        							</span>
             					</p>
             					<?php
             				break;
