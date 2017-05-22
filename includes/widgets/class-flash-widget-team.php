@@ -35,6 +35,14 @@ class FT_Widget_Team extends FT_Widget {
 				'std'   => '',
 				'label' => __( 'Name', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
+			),
+			'designation'  => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Designation', 'flash-toolkit' ),
+				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'image'  => array(
 				'type'  => 'image',
@@ -46,12 +54,6 @@ class FT_Widget_Team extends FT_Widget {
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'flash-toolkit' ),
-				'group' => __( 'General', 'flash-toolkit' ),
-			),
-			'designation'  => array(
-				'type'  => 'text',
-				'std'   => '',
-				'label' => __( 'Designation', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'facebook'  => array(

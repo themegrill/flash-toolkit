@@ -51,6 +51,7 @@ class FT_Widget_Counter extends FT_Widget {
 				'std'   => '',
 				'label' => __( 'Number', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'style' => array(
 				'type'    => 'radio-image',

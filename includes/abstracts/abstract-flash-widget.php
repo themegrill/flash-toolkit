@@ -247,12 +247,13 @@ abstract class FT_Widget extends WP_Widget {
 				if ( $current_setting_group == $group || empty( $group_name_array ) ) {
 					$class = isset( $setting['class'] ) ? $setting['class'] : '';
 					$value = isset( $instance[ $key ] ) ? $instance[ $key ] : $setting['std'];
+					 $field_width = isset( $setting['field_width'] ) ? $setting['field_width'] : 'col-full';
 
 					switch ( $setting['type'] ) {
 
 						case 'text' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 								<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
 							</p>
@@ -261,7 +262,7 @@ abstract class FT_Widget extends WP_Widget {
 
 						case 'number' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 								<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="number" step="<?php echo esc_attr( $setting['step'] ); ?>" min="<?php echo esc_attr( $setting['min'] ); ?>" max="<?php echo esc_attr( $setting['max'] ); ?>" value="<?php echo esc_attr( $value ); ?>" />
 							</p>
@@ -279,7 +280,7 @@ abstract class FT_Widget extends WP_Widget {
 
 						case 'select' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 								<select class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>">
 									<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
@@ -293,7 +294,7 @@ abstract class FT_Widget extends WP_Widget {
 						case 'select_pages' :
 						case 'select_categories' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 								<?php
 									$args = array(
@@ -332,7 +333,7 @@ abstract class FT_Widget extends WP_Widget {
 
 						case 'checkbox' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<input class="checkbox <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, 1 ); ?> />
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 							</p>

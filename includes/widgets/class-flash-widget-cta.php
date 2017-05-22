@@ -47,24 +47,28 @@ class FT_Widget_CTA extends FT_Widget {
 				'std'   => '',
 				'label' => __( 'Call to Action Button 1 Text', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'cta-btn1-link'  => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Call to Action Button 1 Link', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'cta-btn2'  => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Call to Action Button 2 Text', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'cta-btn2-link'  => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Call to Action Button 2 Link', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'style' => array(
 				'type'    => 'radio-image',

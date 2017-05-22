@@ -81,6 +81,7 @@ class FT_Widget_Slider extends FT_Widget {
 					'slider-dark'   => __( 'Dark Color', 'flash-toolkit' ),
 					'slider-light'  => __( 'Light Color', 'flash-toolkit' ),
 				),
+				'field_width'	=> 'col-half',
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'align' => array(
@@ -91,6 +92,7 @@ class FT_Widget_Slider extends FT_Widget {
 					'slider-content-center'  => __( 'Center Align', 'flash-toolkit' ),
 					'slider-content-left'    => __( 'Left Align', 'flash-toolkit' ),
 				),
+				'field_width'	=> 'col-half',
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 			'controls' => array(
