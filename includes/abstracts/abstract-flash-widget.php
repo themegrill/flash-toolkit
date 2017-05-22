@@ -391,6 +391,20 @@ abstract class FT_Widget extends WP_Widget {
 							<?php
 						break;
 
+						case 'font_picker' :
+							?>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
+								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo esc_html( $setting['label'] ); ?></label>
+								<select class="widefat flash-enhanced-select-fonts" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" data-placeholder="<?php esc_attr_e( 'Choose fonts&hellip;', 'flash-toolkit' ); ?>" title="<?php esc_attr_e( 'Font', 'flash-toolkit' ) ?>" style="width: 100%">
+									<option value=""></option>
+									<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
+										<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
+									<?php endforeach; ?>
+								</select>
+							</p>
+							<?php
+						break;
+
 						case 'repeater' :
 							include( dirname( __FILE__ ) . '/views/html-admin-tmpl-repeater.php' );
 						break;

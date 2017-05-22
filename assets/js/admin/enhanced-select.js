@@ -72,8 +72,19 @@ jQuery( function( $ ) {
 
 					$( this ).select2( select2_args ).addClass( 'enhanced' );
 				});
-			})
 
+				// Font Picker
+				$( ':input.suffice-enhanced-select-fonts' ).filter( ':not(.enhanced)' ).each( function() {
+					var select2_args = $.extend({
+						minimumResultsForSearch: 10,
+						allowClear:  true,
+						placeholder: $( this ).data( 'placeholder' )
+					}, getEnhancedSelectFormatString() );
+
+					$( this ).select2( select2_args ).addClass( 'enhanced' );
+				});
+
+			})
 			.trigger( 'flash-enhanced-select-init' );
 
 		$( 'html' ).on( 'click', function( event ) {
