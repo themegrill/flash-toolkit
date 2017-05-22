@@ -247,12 +247,13 @@ abstract class FT_Widget extends WP_Widget {
 				if ( $current_setting_group == $group || empty( $group_name_array ) ) {
 					$class = isset( $setting['class'] ) ? $setting['class'] : '';
 					$value = isset( $instance[ $key ] ) ? $instance[ $key ] : $setting['std'];
+					 $field_width = isset( $setting['field_width'] ) ? $setting['field_width'] : 'col-full';
 
 					switch ( $setting['type'] ) {
 
 						case 'text' :
 							?>
-							<p>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 								<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
 							</p>
