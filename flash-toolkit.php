@@ -132,6 +132,7 @@ final class FlashToolkit {
 		include_once( FT_ABSPATH . 'includes/class-flash-autoloader.php' );
 		include_once( FT_ABSPATH . 'includes/class-flash-install.php' );
 		include_once( FT_ABSPATH . 'includes/class-flash-ajax.php' );
+		include_once( FT_ABSPATH . 'includes/class-flash-inline-style.php' );
 
 		if ( $this->is_request( 'admin' ) ) {
 			include_once( FT_ABSPATH . 'includes/admin/class-flash-admin.php' );
