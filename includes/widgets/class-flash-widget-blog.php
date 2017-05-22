@@ -47,6 +47,7 @@ class FT_Widget_Blog extends FT_Widget {
 					'latest'   => __( 'Latest Posts', 'flash-toolkit' ),
 					'category' => __( 'Specific Category', 'flash-toolkit' ),
 				),
+				'field_width'	=> 'col-half',
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'category'  => array(
@@ -58,6 +59,7 @@ class FT_Widget_Blog extends FT_Widget {
 					'taxonomy'         => 'category',
 					'show_option_none' => ''
 				),
+				'field_width'	=> 'col-half',
 				'group' => __( 'General', 'flash-toolkit' ),
 			),
 			'style' => array(

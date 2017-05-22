@@ -73,12 +73,14 @@ class FT_Widget_Service extends FT_Widget {
 				'std'   => '',
 				'label' => __( 'Read More Text', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'more_url'  => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Read More URL', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
+				'field_width'	=> 'col-half',
 			),
 			'style' => array(
 				'type'    => 'radio-image',
