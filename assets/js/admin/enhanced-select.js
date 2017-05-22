@@ -74,7 +74,7 @@ jQuery( function( $ ) {
 				});
 
 				// Font Picker
-				$( ':input.suffice-enhanced-select-fonts' ).filter( ':not(.enhanced)' ).each( function() {
+				$( ':input.flash-enhanced-select-fonts' ).filter( ':not(.enhanced)' ).each( function() {
 					var select2_args = $.extend({
 						minimumResultsForSearch: 10,
 						allowClear:  true,
