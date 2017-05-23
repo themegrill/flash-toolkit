@@ -84,12 +84,23 @@ jQuery( function( $ ) {
 					$( this ).select2( select2_args ).addClass( 'enhanced' );
 				});
 
+				// Enhanced Select
+				$( '.flash-enhanced-select' ).filter( ':not(.enhanced)' ).each( function() {
+					var select2_args = $.extend({
+						minimumResultsForSearch: 10,
+						allowClear:  false,
+						placeholder: $( this ).data( 'placeholder' )
+					}, getEnhancedSelectFormatString() );
+
+					$( this ).select2( select2_args ).addClass( 'enhanced' );
+				});
+
 			})
 			.trigger( 'flash-enhanced-select-init' );
 
 		$( 'html' ).on( 'click', function( event ) {
 			if ( this === event.target ) {
-				$( '.flash-enhanced-select, :input.flash-enhanced-select-icons' ).filter( '.select2-hidden-accessible' ).select2( 'close' );
+				$( '.flash-enhanced-select, :input.flash-enhanced-select-icons, :input.flash-enhanced-select-fonts' ).filter( '.select2-hidden-accessible' ).select2( 'close' );
 			}
 		} );
 	} catch ( err ) {

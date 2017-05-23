@@ -120,6 +120,35 @@ jQuery( function ( $ ) {
 				$( this ).closest( 'p' ).next( 'p' ).show();
 			}
 		}).change();
+
+		$( 'select.hero-style-select' ).on( 'select2:select' , function(){
+			if ( $( this ).val() === 'tg-hero--default' ) {
+
+				$( this ).closest( '.widget-content' ).find( '.hero-title-font-select' ).val( 'Roboto' ).trigger( 'change' );
+				$( this ).closest( '.widget-content' ).find( '.hero-subtitle-font-select' ).val( 'Roboto' ).trigger( 'change' );
+
+			} else if ( $( this ).val() === 'tg-hero--thinner' ) {
+
+				$( this ).closest( '.widget-content' ).find( '.hero-title-font-select' ).val( 'Raleway' ).trigger( 'change' );
+				$( this ).closest( '.widget-content' ).find( '.hero-subtitle-font-select' ).val( 'Open Sans' ).trigger( 'change' );
+
+			} else if ( $( this ).val() === 'tg-hero--border' ) {
+
+				$( this ).closest( '.widget-content' ).find( '.hero-title-font-select' ).val( 'Archivo Black' ).trigger( 'change' );
+				$( this ).closest( '.widget-content' ).find( '.hero-subtitle-font-select' ).val( 'Roboto' ).trigger( 'change' );
+
+			} else if ( $( this ).val() === 'tg-hero--classic' ) {
+
+				$( this ).closest( '.widget-content' ).find( '.hero-title-font-select' ).val( 'Playfair Display' ).trigger( 'change' );
+				$( this ).closest( '.widget-content' ).find( '.hero-subtitle-font-select' ).val( 'PT Serif' ).trigger( 'change' );
+
+			} else if ( $( this ).val() === 'tg-hero--cursive' ) {
+
+				$( this ).closest( '.widget-content' ).find( '.hero-title-font-select' ).val( 'Lobster' ).trigger( 'change' );
+				$( this ).closest( '.widget-content' ).find( '.hero-subtitle-font-select' ).val( 'Roboto' ).trigger( 'change' );
+
+			}
+		}).change();
 	}).trigger( 'flash-toolkit-init-availability' );
 
 	// Tabs
