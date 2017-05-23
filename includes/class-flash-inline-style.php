@@ -79,7 +79,7 @@ class Flash_Toolkit_Inline_Style {
 	 * Font
 	 */
 	private function parse_font_family( $value ) {
-		$this->style[] = 'font-family:'.$value.';';
+		$this->style[] = '\'font-family:'.$value.'\';';
 	}
 
 	/**
