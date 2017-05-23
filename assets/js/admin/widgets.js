@@ -121,6 +121,18 @@ jQuery( function ( $ ) {
 			}
 		}).change();
 
+		$( 'select.videoplayer-style' ).change( function() {
+			if ( $( this ).val() === 'player-background' ) {
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-icon-style' ).closest( 'p' ).hide();
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-btn-fields' ).closest( 'p' ).hide();
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-thumbnail' ).show();
+			} else {
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-icon-style' ).closest( 'p' ).show();
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-btn-fields' ).closest( 'p' ).show();
+				$( this ).closest( '.widget-content' ).find( '.videoplayer-thumbnail' ).hide();
+			}
+		}).change();
+
 		$( 'select.hero-style-select' ).on( 'select2:select' , function(){
 			if ( $( this ).val() === 'tg-hero--default' ) {
 
