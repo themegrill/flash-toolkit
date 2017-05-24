@@ -908,6 +908,7 @@ function flash_get_fontawesome_icons() {
  * Get Google Font lists.
  * @return array
  */
+if( !function_exists( 'flash_get_google_fonts') ) {
 function flash_get_google_fonts() {
 	return apply_filters( 'flash_get_google_fonts', array(
 	    'ABeeZee' => 'ABeeZee',
@@ -1730,6 +1731,7 @@ function flash_get_google_fonts() {
 	    'Zeyada' => 'Zeyada',
 		)
 	);
+}
 }
 
 /**
