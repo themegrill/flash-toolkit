@@ -35,7 +35,7 @@ class FT_Post_Types {
 	 * Register core taxonomies.
 	 */
 	public static function register_taxonomies() {
-		if ( taxonomy_exists( 'portfolio_cat' ) ) {
+		if ( ! is_blog_installed() || taxonomy_exists( 'portfolio_cat' ) ) {
 			return;
 		}
 
@@ -121,7 +121,7 @@ class FT_Post_Types {
 	 * Register core post types.
 	 */
 	public static function register_post_types() {
-		if ( post_type_exists( 'portfolio' ) ) {
+		if ( ! is_blog_installed() || post_type_exists( 'portfolio' ) ) {
 			return;
 		}
 
