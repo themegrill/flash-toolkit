@@ -36,8 +36,11 @@ function flash_portfolio_post_type_link( $permalink, $post ) {
 	$terms = get_the_terms( $post->ID, 'portfolio_cat' );
 
 	if ( ! empty( $terms ) ) {
-		usort( $terms, '_usort_terms_by_ID' ); // order by ID
-
+		if ( function_exists( 'wp_list_sort' ) ) {
+			$terms = wp_list_sort( $terms, 'term_id', 'ASC' );
+		} else {
+			usort( $terms, '_usort_terms_by_ID' );
+		}
 		$category_object = apply_filters( 'flash_toolkit_portfolio_post_type_link_portfolio_cat', $terms[0], $terms, $post );
 		$category_object = get_term( $category_object, 'portfolio_cat' );
 		$portfolio_cat   = $category_object->slug;
