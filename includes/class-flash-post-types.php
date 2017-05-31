@@ -41,7 +41,7 @@ class FT_Post_Types {
 
 		do_action( 'flash_toolkit_register_taxonomy' );
 
-		$permalinks = get_option( 'flash_toolkit_permalinks' );
+		$permalinks = flash_get_permalink_structure();
 
 		register_taxonomy( 'portfolio_cat',
 			apply_filters( 'flash_toolkit_taxonomy_objects_portfolio_cat', array( 'portfolio' ) ),
@@ -71,7 +71,7 @@ class FT_Post_Types {
 					'assign_terms' => 'assign_portfolio_terms',
 				),
 				'rewrite'      => array(
-					'slug'         => empty( $permalinks['category_base'] ) ? _x( 'portfolio-category', 'slug', 'flash-toolkit' ) : $permalinks['category_base'],
+					'slug'         => $permalinks['category_rewrite_slug'],
 					'with_front'   => false,
 					'hierarchical' => true,
 				),
@@ -108,7 +108,7 @@ class FT_Post_Types {
 					'assign_terms' => 'assign_portfolio_terms',
 				),
 				'rewrite'      => array(
-					'slug'       => empty( $permalinks['tag_base'] ) ? _x( 'portfolio-tag', 'slug', 'flash-toolkit' ) : $permalinks['tag_base'],
+					'slug'       => $permalinks['tag_rewrite_slug'],
 					'with_front' => false
 				),
 			) )
@@ -127,8 +127,7 @@ class FT_Post_Types {
 
 		do_action( 'flash_toolkit_register_post_type' );
 
-		$permalinks          = get_option( 'flash_toolkit_permalinks' );
-		$portfolio_permalink = empty( $permalinks['portfolio_base'] ) ? _x( 'portfolio', 'slug', 'flash-toolkit' ) : $permalinks['portfolio_base'];
+		$permalinks = flash_get_permalink_structure();
 
 		register_post_type( 'portfolio',
 			apply_filters( 'flash_toolkit_register_post_type_portfolio',
@@ -169,7 +168,7 @@ class FT_Post_Types {
 					'hierarchical'        => false,
 					'query_var'           => true,
 					'menu_icon'           => 'dashicons-portfolio',
-					'rewrite'             => $portfolio_permalink ? array( 'slug' => untrailingslashit( $portfolio_permalink ), 'with_front' => false, 'feeds' => true ) : false,
+					'rewrite'             => $permalinks['portfolio_rewrite_slug'] ? array( 'slug' => untrailingslashit( $permalinks['portfolio_rewrite_slug'] ), 'with_front' => false, 'feeds' => true ) : false,
 					'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'author', 'custom-fields', 'page-attributes', 'publicize', 'wpcom-markdown' ),
 					'has_archive'         => true,
 					'show_in_nav_menus'   => true

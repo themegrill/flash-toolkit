@@ -180,6 +180,35 @@ function flash_locate_template( $template_name, $template_path = '', $default_pa
 }
 
 /**
+ * Get permalink settings for FlashToolkit independent of the user locale.
+ *
+ * @since  1.2.0
+ * @return array
+ */
+function flash_get_permalink_structure() {
+	if ( function_exists( 'switch_to_locale' ) && did_action( 'admin_init' ) ) {
+		switch_to_locale( get_locale() );
+	}
+
+	$permalinks = wp_parse_args( (array) get_option( 'flash_toolkit_permalinks', array() ), array(
+		'portfolio_base'         => '',
+		'category_base'          => '',
+		'tag_base'               => '',
+		'use_verbose_page_rules' => false,
+	) );
+
+	// Ensure rewrite slugs are set.
+	$permalinks['portfolio_rewrite_slug'] = untrailingslashit( empty( $permalinks['portfolio_base'] ) ? _x( 'portfolio', 'slug', 'flash-toolkit' )         : $permalinks['portfolio_base'] );
+	$permalinks['category_rewrite_slug']  = untrailingslashit( empty( $permalinks['category_base'] ) ? _x( 'portfolio-category', 'slug', 'flash-toolkit' ) : $permalinks['category_base'] );
+	$permalinks['tag_rewrite_slug']       = untrailingslashit( empty( $permalinks['tag_base'] ) ? _x( 'portfolio-tag', 'slug', 'flash-toolkit' )           : $permalinks['tag_base'] );
+
+	if ( function_exists( 'restore_current_locale' ) && did_action( 'admin_init' ) ) {
+		restore_current_locale();
+	}
+	return $permalinks;
+}
+
+/**
  * Get fontawesome icon lists.
  * @return array
  */

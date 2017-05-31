@@ -13,10 +13,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! class_exists( 'FT_Admin_Permalink_Settings', false ) ) :
+
 /**
  * FT_Admin_Permalink_Settings Class
  */
 class FT_Admin_Permalink_Settings {
+
+	/**
+	 * Permalink settings.
+	 *
+	 * @var array
+	 */
+	private $permalinks = array();
 
 	/**
 	 * Hook in tabs.
@@ -48,15 +57,16 @@ class FT_Admin_Permalink_Settings {
 			'permalink',                                      // settings page
 			'optional'                                        // settings section
 		);
+
+		$this->permalinks = flash_get_permalink_structure();
 	}
 
 	/**
 	 * Show a slug input box.
 	 */
 	public function portfolio_category_slug_input() {
-		$permalinks = get_option( 'flash_toolkit_permalinks' );
 		?>
-		<input name="flash_toolkit_portfolio_category_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['category_base'] ) ) echo esc_attr( $permalinks['category_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-category', 'slug', 'flash-toolkit') ?>" />
+		<input name="flash_toolkit_portfolio_category_slug" type="text" class="regular-text code" value="<?php echo esc_attr( $this->permalinks['category_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-category', 'slug', 'flash-toolkit') ?>" />
 		<?php
 	}
 
@@ -64,9 +74,8 @@ class FT_Admin_Permalink_Settings {
 	 * Show a slug input box.
 	 */
 	public function portfolio_tag_slug_input() {
-		$permalinks = get_option( 'flash_toolkit_permalinks' );
 		?>
-		<input name="flash_toolkit_portfolio_tag_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['tag_base'] ) ) echo esc_attr( $permalinks['tag_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-tag', 'slug', 'flash-toolkit' ) ?>" />
+		<input name="flash_toolkit_portfolio_tag_slug" type="text" class="regular-text code" value="<?php echo esc_attr( $this->permalinks['tag_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-tag', 'slug', 'flash-toolkit' ) ?>" />
 		<?php
 	}
 
@@ -75,9 +84,6 @@ class FT_Admin_Permalink_Settings {
 	 */
 	public function settings() {
 		echo wpautop( __( 'These settings control the permalinks specifically used for portfolio.', 'flash-toolkit' ) );
-
-		$permalinks          = get_option( 'flash_toolkit_permalinks' );
-		$portfolio_permalink = isset( $permalinks['portfolio_base'] ) ? $permalinks['portfolio_base'] : '';
 
 		// Get base slug
 		$base_slug      = _x( 'project', 'default-slug', 'flash-toolkit' );
@@ -92,22 +98,22 @@ class FT_Admin_Permalink_Settings {
 		<table class="form-table flash-permalink-structure">
 			<tbody>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[0] ); ?>" class="flash-tog" <?php checked( $structures[0], $portfolio_permalink ); ?> /> <?php _e( 'Default', 'flash-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[0] ); ?>" class="flash-tog" <?php checked( $structures[0], $this->permalinks['portfolio_base'] ); ?> /> <?php _e( 'Default', 'flash-toolkit' ); ?></label></th>
 					<td><code class="default-example"><?php echo esc_html( home_url() ); ?>/?portfolio=sample-portfolio</code> <code class="non-default-example"><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $portfolio_base ); ?>/sample-portfolio/</code></td>
 				</tr>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[1] ); ?>" class="flash-tog" <?php checked( $structures[1], $portfolio_permalink ); ?> /> <?php _e( 'Project base', 'flash-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[1] ); ?>" class="flash-tog" <?php checked( $structures[1], $this->permalinks['portfolio_base'] ); ?> /> <?php _e( 'Project base', 'flash-toolkit' ); ?></label></th>
 					<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/sample-portfolio/</code></td>
 				</tr>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[2] ); ?>" class="flash-tog" <?php checked( $structures[2], $portfolio_permalink ); ?> /> <?php _e( 'Project based category', 'flash-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[2] ); ?>" class="flash-tog" <?php checked( $structures[2], $this->permalinks['portfolio_base'] ); ?> /> <?php _e( 'Project based category', 'flash-toolkit' ); ?></label></th>
 					<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/portfolio-category/sample-portfolio/</code></td>
 				</tr>
 				<tr>
-					<th><label><input name="portfolio_permalink" id="flash_toolkit_custom_selection" type="radio" value="custom" class="tog" <?php checked( in_array( $portfolio_permalink, $structures ), false ); ?> />
+					<th><label><input name="portfolio_permalink" id="flash_toolkit_custom_selection" type="radio" value="custom" class="tog" <?php checked( in_array( $this->permalinks['portfolio_base'], $structures ), false ); ?> />
 						<?php _e( 'Custom Base', 'flash-toolkit' ); ?></label></th>
 					<td>
-						<input name="portfolio_permalink_structure" id="flash_toolkit_permalink_structure" type="text" value="<?php echo esc_attr( $portfolio_permalink ); ?>" class="regular-text code"> <span class="description"><?php _e( 'Enter a custom base to use. A base <strong>must</strong> be set or WordPress will use default instead.', 'flash-toolkit' ); ?></span>
+						<input name="portfolio_permalink_structure" id="flash_toolkit_permalink_structure" type="text" value="<?php echo esc_attr( $this->permalinks['portfolio_base'] ? trailingslashit( $this->permalinks['portfolio_base'] ) : '' ); ?>" class="regular-text code"> <span class="description"><?php _e( 'Enter a custom base to use. A base <strong>must</strong> be set or WordPress will use default instead.', 'flash-toolkit' ); ?></span>
 					</td>
 				</tr>
 			</tbody>
@@ -147,38 +153,43 @@ class FT_Admin_Permalink_Settings {
 
 		// We need to save the options ourselves; settings api does not trigger save for the permalinks page.
 		if ( isset( $_POST['permalink_structure'] ) ) {
-			$permalinks = get_option( 'flash_toolkit_permalinks' );
-
-			if ( ! $permalinks ) {
-				$permalinks = array();
+			if ( function_exists( 'switch_to_locale' ) ) {
+				switch_to_locale( get_locale() );
 			}
 
+			$permalinks                  = (array) get_option( 'flash_toolkit_permalinks', array() );
 			$permalinks['category_base'] = flash_sanitize_permalink( trim( $_POST['flash_toolkit_portfolio_category_slug'] ) );
 			$permalinks['tag_base']      = flash_sanitize_permalink( trim( $_POST['flash_toolkit_portfolio_tag_slug'] ) );
 
-			// Portfolio base.
-			$portfolio_permalink = isset( $_POST['portfolio_permalink'] ) ? flash_clean( $_POST['portfolio_permalink'] ) : '';
+			// Generate portfolio base.
+			$portfolio_base = isset( $_POST['portfolio_permalink'] ) ? flash_clean( $_POST['portfolio_permalink'] ) : '';
 
-			if ( 'custom' === $portfolio_permalink ) {
+			if ( 'custom' === $portfolio_base ) {
 				if ( isset( $_POST['portfolio_permalink_structure'] ) ) {
-					$portfolio_permalink = preg_replace( '#/+#', '/', '/' . str_replace( '#', '', trim( $_POST['portfolio_permalink_structure'] ) ) );
+					$portfolio_base = preg_replace( '#/+#', '/', '/' . str_replace( '#', '', trim( $_POST['portfolio_permalink_structure'] ) ) );
 				} else {
-					$portfolio_permalink = '/';
+					$portfolio_base = '/';
 				}
 
 				// This is an invalid base structure and breaks pages.
-				if ( '/%portfolio_cat%' === $product_permalink ) {
-					$portfolio_permalink = '/' . _x( 'portfolio', 'slug', 'flash-toolkit' ) . $portfolio_permalink;
+				if ( '/%portfolio_cat%/' === trailingslashit( $portfolio_base ) ) {
+					$portfolio_base = '/' . _x( 'portfolio', 'slug', 'flash-toolkit' ) . $portfolio_base;
 				}
-			} elseif ( empty( $portfolio_permalink ) ) {
-				$portfolio_permalink = false;
+			} elseif ( empty( $portfolio_base ) ) {
+				$portfolio_base = false;
 			}
 
-			$permalinks['portfolio_base'] = flash_sanitize_permalink( $portfolio_permalink );
+			$permalinks['portfolio_base'] = flash_sanitize_permalink( $portfolio_base );
 
 			update_option( 'flash_toolkit_permalinks', $permalinks );
+
+			if ( function_exists( 'restore_current_locale' ) ) {
+				restore_current_locale();
+			}
 		}
 	}
 }
 
-new FT_Admin_Permalink_Settings();
+endif;
+
+return new FT_Admin_Permalink_Settings();
