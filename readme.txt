@@ -3,7 +3,7 @@ Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,8 +31,12 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== TBD ==
-*Fix - Get the Excerpt causing infinity loop
+== 1.1.2 - 2017-06-1 ==
+* Fix - Get the Excerpt causing infinity loop
+* Fix - Use wp_list_sort vs _usort_terms_by_ID
+* Fix - Widget ID Instance for WPML
+* Tweak - Add locale independent flash_get_permalink_structure function
+* Tweak - Add Font Picker
 
 = 1.1.1 =
 * Fix - Updated select2.js to 4.0.3
