@@ -181,6 +181,17 @@ class FT_Admin_Permalink_Settings {
 
 			$permalinks['portfolio_base'] = flash_sanitize_permalink( $portfolio_base );
 
+			// Ensure portfolio archive slugs are set.
+			$permalinks['portfolio_has_archive'] = true;
+
+			if ( $permalinks['portfolio_base'] ) {
+				$portfolio_slug = explode( '/', trim( $permalinks['portfolio_base'], '/' ) );
+
+				if ( $portfolio_slug ) {
+					$permalinks['portfolio_has_archive'] = $portfolio_slug[0];
+				}
+			}
+
 			update_option( 'flash_toolkit_permalinks', $permalinks );
 
 			if ( function_exists( 'restore_current_locale' ) ) {

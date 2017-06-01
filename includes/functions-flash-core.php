@@ -194,6 +194,7 @@ function flash_get_permalink_structure() {
 		'portfolio_base'         => '',
 		'category_base'          => '',
 		'tag_base'               => '',
+		'portfolio_has_archive'  => true,
 		'use_verbose_page_rules' => false,
 	) );
 

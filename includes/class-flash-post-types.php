@@ -170,7 +170,7 @@ class FT_Post_Types {
 					'menu_icon'           => 'dashicons-portfolio',
 					'rewrite'             => $permalinks['portfolio_rewrite_slug'] ? array( 'slug' => untrailingslashit( $permalinks['portfolio_rewrite_slug'] ), 'with_front' => false, 'feeds' => true ) : false,
 					'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'author', 'custom-fields', 'page-attributes', 'publicize', 'wpcom-markdown' ),
-					'has_archive'         => true,
+					'has_archive'         => $permalinks['portfolio_has_archive'],
 					'show_in_nav_menus'   => true
 				)
 			)
