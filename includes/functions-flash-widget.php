@@ -81,7 +81,7 @@ add_filter('siteorigin_panels_widgets', 'flash_toolkit_widgets');
 /* Add a tab for the theme widgets in the page builder */
 function flash_toolkit_widgets_tab($tabs){
 	$tabs[] = array(
-		'title'  => __('Flash Toolkit Widgets', 'flash'),
+		'title'  => __('Flash Toolkit Widgets', 'flash-toolkit'),
 		'filter' => array(
 			'groups' => array('flash-toolkit')
 		)

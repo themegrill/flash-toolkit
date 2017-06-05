@@ -227,8 +227,8 @@ abstract class FT_Widget extends WP_Widget {
 				$group_name_array[] = $group_name;
 
 				if( $group_name_array[0] != '' ) { ?>
-					<a class="flash-tab-title <?php echo ($groupcount == 1 ? ' active' : '' ); ?>" href="#flash-tab-<?php esc_attr_e( $groupcount ); ?>">
-					<?php esc_html_e( $group_name ); ?>
+					<a class="flash-tab-title <?php echo ($groupcount == 1 ? ' active' : '' ); ?>" href="#flash-tab-<?php echo esc_attr( $groupcount ); ?>">
+					<?php echo esc_html( $group_name ); ?>
 					</a>
 				<?php
 				}
@@ -241,7 +241,7 @@ abstract class FT_Widget extends WP_Widget {
 		<?php $groupcount = 1;
 
 		foreach ( $group_name_array as $group ) { ?>
-			<div class="flash-toolkit-tab" id="flash-tab-<?php esc_attr_e( $groupcount ); ?>">
+			<div class="flash-toolkit-tab" id="flash-tab-<?php echo esc_attr( $groupcount ); ?>">
 			<?php foreach ( $this->settings as $key => $setting ) {
 				$current_setting_group = isset( $setting['group'] ) ? $setting['group'] : __( 'General', 'flash-toolkit' );
 				if ( $current_setting_group == $group || empty( $group_name_array ) ) {

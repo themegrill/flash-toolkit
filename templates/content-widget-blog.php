@@ -92,7 +92,7 @@ $get_featured_posts = new WP_Query( array(
 					<i class="fa fa-user"></i><a class="url fn n" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php echo esc_html( get_the_author() ); ?></a>
 				</span>
 				<div class="read-more">
-					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html__( 'Read More', 'flash' ); ?></a>
+					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e( 'Read More', 'flash-toolkit' ); ?></a>
 				</div>
 			</div>
 			<?php } ?>
