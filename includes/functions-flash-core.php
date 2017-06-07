@@ -186,8 +186,8 @@ function flash_locate_template( $template_name, $template_path = '', $default_pa
  * @return array
  */
 function flash_get_permalink_structure() {
-	if ( function_exists( 'switch_to_locale' ) && did_action( 'admin_init' ) ) {
-		switch_to_locale( get_locale() );
+	if ( did_action( 'admin_init' ) ) {
+		flash_switch_to_site_locale();
 	}
 
 	$permalinks = wp_parse_args( (array) get_option( 'flash_toolkit_permalinks', array() ), array(
@@ -204,9 +204,42 @@ function flash_get_permalink_structure() {
 	$permalinks['tag_rewrite_slug']       = untrailingslashit( empty( $permalinks['tag_base'] ) ? _x( 'portfolio-tag', 'slug', 'flash-toolkit' )           : $permalinks['tag_base'] );
 
 	if ( function_exists( 'restore_current_locale' ) && did_action( 'admin_init' ) ) {
-		restore_current_locale();
+		flash_restore_locale();
 	}
 	return $permalinks;
+}
+
+/**
+ * Switch FlashToolkit to site language.
+ *
+ * @since 1.2.0
+ */
+function flash_switch_to_site_locale() {
+	if ( function_exists( 'switch_to_locale' ) ) {
+		switch_to_locale( get_locale() );
+
+		// Filter on plugin_locale so load_plugin_textdomain loads the correct locale.
+		add_filter( 'plugin_locale', 'get_locale' );
+
+		// Init FT locale.
+		FT()->load_plugin_textdomain();
+	}
+}
+/**
+ * Switch FlashToolkit language to original.
+ *
+ * @since 1.2.0
+ */
+function flash_restore_locale() {
+	if ( function_exists( 'restore_previous_locale' ) ) {
+		restore_previous_locale();
+
+		// Remove filter.
+		remove_filter( 'plugin_locale', 'get_locale' );
+
+		// Init FT locale.
+		FT()->load_plugin_textdomain();
+	}
 }
 
 /**
