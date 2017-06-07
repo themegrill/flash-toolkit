@@ -78,7 +78,6 @@ abstract class FT_Widget extends WP_Widget {
 	 * @return bool true if the widget is cached otherwise false
 	 */
 	public function get_cached_widget( $args ) {
-
 		$cache = wp_cache_get( apply_filters( 'flash_toolkit_cached_widget_id', $this->widget_id ), 'widget' );
 
 		if ( ! is_array( $cache ) ) {
@@ -101,7 +100,15 @@ abstract class FT_Widget extends WP_Widget {
 	 * @return string the content that was cached
 	 */
 	public function cache_widget( $args, $content ) {
-		wp_cache_set( apply_filters( 'flash_toolkit_cached_widget_id', $this->widget_id ), array( $args['widget_id'] => $content ), 'widget' );
+		$cache = wp_cache_get( apply_filters( 'flash_toolkit_cached_widget_id', $this->widget_id ), 'widget' );
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		$cache[ $args['widget_id'] ] = $content;
+
+		wp_cache_set( apply_filters( 'flash_toolkit_cached_widget_id', $this->widget_id ), $cache, 'widget' );
 
 		return $content;
 	}
