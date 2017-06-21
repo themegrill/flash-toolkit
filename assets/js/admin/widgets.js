@@ -65,14 +65,19 @@ jQuery( function ( $ ) {
 		});
 	}).trigger( 'flash-toolkit-init-media-preview' );
 
-	$( document.body ).on( 'panelsopen', function() {
+	$( document.body ).on( 'flash-toolkit-date-picker-init', function() {
 
 		$( 'input.flash-datetime-picker' ).each( function() {
 			$('input.flash-datetime-picker').datetimepicker({
-				dateFormat: 'yy-mm-dd ',
+				dateFormat: 'yy-mm-dd',
 				timeFormat: 'HH:mm'
 			});
 		});
+	}).trigger( 'flash-toolkit-date-picker-init' );
+
+
+	$( document.body ).on( 'panelsopen', function() {
+		$( document.body ).trigger( 'flash-toolkit-date-picker-init' );
 	});
 
 	// Availability options.
