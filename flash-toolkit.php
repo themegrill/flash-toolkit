@@ -8,7 +8,7 @@
  * Author URI: http://themegrill.com
  * License: GPLv3 or later
  * Text Domain: flash-toolkit
- * Domain Path: /languages/
+ * Domain Path: /i18n/languages/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -155,10 +155,12 @@ final class FlashToolkit {
 	 *      - WP_LANG_DIR/plugins/flash-toolkit-LOCALE.mo
 	 */
 	public function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'flash-toolkit' );
+		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+		$locale = apply_filters( 'plugin_locale', $locale, 'flash-toolkit' );
 
+		unload_textdomain( 'flash-toolkit' );
 		load_textdomain( 'flash-toolkit', WP_LANG_DIR . '/flash-toolkit/flash-toolkit-' . $locale . '.mo' );
-		load_plugin_textdomain( 'flash-toolkit', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'flash-toolkit', false, plugin_basename( dirname( __FILE__ ) ) . '/i18n/languages' );
 	}
 
 	/**
