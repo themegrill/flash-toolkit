@@ -14,7 +14,11 @@
 /**
  * Styling begins
  */
-#flash-toolkit-portfolio-data,
+#portfolio_options{
+	overflow: hidden;
+}
+
+#portfolio_options,
 .flash-toolkit {
 	.panel-wrap {
 		overflow: hidden;
@@ -86,7 +90,7 @@
 	}
 }
 
-#flash-toolkit-portfolio-data {
+#portfolio_options {
 	.inside {
 		margin: 0;
 		padding: 0;
@@ -266,7 +270,7 @@
 	}
 }
 
-#flash-toolkit-portfolio-data {
+#portfolio_options {
 	.panel-wrap {
 		background: #fff;
 	}
@@ -463,15 +467,15 @@ img.tips {
  * Optimisation for screens 900px and smaller
  */
 @media only screen and (max-width: 900px) {
-	#flash-toolkit-portfolio-data ul.portfolio_data_tabs {
+	#portfolio_options ul.portfolio_data_tabs {
 		width: 10%;
 	}
 
-	#flash-toolkit-portfolio-data .flash_toolkit_options_panel {
+	#portfolio_options .flash_toolkit_options_panel {
 		width: 90%;
 	}
 
-	#flash-toolkit-portfolio-data ul.portfolio_data_tabs li a {
+	#portfolio_options ul.portfolio_data_tabs li a {
 		position: relative;
 		text-indent: -999px;
 		padding: 10px;
@@ -495,7 +499,7 @@ img.tips {
  * Optimisation for screens 782px and smaller
  */
 @media only screen and (max-width: 782px) {
-	#flash-toolkit-portfolio-data .checkbox {
+	#portfolio_options .checkbox {
 		width: 25px;
 	}
 }

@@ -45,6 +45,9 @@ class FT_Admin_Meta_Boxes {
 		// Save Portfolio Meta Boxes
 		add_action( 'flash_toolkit_process_portfolio_meta', 'FT_Meta_Box_Portfolio_Data::save', 10, 2 );
 
+		// Save Page Meta Boxes
+		add_action( 'flash_toolkit_process_page_meta', 'FT_Meta_Box_Pageoptions_Data::save', 10, 2 );
+
 		// Save Layout Meta Boxes
 		add_action( 'flash_toolkit_process_layout_meta', 'FT_Meta_Box_Layout_Data::save', 10, 2 );
 
@@ -95,6 +98,9 @@ class FT_Admin_Meta_Boxes {
 	public function add_meta_boxes() {
 		// Portfolio
 		add_meta_box( 'flash-toolkit-portfolio-data', __( 'Portfolio Data', 'flash-toolkit' ), 'FT_Meta_Box_Portfolio_Data::output', 'portfolio', 'normal', 'high' );
+
+		// Page Header
+		add_meta_box( 'flash-toolkit-pageheader-data', __( 'Page Options', 'flash-toolkit' ), 'FT_Meta_Box_Pageoptions_Data::output', 'page', 'normal', 'high' );
 
 		// Layouts
 		foreach ( flash_toolkit_get_layout_supported_screens() as $post_type ) {
@@ -162,7 +168,7 @@ class FT_Admin_Meta_Boxes {
 		}
 
 		// Trigger action
-		$process_actions = array( 'layout' );
+		$process_actions = array( 'layout', 'page' );
 		foreach ( $process_actions as $process_action ) {
 			do_action( 'flash_toolkit_process_' . $process_action . '_meta', $post_id, $post );
 		}

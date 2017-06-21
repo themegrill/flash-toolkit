@@ -105,9 +105,7 @@ class FT_Admin_Assets {
 		}
 
 		// Meta boxes
-		if ( in_array( $screen_id, array( 'portfolio', 'edit-portfolio' ) ) ) {
-			wp_enqueue_script( 'flash-toolkit-admin-meta-boxes' );
-		}
+		wp_enqueue_script( 'flash-toolkit-admin-meta-boxes' );
 
 		if ( in_array( $screen_id, flash_toolkit_get_layout_supported_screens() ) ) {
 			wp_register_script( 'flash-toolkit-admin-layout-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes-layout' . $suffix . '.js', array( 'flash-toolkit-admin-meta-boxes' ), FT_VERSION );
