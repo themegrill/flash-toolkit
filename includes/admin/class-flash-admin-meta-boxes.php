@@ -100,7 +100,9 @@ class FT_Admin_Meta_Boxes {
 		add_meta_box( 'flash-toolkit-portfolio-data', __( 'Portfolio Data', 'flash-toolkit' ), 'FT_Meta_Box_Portfolio_Data::output', 'portfolio', 'normal', 'high' );
 
 		// Page Header
-		add_meta_box( 'flash-toolkit-pageheader-data', __( 'Page Options', 'flash-toolkit' ), 'FT_Meta_Box_Pageoptions_Data::output', 'page', 'normal', 'high' );
+		if ( is_flash_pro_active() ) {
+			add_meta_box( 'flash-toolkit-pageheader-data', __( 'Page Options', 'flash-toolkit' ), 'FT_Meta_Box_Pageoptions_Data::output', 'page', 'normal', 'high' );
+		}
 
 		// Layouts
 		foreach ( flash_toolkit_get_layout_supported_screens() as $post_type ) {

@@ -43,7 +43,7 @@ class FT_Meta_Box_Pageoptions_Data {
 						</li><?php
 					}
 
-					do_action( 'flash_toolkit_portfolio_write_panel_tabs' );
+					do_action( 'flash_toolkit_pageoptions_write_panel_tabs' );
 				?>
 			</ul>
 			<div id="general_portfolio_data" class="panel flash_toolkit_options_panel hidden"><?php
@@ -67,14 +67,14 @@ class FT_Meta_Box_Pageoptions_Data {
 				echo '<div class="options_group">';
 
 					// Remove Breadcrumbs
-					flash_toolkit_wp_checkbox( array( 'id' => 'pageheader_breadcrumbs', 'label' => __( 'Remove breadcrumbs from page header', 'flash-toolkit' ), ) );
+					flash_toolkit_wp_checkbox( array( 'id' => 'pageheader_disable', 'label' => __( 'Hide Pageheader', 'flash-toolkit' ), ) );
 
 				echo '</div>';
 
-				do_action( 'flash_toolkit_portfolio_options_general' );
+				do_action( 'flash_toolkit_pageoptions_options_general' );
 
 			?></div>
-			<?php do_action( 'flash_toolkit_portfolio_data_panels' ); ?>
+			<?php do_action( 'flash_toolkit_pageoptions_data_panels' ); ?>
 			<div class="clear"></div>
 		</div>
 		<?php
@@ -86,13 +86,13 @@ class FT_Meta_Box_Pageoptions_Data {
 	 */
 	public static function save( $post_id ) {
 		// Add/replace data to array
-		$pageheader_size        = flash_clean( $_POST['pageheader_size'] );
-		$pageheader_breadcrumbs = isset( $_POST['pageheader_breadcrumbs'] ) ? '' : '1';
+		$pageheader_size      = flash_clean( $_POST[ 'pageheader_size' ] );
+		$pageheader_disable = isset( $_POST['pageheader_disable'] ) ? 'yes' : 'no';
 
 		// Save
 		update_post_meta( $post_id, 'pageheader_size', $pageheader_size );
-		update_post_meta( $post_id, 'pageheader_breadcrumbs', $pageheader_breadcrumbs );
+		update_post_meta( $post_id, 'pageheader_disable', $pageheader_disable );
 
-		do_action( 'flash_toolkit_portfolio_options_save', $post_id );
+		do_action( 'flash_toolkit_page_options_save', $post_id );
 	}
 }
