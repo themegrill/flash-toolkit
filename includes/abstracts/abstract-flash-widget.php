@@ -190,8 +190,10 @@ abstract class FT_Widget extends WP_Widget {
 					$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
 				break;
 				case 'datetimepicker' :
-					$sanitized_date   = DateTime::createFromFormat( "Y-m-d H:i", $new_instance[ $key ] );
-					$instance[ $key ] = $sanitized_date->format("Y-m-d H:i");
+					if( !empty( $new_instance[ $key ] ) ) {
+						$sanitized_date   = DateTime::createFromFormat( "Y-m-d H:i", $new_instance[ $key ] );
+						$instance[ $key ] = $sanitized_date->format("Y-m-d H:i");
+					}
 				break;
 				default:
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean( $new_instance[ $key ] ) : '';

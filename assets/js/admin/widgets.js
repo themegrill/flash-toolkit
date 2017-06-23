@@ -67,6 +67,7 @@ jQuery( function ( $ ) {
 
 	$( document.body ).on( 'flash-toolkit-date-picker-init', function() {
 
+		$( 'input.flash-datetime-picker').removeClass( 'hasDatepicker' );
 		$( 'input.flash-datetime-picker' ).each( function() {
 			$('input.flash-datetime-picker').datetimepicker({
 				dateFormat: 'yy-mm-dd',
@@ -318,6 +319,7 @@ jQuery( function ( $ ) {
 			$( document.body ).trigger( 'flash-toolkit-init-availability' );
 			$( document.body ).trigger( 'flash-toolkit-init-media-preview' );
 			$( document.body ).trigger( 'flash-toolkit-init-accordion-title' );
+			$( document.body ).trigger( 'flash-toolkit-date-picker-init' );
 		}
 	});
 
