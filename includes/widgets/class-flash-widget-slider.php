@@ -108,7 +108,7 @@ class FT_Widget_Slider extends FT_Widget {
 			'full-screen' => array(
 				'type'  => 'checkbox',
 				'std'   => '',
-				'label' => __( 'Check to make slide full screen.', 'flash-toolkit' ),
+				'label' => __( 'Check to make slide Full Viewport Height.', 'flash-toolkit' ),
 				'group' => __( 'Styling', 'flash-toolkit' ),
 			),
 		) );
