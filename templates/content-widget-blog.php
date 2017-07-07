@@ -58,14 +58,17 @@ $get_featured_posts = new WP_Query( array(
 	<?php } ?>
 	<div class="tg-blog-widget <?php echo esc_attr( $col ); ?>">
 		<div class="post-image">
-			<figure>
 			<?php
 			if( has_post_thumbnail() ) {
-				the_post_thumbnail( $image_size );
+				$image = '';
+	        	$image .= '<figure>';
+	        	$image .= '<a href="' . esc_url( get_the_permalink() ) . '" title="'.the_title_attribute( 'echo=0' ).'">';
+	        	$image .= get_the_post_thumbnail( get_the_id(), $image_size );
+	        	$image .= '</a>';
+	        	$image .= '</figure>';
+	        	echo $image;
 			}
-			?>
-			</figure>
-			<?php if($style == 'tg-blog-widget-layout-2' ) { ?>
+			if($style == 'tg-blog-widget-layout-2' ) { ?>
 			<span class="entry-date">
 				<i class="fa fa-clock-o"></i><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html ( get_the_date() ); ?></a>
 			</span>
