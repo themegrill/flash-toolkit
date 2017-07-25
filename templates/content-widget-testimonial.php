@@ -29,7 +29,7 @@ $repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instan
 				<div class="testimonial-content-wrapper">
 					<div class="testimonial-icon"><i class="fa fa-quote-left"></i> </div>
 					<?php if( !empty( $testimonial['description'] ) ) { ?>
-					<div class="testimonial-content"><?php echo esc_html($testimonial['description']); ?></div>
+					<div class="testimonial-content"><?php echo wp_kses_post($testimonial['description']); ?></div>
 					<?php } ?>
 				</div>
 				<div class="testimonial-client-detail">
