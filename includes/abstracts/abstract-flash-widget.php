@@ -195,6 +195,9 @@ abstract class FT_Widget extends WP_Widget {
 						$instance[ $key ] = $sanitized_date->format("Y-m-d H:i");
 					}
 				break;
+				case 'repeater' :
+					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean_html( $new_instance[ $key ] ) : '';
+				break;
 				default:
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean( $new_instance[ $key ] ) : '';
 				break;
