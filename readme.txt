@@ -31,6 +31,9 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== 1.1.3 - TBD ==
+* Tweak - Allow HTML in Widget Textarea Fields
+
 == 1.1.3 - 2017-06-23 ==
 * Fix - Datepicker Field Not Working in Widget Area
 * Tweak - Better and advanced locale switching
