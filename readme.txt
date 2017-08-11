@@ -33,6 +33,8 @@ Get free support at http://themegrill.com/support-forum/
 == Changelog ==
 == 1.1.3 - TBD ==
 * Tweak - Allow HTML in Widget Textarea Fields
+* Tweak - Fix the blog widget style 2 design
+
 
 == 1.1.3 - 2017-06-23 ==
 * Fix - Datepicker Field Not Working in Widget Area

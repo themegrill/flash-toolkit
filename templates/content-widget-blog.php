@@ -57,7 +57,13 @@ $get_featured_posts = new WP_Query( array(
 		<div class="row">
 	<?php } ?>
 	<div class="tg-blog-widget <?php echo esc_attr( $col ); ?>">
-		<div class="post-image">
+		<?php
+		$post_image = '';
+		if(! has_post_thumbnail() ){
+			$post_image = 'image-none';
+		}
+		?>
+		<div class="post-image <?php echo esc_attr( $post_image ); ?>">
 			<?php
 			if( has_post_thumbnail() ) {
 				$image = '';
