@@ -57,7 +57,7 @@ $style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 			<div class="team-desc-wrapper">
 				<h3 class="team-title"><?php echo esc_html($title); ?></h3>
 				<div class="team-designation"><?php echo esc_html($designation); ?></div>
-				<div class="team-content"><?php echo esc_html($text); ?></div>
+				<div class="team-content"><?php echo wp_kses_post($text); ?></div>
 				<?php
 				if( $style != 'tg-team-layout-3') {
 				if( (!empty($facebook) || !empty($twitter) || !empty($linkedin) ) ) { ?>

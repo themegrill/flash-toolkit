@@ -53,7 +53,7 @@ $style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : '';
 			<?php } ?>
 		</div>
 		<?php if( !empty( $text ) ) { ?>
-		<div class="service-content-wrap"><?php echo esc_html($text); ?></div>
+		<div class="service-content-wrap"><?php echo wp_kses_post($text); ?></div>
 		<?php } ?>
 		<?php if ( !empty( $more_url )) { ?>
 		<a class="service-more" href="<?php echo esc_url( $more_url ); ?>"><?php echo esc_html( $more_text ); ?></a>

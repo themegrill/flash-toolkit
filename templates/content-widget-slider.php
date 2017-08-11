@@ -44,7 +44,7 @@ if($screen) {
 				<div class="slider-content">
 					<div class="tg-container">
 						<div class="caption-title"><?php echo esc_html( $slider[ 'title' ] ); ?></div>
-						<div class="caption-desc"><?php echo esc_html( $slider[ 'description' ] ); ?></div>
+						<div class="caption-desc"><?php echo wp_kses_post( $slider[ 'description' ] ); ?></div>
 						<?php if($slider['button_text']) : ?>
 						<div class="btn-wrapper">
 							<a href="<?php echo esc_url( $slider[ 'button_link' ] ); ?>"><?php echo esc_html( $slider[ 'button_text' ] ); ?></a>

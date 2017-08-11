@@ -34,7 +34,7 @@ $style       = isset( $instance[ 'style' ] ) ? $instance[ 'style' ] : 'tg-cta-la
 		<h3 class="section-title"><?php echo esc_html( $title ); ?></h3>
 		<?php }
 		if ( !empty( $subtitle ) ) { ?>
-		<h4 class="section-subtitle"><?php echo esc_html( $subtitle ); ?></h4>
+		<h4 class="section-subtitle"><?php echo wp_kses_post( $subtitle ); ?></h4>
 		<?php } ?>
 	</div>
 	<?php if( !empty( $btn1_link ) || !empty( $btn2_link ) ) { ?>

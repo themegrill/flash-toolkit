@@ -31,7 +31,7 @@ $image       = isset( $instance[ 'image' ] ) ? $instance[ 'image' ] : '';
 		<h3 class="section-title"><?php echo esc_html( $title ); ?></h3>
 		<?php } ?>
 		<?php if( !empty( $text ) ) { ?>
-		<div class="section-description"><?php echo esc_html( $text ); ?></div>
+		<div class="section-description"><?php echo wp_kses_post( $text ); ?></div>
 		<?php } ?>
 		<?php if ( !empty( $more_url )) { ?>
 		<div class="btn-wrapper">

@@ -31,7 +31,9 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-* TBD =
+== TBD ==
+* Tweak - Allow HTML in Widget Textarea Fields
+* Tweak - Fix the blog widget style 2 design
 * Tweak - Updated fontawesome icon list
 
 == 1.1.3 - 2017-06-23 ==

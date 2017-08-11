@@ -24,6 +24,16 @@ function flash_clean( $var ) {
 }
 
 /**
+ * Clean variables using wp_kses_post
+ * @param  string|array $var
+ * @return string
+ */
+function flash_clean_html( $var ) {
+	return is_array( $var ) ? array_map( 'flash_clean', $var ) : wp_kses_post( $var );
+}
+
+
+/**
  * Sanitize a string destined to be a tooltip.
  *
  * @since  1.1.0  Tooltips are encoded with htmlspecialchars to prevent XSS. Should not be used in conjunction with esc_attr()
