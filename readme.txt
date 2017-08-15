@@ -34,7 +34,7 @@ Get free support at http://themegrill.com/support-forum/
 == TBD ==
 * Tweak - Allow HTML in Widget Textarea Fields
 * Tweak - Fix the blog widget style 2 design
-* Tweak - Updated fontawesome icon list
+* Tweak - Updated fontawesome icon list and it's version to v4.7.0
 * Tweak - Increase the portfolio number in FT: Portfolio widget
 
 == 1.1.3 - 2017-06-23 ==
