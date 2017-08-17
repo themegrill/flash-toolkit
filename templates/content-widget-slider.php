@@ -25,19 +25,19 @@ $align             = isset( $instance['align'] ) ? $instance['align'] : 'slider-
 $controls          = isset( $instance['controls'] ) ? $instance['controls'] : 'slider-control-center';
 $repeatable_slider = isset( $instance['repeatable_slider'] ) ? $instance['repeatable_slider'] : array();
 
-if($screen) {
+if( $screen ) {
 	$slide_status = 'full-screen';
 } else {
 	$slide_status = 'full-width';
 }
 ?>
-<div class="tg-slider-widget <?php echo esc_attr( $color ); ?> <?php echo esc_attr( $align ); ?> <?php echo esc_attr( $controls ); ?> <?php echo esc_attr( $slide_status) ; ?>">
+ <div class="tg-slider-widget <?php echo esc_attr( $color ); ?> <?php echo esc_attr( $align ); ?> <?php echo esc_attr( $controls ); ?> <?php echo esc_attr( $slide_status) ; ?>">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<?php foreach ($repeatable_slider as $slider) {
 			if( $slider['image'] != '' ) { ?>
 			<div class="swiper-slide">
-				<figure class="slider-image">
+				<figure class="slider-image" <?php if ( 'full-screen' == $slide_status ) { echo 'style="background-image: url(' . esc_url( $slider['image'] ) .')"'; } ?>>
 					<img src="<?php echo esc_html( $slider[ 'image' ] ); ?>"/>
 					<div class="overlay"></div>
 				</figure>
