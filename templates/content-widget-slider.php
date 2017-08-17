@@ -37,7 +37,7 @@ if( $screen ) {
 			<?php foreach ($repeatable_slider as $slider) {
 			if( $slider['image'] != '' ) { ?>
 			<div class="swiper-slide">
-				<figure class="slider-image" <?php if ( 'full-screen' == $slide_status ) { echo 'style="background-image: url(' . $slider['image'] .')"'; } ?>>
+				<figure class="slider-image" <?php if ( 'full-screen' == $slide_status ) { echo 'style="background-image: url(' . esc_url( $slider['image'] ); .')"'; } ?>>
 					<img src="<?php echo esc_html( $slider[ 'image' ] ); ?>"/>
 					<div class="overlay"></div>
 				</figure>
