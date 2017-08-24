@@ -3,7 +3,7 @@ Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== TBD ==
+== 1.1.4 - 2017-08-24 ==
 * Tweak - Allow HTML in Widget Textarea Fields
 * Tweak - Fix the blog widget style 2 design
 * Tweak - Updated fontawesome icon list and it's version to v4.7.0
