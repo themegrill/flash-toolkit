@@ -79,6 +79,14 @@ class FT_Install {
 	 */
 	public static function install() {
 		global $wpdb;
+		
+		// Check if we are not already running this routine.
+		if ( 'yes' === get_transient( 'ft_installing' ) ) {
+			return;
+		}
+
+		// If we made it till here nothing is running yet, lets set the transient now.
+		set_transient( 'ft_installing', 'yes', MINUTE_IN_SECONDS * 10 );
 
 		if ( ! defined( 'FT_INSTALLING' ) ) {
 			define( 'FT_INSTALLING', true );
@@ -112,6 +120,7 @@ class FT_Install {
 
 		self::update_ft_version();
 
+		delete_transient( 'ft_installing' );
 		// Flush rules after install
 		do_action( 'flash_toolkit_flush_rewrite_rules' );
 
