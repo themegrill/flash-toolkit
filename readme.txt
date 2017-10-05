@@ -31,6 +31,9 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== Version TBD ==
+* Fix   - Repeater field issues regarding two widgets id
+
 == 1.1.4 - 2017-08-24 ==
 * Tweak - Allow HTML in Widget Textarea Fields
 * Tweak - Fix the blog widget style 2 design
