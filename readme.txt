@@ -2,8 +2,8 @@
 Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.1.4
+Tested up to: 4.8
+Stable tag: 1.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== Version TBD ==
+== 1.1.5 - 2017-10-06 ==
 * Fix   - Repeater field issues regarding two widgets id
 
 == 1.1.4 - 2017-08-24 ==
