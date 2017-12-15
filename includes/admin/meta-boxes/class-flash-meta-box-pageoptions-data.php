@@ -89,7 +89,7 @@ class FT_Meta_Box_Pageoptions_Data {
 	 */
 	public static function save( $post_id ) {
 		// Add/replace data to array
-		$pageheader_size    = flash_clean( $_POST[ 'pageheader_size' ] );
+		$pageheader_size    = isset( $_POST[ 'pageheader_size' ] ) ? flash_clean( $_POST[ 'pageheader_size' ] ) : '';
 		$pageheader_disable = isset( $_POST[ 'pageheader_disable' ] ) ? 'yes' : 'no';
 
 		// Save
