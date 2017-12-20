@@ -196,7 +196,7 @@ abstract class FT_Widget extends WP_Widget {
 					}
 				break;
 				case 'repeater' :
-					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean_html( $new_instance[ $key ] ) : '';
+					$instance[ $key ] = isset( $new_instance[ $key ] ) ? $new_instance[ $key ] : '';
 				break;
 				default:
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? flash_clean( $new_instance[ $key ] ) : '';
