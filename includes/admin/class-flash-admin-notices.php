@@ -108,7 +108,11 @@ class FT_Admin_Notices {
 			}
 
 			$hide_notice = sanitize_text_field( $_GET['flash-toolkit-hide-notice'] );
+
 			self::remove_notice( $hide_notice );
+
+			update_user_meta( get_current_user_id(), 'dismissed_' . $hide_notice . '_notice', true );
+
 			do_action( 'flash_toolkit_hide_' . $hide_notice . '_notice' );
 		}
 	}
@@ -121,6 +125,10 @@ class FT_Admin_Notices {
 
 		if ( $notices ) {
 			wp_enqueue_style( 'flash-toolkit-activation', FT()->plugin_url() . '/assets/css/activation.css', array(), FT_VERSION );
+
+			// Add RTL support
+			wp_style_add_data( 'flash-toolkit-activation', 'rtl', 'replace' );
+
 			foreach ( $notices as $notice ) {
 				if ( ! empty( self::$core_notices[ $notice ] ) && apply_filters( 'flash_toolkit_show_admin_notice', true, $notice ) ) {
 					add_action( 'admin_notices', array( __CLASS__, self::$core_notices[ $notice ] ) );

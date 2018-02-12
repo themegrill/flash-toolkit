@@ -47,6 +47,11 @@ class FT_Admin_Assets {
 		wp_register_style( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/css/admin.css', array(), FT_VERSION );
 		wp_register_style( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/css/widgets.css', array( 'font-awesome', 'wp-color-picker' ), FT_VERSION );
 
+		// Add RTL support for admin styles
+		wp_style_add_data( 'flash-toolkit-menu-styles', 'rtl', 'replace' );
+		wp_style_add_data( 'flash-toolkit-admin-styles', 'rtl', 'replace' );
+		wp_style_add_data( 'flash-toolkit-admin-widgets-styles', 'rtl', 'replace' );
+
 		// Sitewide menu CSS
 		wp_enqueue_style( 'flash-toolkit-menu' );
 
