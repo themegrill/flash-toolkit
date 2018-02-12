@@ -18,17 +18,31 @@ module.exports = function( grunt ){
 			all: [
 				'Gruntfile.js',
 				'<%= dirs.js %>/admin/*.js',
-				'!<%= dirs.js %>/admin/*.min.js',
-				'!<%= dirs.js %>/admin/jquery-ui-timepicker-addon.js',
-				'!<%= dirs.js %>/admin/jquery-ui-timepicker-addon.min.js'
+				'!<%= dirs.js %>/admin/*.min.js'
+			]
+		},
+
+		// Sass linting with Stylelint.
+		stylelint: {
+			options: {
+				stylelintrc: '.stylelintrc'
+			},
+			all: [
+				'<%= dirs.css %>/*.scss',
+				'!<%= dirs.css %>/select2.scss'
 			]
 		},
 
 		// Minify all .js files.
 		uglify: {
 			options: {
-				// Preserve comments that start with a bang.
-				preserveComments: /^!/
+				ie8: true,
+				parse: {
+					strict: false
+				},
+				output: {
+					comments: /@license|@preserve|^!/
+				}
 			},
 			admin: {
 				files: [{
@@ -54,8 +68,7 @@ module.exports = function( grunt ){
 		// Compile all .scss files.
 		sass: {
 			options: {
-				sourceMap: false,
-				includePaths: require( 'node-bourbon' ).includePaths
+				sourcemap: 'none'
 			},
 			compile: {
 				files: [{
@@ -65,6 +78,21 @@ module.exports = function( grunt ){
 					dest: '<%= dirs.css %>/',
 					ext: '.css'
 				}]
+			}
+		},
+
+		// Generate all RTL .css files.
+		rtlcss: {
+			generate: {
+				expand: true,
+				cwd: '<%= dirs.css %>',
+				src: [
+					'*.css',
+					'!select2.css',
+					'!*-rtl.css'
+				],
+				dest: '<%= dirs.css %>/',
+				ext: '-rtl.css'
 			}
 		},
 
@@ -79,13 +107,25 @@ module.exports = function( grunt ){
 			}
 		},
 
+		// Concatenate select2.css onto the admin.css files.
+		concat: {
+			admin: {
+				files: {
+					'<%= dirs.css %>/admin.css' : ['<%= dirs.css %>/select2.css', '<%= dirs.css %>/admin.css'],
+					'<%= dirs.css %>/admin-rtl.css' : ['<%= dirs.css %>/select2.css', '<%= dirs.css %>/admin-rtl.css'],
+					'<%= dirs.css %>/widgets.css' : ['<%= dirs.css %>/select2.css', '<%= dirs.css %>/widgets.css'],
+					'<%= dirs.css %>/widgets-rtl.css' : ['<%= dirs.css %>/select2.css', '<%= dirs.css %>/widgets-rtl.css']
+				}
+			}
+		},
+
 		// Watch changes for assets.
 		watch: {
 			css: {
 				files: [
 					'<%= dirs.css %>/*.scss'
 				],
-				tasks: ['sass', 'cssmin']
+				tasks: ['sass', 'rtlcss', 'cssmin', 'concat']
 			},
 			js: {
 				files: [
@@ -151,13 +191,32 @@ module.exports = function( grunt ){
 		phpcs: {
 			options: {
 				bin: 'vendor/bin/phpcs',
-				standard: './phpcs.ruleset.xml'
 			},
 			dist: {
 				src:  [
 					'**/*.php',         // Include all files
 					'!node_modules/**', // Exclude node_modules/
 					'!vendor/**'        // Exclude vendor/
+				]
+			}
+		},
+
+		// Autoprefixer.
+		postcss: {
+			options: {
+				processors: [
+					require( 'autoprefixer' )({
+						browsers: [
+							'> 0.1%',
+							'ie 8',
+							'ie 9'
+						]
+					})
+				]
+			},
+			dist: {
+				src: [
+					'<%= dirs.css %>/*.css'
 				]
 			}
 		},
@@ -172,16 +231,17 @@ module.exports = function( grunt ){
 					'**',
 					'!.*',
 					'!*.md',
+					'!none',
 					'!*.zip',
 					'!.*/**',
 					'!sass/**',
 					'!vendor/**',
-					'!Gruntfile.js',
+					'!phpcs.xml',
+					'!composer.*',
 					'!package.json',
-					'!composer.json',
-					'!composer.lock',
+					'!Gruntfile.js',
 					'!node_modules/**',
-					'!phpcs.ruleset.xml'
+					'!package-lock.json'
 				],
 				dest: 'flash-toolkit',
 				expand: true
@@ -192,19 +252,23 @@ module.exports = function( grunt ){
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( 'grunt-sass' );
 	grunt.loadNpmTasks( 'grunt-phpcs' );
+	grunt.loadNpmTasks( 'grunt-rtlcss' );
+	grunt.loadNpmTasks( 'grunt-postcss' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 
-	// Register tasks
+	// Register tasks.
 	grunt.registerTask( 'default', [
-		'jshint',
-		'uglify',
-		'css'
+		'js',
+		'css',
+		'i18n'
 	]);
 
 	grunt.registerTask( 'js', [
@@ -214,16 +278,29 @@ module.exports = function( grunt ){
 
 	grunt.registerTask( 'css', [
 		'sass',
-		'cssmin'
+		'rtlcss',
+		'postcss',
+		'cssmin',
+		'concat'
 	]);
 
+	// Only an alias to 'default' task.
 	grunt.registerTask( 'dev', [
-		'default',
+		'default'
+	]);
+
+	grunt.registerTask( 'i18n', [
+		'checktextdomain',
 		'makepot'
 	]);
 
 	grunt.registerTask( 'zip', [
 		'dev',
+		'compress'
+	]);
+
+	grunt.registerTask( 'zip', [
+		'default',
 		'compress'
 	]);
 };
