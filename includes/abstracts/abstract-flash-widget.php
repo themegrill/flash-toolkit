@@ -257,9 +257,9 @@ abstract class FT_Widget extends WP_Widget {
 			<?php foreach ( $this->settings as $key => $setting ) {
 				$current_setting_group = isset( $setting['group'] ) ? $setting['group'] : __( 'General', 'flash-toolkit' );
 				if ( $current_setting_group == $group || empty( $group_name_array ) ) {
-					$class = isset( $setting['class'] ) ? $setting['class'] : '';
-					$value = isset( $instance[ $key ] ) ? $instance[ $key ] : $setting['std'];
-					 $field_width = isset( $setting['field_width'] ) ? $setting['field_width'] : 'col-full';
+					$class       = isset( $setting['class'] ) ? $setting['class'] : '';
+					$value       = isset( $instance[ $key ] ) ? $instance[ $key ] : $setting['std'];
+					$field_width = isset( $setting['field_width'] ) ? $setting['field_width'] : 'col-full';
 
 					switch ( $setting['type'] ) {
 
