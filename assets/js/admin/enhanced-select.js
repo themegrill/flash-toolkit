@@ -70,7 +70,7 @@ jQuery( function( $ ) {
 						templateResult: getEnhancedSelectFormatResult
 					}, getEnhancedSelectFormatString() );
 
-					$( this ).select2( select2_args ).addClass( 'enhanced' );
+					$( this ).selectWoo( select2_args ).addClass( 'enhanced' );
 				});
 
 				// Font Picker
@@ -81,7 +81,7 @@ jQuery( function( $ ) {
 						placeholder: $( this ).data( 'placeholder' )
 					}, getEnhancedSelectFormatString() );
 
-					$( this ).select2( select2_args ).addClass( 'enhanced' );
+					$( this ).selectWoo( select2_args ).addClass( 'enhanced' );
 				});
 
 				// Enhanced Select
@@ -92,7 +92,7 @@ jQuery( function( $ ) {
 						placeholder: $( this ).data( 'placeholder' )
 					}, getEnhancedSelectFormatString() );
 
-					$( this ).select2( select2_args ).addClass( 'enhanced' );
+					$( this ).selectWoo( select2_args ).addClass( 'enhanced' );
 				});
 
 			})

@@ -69,13 +69,6 @@ class FT_Meta_Box_Portfolio_Data {
 
 				echo '</div>';
 
-				echo '<div class="options_group">';
-
-					// Example Checkbox
-					flash_toolkit_wp_checkbox( array( 'id' => '_example_cb', 'wrapper_class' => 'show_to_all_layout', 'label' => __( 'Sample Checkbox', 'flash-toolkit' ), 'description' => __( 'Enable example checkbox.', 'flash-toolkit' ) ) );
-
-				echo '</div>';
-
 				do_action( 'flash_toolkit_portfolio_options_general' );
 
 			?></div>

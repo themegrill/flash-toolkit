@@ -6,10 +6,8 @@
 /**
  * Imports
  */
-@import "bourbon";
 @import 'mixins';
 @import 'variables';
-@import 'select2';
 
 /**
  * Styling begins
@@ -44,7 +42,7 @@ ul.tg-widget-repeater-field-items {
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
-					@include user-select();
+					user-select: none;
 				}
 
 				.in-accordion-title {
@@ -238,7 +236,9 @@ ul.tg-widget-repeater-field-items {
 .flash-toolkit-delete-sidebar {
 	color: #aaa;
 	z-index: 100;
-	@include position(absolute, 12px 45px null null);
+	position: absolute;
+	top: 14px;
+	right: 45px;
 
 	&::before {
 		@include iconbeforedashicons( '\f158' );

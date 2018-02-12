@@ -6,19 +6,19 @@
 /**
  * Imports
  */
-@import "bourbon";
 @import "mixins";
 @import "variables";
-@import "select2";
 
 /**
  * Styling begins
  */
-#portfolio_options{
+#portfolio_options,
+#flash-toolkit-portfolio-data {
 	overflow: hidden;
 }
 
 #portfolio_options,
+#flash-toolkit-portfolio-data,
 .flash-toolkit {
 	.panel-wrap {
 		overflow: hidden;
@@ -90,7 +90,8 @@
 	}
 }
 
-#portfolio_options {
+#flash-toolkit-pageheader-data,
+#flash-toolkit-portfolio-data {
 	.inside {
 		margin: 0;
 		padding: 0;
@@ -270,7 +271,8 @@
 	}
 }
 
-#portfolio_options {
+#portfolio_options,
+#flash-toolkit-portfolio-data {
 	.panel-wrap {
 		background: #fff;
 	}
@@ -467,15 +469,18 @@ img.tips {
  * Optimisation for screens 900px and smaller
  */
 @media only screen and (max-width: 900px) {
-	#portfolio_options ul.portfolio_data_tabs {
+	#portfolio_options ul.portfolio_data_tabs,
+	#flash-toolkit-portfolio-data ul.portfolio_data_tabs {
 		width: 10%;
 	}
 
-	#portfolio_options .flash_toolkit_options_panel {
+	#portfolio_options .flash_toolkit_options_panel,
+	#flash-toolkit-portfolio-data .flash_toolkit_options_panel {
 		width: 90%;
 	}
 
-	#portfolio_options ul.portfolio_data_tabs li a {
+	#portfolio_options ul.portfolio_data_tabs li a,
+	#flash-toolkit-portfolio-data ul.portfolio_data_tabs li a {
 		position: relative;
 		text-indent: -999px;
 		padding: 10px;
@@ -499,7 +504,8 @@ img.tips {
  * Optimisation for screens 782px and smaller
  */
 @media only screen and (max-width: 782px) {
-	#portfolio_options .checkbox {
+	#portfolio_options .checkbox,
+	#flash-toolkit-portfolio-data .checkbox {
 		width: 25px;
 	}
 }
