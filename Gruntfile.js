@@ -89,6 +89,8 @@ module.exports = function( grunt ){
 				src: [
 					'*.css',
 					'!select2.css',
+					'!fontawesome.css',
+					'!jquery-ui-timepicker-addon.css',
 					'!*-rtl.css'
 				],
 				dest: '<%= dirs.css %>/',
