@@ -77,12 +77,12 @@ class FT_Admin_Assets {
 		$suffix    = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Register admin scripts.
-		wp_register_script( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/js/admin/jquery-ui-timepicker-addon' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-core' ), '1.6.3' );
 		wp_register_script( 'flash-toolkit-admin', FT()->plugin_url() . '/assets/js/admin/admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-tiptip' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-widgets', FT()->plugin_url() . '/assets/js/admin/widgets' . $suffix . '.js', array( 'jquery', 'jquery-ui-sortable', 'wp-util', 'underscore', 'backbone', 'flash-enhanced-select', 'wp-color-picker' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-sidebars', FT()->plugin_url() . '/assets/js/admin/sidebars' . $suffix . '.js', array( 'jquery' ), FT_VERSION );
 		wp_register_script( 'flash-toolkit-admin-meta-boxes', FT()->plugin_url() . '/assets/js/admin/meta-boxes' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'jquery-tiptip', 'flash-enhanced-select' ), FT_VERSION );
 		wp_register_script( 'jquery-tiptip', FT()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), FT_VERSION, true );
+		wp_register_script( 'jquery-ui-timepicker-addon', FT()->plugin_url() . '/assets/js/admin/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-core' ), '1.6.3' );
 		wp_register_script( 'selectWoo', FT()->plugin_url() . '/assets/js/selectWoo/selectWoo' . $suffix . '.js', array( 'jquery' ), '4.0.3' );
 		wp_register_script( 'flash-enhanced-select', FT()->plugin_url() . '/assets/js/admin/enhanced-select' . $suffix . '.js', array( 'jquery', 'selectWoo' ), FT_VERSION );
 		wp_localize_script( 'flash-enhanced-select', 'flash_enhanced_select_params', array(

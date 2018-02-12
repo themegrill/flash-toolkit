@@ -142,7 +142,7 @@ module.exports = function( grunt ){
 		makepot: {
 			options: {
 				type: 'wp-plugin',
-				domainPath: 'languages',
+				domainPath: 'i18n/languages',
 				potHeaders: {
 					'report-msgid-bugs-to': 'themegrill@gmail.com',
 					'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
@@ -192,7 +192,7 @@ module.exports = function( grunt ){
 		// PHP Code Sniffer.
 		phpcs: {
 			options: {
-				bin: 'vendor/bin/phpcs',
+				bin: 'vendor/bin/phpcs'
 			},
 			dist: {
 				src:  [

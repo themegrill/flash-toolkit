@@ -6,6 +6,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 $screen            = get_current_screen();
 $screen_id         = $screen ? $screen->id : '';
 $field_widget_id   = in_array( $screen_id, array( 'widgets', 'customize' ), true ) ? $this->id : $this->widget_id;
