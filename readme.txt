@@ -31,15 +31,16 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+
 == 1.1.5 - 2017-10-06 ==
-* Fix   - Repeater field issues regarding two widgets id
+* Fix - Repeater field issues regarding two widgets id
 
 == 1.1.4 - 2017-08-24 ==
 * Tweak - Allow HTML in Widget Textarea Fields
 * Tweak - Fix the blog widget style 2 design
 * Tweak - Updated fontawesome icon list and it's version to v4.7.0
 * Tweak - Increase the portfolio number in FT: Portfolio widget
-* Fix 	- Slider image not centered in full view port height
+* Fix - Slider image not centered in full view port height
 
 == 1.1.3 - 2017-06-23 ==
 * Fix - Datepicker Field Not Working in Widget Area
