@@ -3,7 +3,7 @@ Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,7 +32,7 @@ Get free support at http://themegrill.com/support-forum/
 
 == Changelog ==
 
-== 1.1.6 - XX-02-2018 ==
+== 1.1.6 - 13-02-2018 ==
 * Fix - Repeater field issues regarding widget ID.
 * Tweak - Added RTL styles Support.
 * Tweak - Updated fontawesome to 4.7.0.
