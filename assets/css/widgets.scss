@@ -342,12 +342,18 @@ ul.tg-widget-repeater-field-items {
 
 
 .flash-toolkit-tab {
+
 		.ft-widget-col {
 			display: inline-block;
 			width: 100%;
 
 			&.col-half {
 				width: 50%;
+				margin-right: -2px;
+			}
+
+			&.col-third {
+				width: calc(33.33% - 1px);
 				margin-right: -2px;
 			}
 		}
