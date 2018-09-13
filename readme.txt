@@ -31,6 +31,9 @@ Get free support at http://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== TBD =
+* Tweak - Alt, title attributes for slider image.
+
 == 1.1.7 - 03-05-2018 ==
 * Tweak - Added css for third-column.
 
