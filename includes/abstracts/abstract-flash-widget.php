@@ -444,6 +444,12 @@ abstract class FT_Widget extends WP_Widget {
 							<?php
 							break;
 
+						case 'heading' :
+							?>
+							<h3 class="ft-widget-title"><?php echo esc_html( $setting['label'] ); ?></h3>
+							<?php
+							break;
+
 						case 'repeater' :
 							include( dirname( __FILE__ ) . '/views/html-admin-tmpl-repeater.php' );
 						break;
