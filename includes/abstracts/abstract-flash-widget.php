@@ -195,6 +195,9 @@ abstract class FT_Widget extends WP_Widget {
 						$instance[ $key ] = $sanitized_date->format("Y-m-d H:i");
 					}
 				break;
+				case 'color' :
+					$instance[ $key ] = isset( $new_instance[ $key ] ) ? sanitize_hex_color(  $new_instance[ $key ] ) : '';
+					break;
 				case 'repeater' :
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? $new_instance[ $key ] : '';
 				break;
@@ -431,6 +434,15 @@ abstract class FT_Widget extends WP_Widget {
 							</p>
 							<?php
 						break;
+
+						case 'color' :
+							?>
+							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
+								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo esc_html( $setting['label'] ); ?></label>
+								<input class="widefat flash-color-picker <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
+							</p>
+							<?php
+							break;
 
 						case 'repeater' :
 							include( dirname( __FILE__ ) . '/views/html-admin-tmpl-repeater.php' );

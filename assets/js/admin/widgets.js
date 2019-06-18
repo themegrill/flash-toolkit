@@ -76,9 +76,21 @@ jQuery( function ( $ ) {
 		});
 	}).trigger( 'flash-toolkit-date-picker-init' );
 
+	$( document.body ).on( 'flash-toolkit-color-picker-init', function() {
+
+		$( 'input.flash-color-picker' ).each( function () {
+			$( this ).wpColorPicker( {
+				change : _.throttle( function () { // For Customizer
+					$( this ).trigger( 'change' );
+				}, 3000 )
+			} );
+		} );
+	}).trigger( 'flash-toolkit-color-picker-init' );
+
 
 	$( document.body ).on( 'panelsopen', function() {
 		$( document.body ).trigger( 'flash-toolkit-date-picker-init' );
+		$( document.body ).trigger( 'flash-toolkit-color-picker-init' );
 	});
 
 	// Availability options.
@@ -320,6 +332,7 @@ jQuery( function ( $ ) {
 			$( document.body ).trigger( 'flash-toolkit-init-media-preview' );
 			$( document.body ).trigger( 'flash-toolkit-init-accordion-title' );
 			$( document.body ).trigger( 'flash-toolkit-date-picker-init' );
+			$( document.body ).trigger( 'flash-toolkit-color-picker-init' );
 		}
 	});
 

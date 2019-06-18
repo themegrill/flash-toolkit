@@ -79,7 +79,7 @@ class FT_Widget_CTA extends FT_Widget {
 					'call-to-action-section-layout-2' => FT()-> plugin_url() . '/assets/images/call-to-action-side-by-side-content.png',
 				),
 				'group' => __( 'Styling', 'flash-toolkit' ),
-			)
+			),
 		) );
 
 		parent::__construct();
