@@ -70,16 +70,6 @@ class FT_Widget_CTA extends FT_Widget {
 				'group' => __( 'General', 'flash-toolkit' ),
 				'field_width'	=> 'col-half',
 			),
-			'cta-title-heading'    => array(
-				'type'  => 'heading',
-				'label' => __( 'Call to action Title', 'flash-toolkit' ),
-				'group' => __( 'Styling', 'flash-toolkit' ),
-			),
-			'cta-subtitle-heading' => array(
-				'type'  => 'heading',
-				'label' => __( 'Call to Action Subtitle', 'flash-toolkit' ),
-				'group' => __( 'Styling', 'flash-toolkit' ),
-			),
 			'style' => array(
 				'type'    => 'radio-image',
 				'std'     => 'tg-cta-layout-1',
