@@ -439,7 +439,7 @@ abstract class FT_Widget extends WP_Widget {
 							?>
 							<p class="ft-widget-col <?php echo esc_attr( $field_width ); ?>">
 								<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo esc_html( $setting['label'] ); ?></label>
-								<input class="widefat flash-color-picker <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
+								<input class="widefat flash-color-picker <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" data-default-color="<?php echo esc_attr( $value ); ?>" />
 							</p>
 							<?php
 							break;

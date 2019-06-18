@@ -78,12 +78,12 @@ jQuery( function ( $ ) {
 
 	$( document.body ).on( 'flash-toolkit-color-picker-init', function() {
 
-		$( 'input.flash-color-picker' ).each( function () {
-			$( this ).wpColorPicker( {
-				change : _.throttle( function () { // For Customizer
-					$( this ).trigger( 'change' );
-				}, 3000 )
-			} );
+		function initColorPicker( color ) {
+			color.find( '.flash-color-picker' ).wpColorPicker();
+		}
+
+		$( '.ft-widget-col:has(.flash-color-picker)' ).each( function() {
+			initColorPicker( $( this ) );
 		} );
 	}).trigger( 'flash-toolkit-color-picker-init' );
 
