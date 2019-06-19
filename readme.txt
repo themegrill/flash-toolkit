@@ -2,7 +2,7 @@
 Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
-Tested up to: 5.2.1
+Tested up to: 5.2.2
 Stable tag: 1.1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== TBD =
+* Tweak - Remove strings from translation for unrequired strings.
+
 == 1.1.8 - 13-09-2018 =
 * Tweak - Alt, title attributes for slider image.
 
