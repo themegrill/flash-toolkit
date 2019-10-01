@@ -24,6 +24,10 @@ class FT_Admin_Notices {
 	 */
 	private static $notices = array();
 
+	private static $current_user_data;
+
+	protected static $active_theme;
+
 	/**
 	 * Array of notices - name => callback
 	 * @var array
@@ -41,9 +45,14 @@ class FT_Admin_Notices {
 		add_action( 'wp_loaded', array( __CLASS__, 'hide_notices' ) );
 		add_action( 'shutdown', array( __CLASS__, 'store_notices' ) );
 
+		self::$active_theme = wp_get_theme();
+
+		add_action( 'wp_loaded', array( __CLASS__, 'pro_theme_notice' ) );
+
 		if ( current_user_can( 'manage_flash_toolkit' ) ) {
 			add_action( 'admin_print_styles', array( __CLASS__, 'add_notices' ) );
 		}
+
 	}
 
 	/**
@@ -51,6 +60,33 @@ class FT_Admin_Notices {
 	 */
 	public static function store_notices() {
 		update_option( 'flash_toolkit_admin_notices', self::get_notices() );
+	}
+
+	/**
+	 * Hooks for showing Pro theme notice.
+	 */
+	public static function pro_theme_notice() {
+		global $current_user;
+		self::$current_user_data = $current_user;
+
+		$option = get_option( 'tg_pro_theme_notice_start_time' );
+		if ( ! $option ) {
+			update_option( 'tg_pro_theme_notice_start_time', time() );
+		}
+
+		add_action( 'admin_notices', array( __CLASS__, 'pro_theme_notice_markup' ), 0 );
+	}
+
+	public static function pro_theme_notice_markup() {
+		?>
+
+		<div class="updated pro-theme-notice">
+			<p>
+			</p>
+			<a class="notice-dismiss" href="?tg_nag_pro_theme_notice_partial_ignore=1"></a>
+		</div>
+
+		<?php
 	}
 
 	/**
