@@ -82,30 +82,51 @@ class FT_Admin_Notices {
 
 		add_action( 'admin_notices', array( __CLASS__, 'pro_notice_markup' ), 0 );
 		add_action( 'admin_init', array( __CLASS__, 'pro_notice_temporary_ignore' ), 0 );
+		add_action( 'admin_init', array( __CLASS__, 'pro_notice_permanent_ignore' ), 0 );
 
 	}
 
 	public static function pro_notice_markup() {
-		if ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true ) > strtotime( '-1 min' ) ) {
+		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore_nag', true );
+		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true );
+
+		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) ) || ( $temporary_ignore > strtotime( '-1 min' ) ) || $permanent_ignore ) {
 			return;
 		}
 		?>
 
 		<div class="updated pro-theme-notice">
-			<p>
+			<h3 class="pro-notice-heading"><?php esc_html_e( 'Unlock true potential of Flash', 'flash-toolkit' ); ?></h3>
+
+			<p class="pro-notice-message">
 				<?php
-				$pro_link = '<a target="_blank" href=" ' . esc_url( "https://themegrill.com/plans-pricing/" ) . ' ">' . esc_html( 'Go Pro' ) . ' </a>';
 				printf(
 					esc_html__(
-						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can %2$s ', 'themegrill-demo-importer'
+						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can click link below: ', 'themegrill-demo-importer'
 					),
-					self::$active_theme,
-					$pro_link
+					self::$active_theme
 				);
 				?>
 			</p>
+
 			<a class="notice-dismiss" href="?flash_pro_notice_temporary_ignore_nag=1"></a>
-		</div>
+
+			<div class="ft-cta">
+				<?php
+				$pro_link = '<a target="_blank" href=" ' . esc_url( "https://themegrill.com/plans-pricing/" ) . ' ">' . esc_html( 'Go Pro' ) . ' </a>';
+				?>
+
+				<a href="https://themegrill.com/plans-pricing/" class="btn button-primary" target="_blank">
+					<span class="dashicons dashicons-thumbs-up"></span>
+					<span><?php esc_html_e( 'Go Pro', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="?flash_pro_notice_permanent_ignore_nag=1" class="btn button-secondary">
+					<span class="dashicons dashicons-smiley"></span>
+					<span><?php esc_html_e( 'I already have Pro version', 'flash-toolkit' ); ?></span>
+				</a>
+			</div> <!-- /.ft-cta -->
+		</div> <!-- /.pro-theme-notice -->
 
 		<?php
 	}
@@ -115,6 +136,16 @@ class FT_Admin_Notices {
 
 		if ( isset( $_GET['flash_pro_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_temporary_ignore_nag'] ) {
 			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore_nag', time() );
+		}
+	}
+
+	public static function pro_notice_permanent_ignore() {
+
+		global $current_user;
+		$user_id = $current_user->ID;
+
+		if ( isset( $_GET['flash_pro_notice_permanent_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_permanent_ignore_nag'] ) {
+			add_user_meta( $user_id, 'flash_pro_notice_permanent_ignore_nag', 'true', true );
 		}
 	}
 
