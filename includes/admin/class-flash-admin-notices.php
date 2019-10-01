@@ -102,7 +102,7 @@ class FT_Admin_Notices {
 				<?php
 				printf(
 					esc_html__(
-						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can click link below: ', 'themegrill-demo-importer'
+						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can click link below: ', 'flash-toolkit'
 					),
 					self::$active_theme
 				);
