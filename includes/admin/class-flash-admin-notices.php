@@ -90,7 +90,6 @@ class FT_Admin_Notices {
 		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true );
 		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore_nag', true );
 
-
 		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) ) || ( $temporary_ignore > strtotime( '-1 min' ) ) || $permanent_ignore ) {
 			return;
 		}
@@ -108,7 +107,7 @@ class FT_Admin_Notices {
 					self::$active_theme
 				);
 				?>
-			</p>
+			</p> <!-- /.pro-notice-message -->
 
 			<a class="notice-dismiss" href="?flash_pro_notice_temporary_ignore_nag=1"></a>
 
