@@ -70,7 +70,7 @@ class FT_Admin_Notices {
 		global $current_user;
 		self::$current_user_data = $current_user;
 
-		if ( 'Flash' !== self::$active_theme ) {
+		if ( 'Flash' != self::$active_theme ) {
 			return;
 		}
 
@@ -80,10 +80,12 @@ class FT_Admin_Notices {
 		}
 
 		add_action( 'admin_notices', array( __CLASS__, 'pro_theme_notice_markup' ), 0 );
+		add_action( 'admin_init', array( __CLASS__, 'pro_theme_notice_temporary_ignore' ), 0 );
+
 	}
 
 	public static function pro_theme_notice_markup() {
-		if ( get_option( 'tg_pro_theme_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'tg_nag_pro_theme_notice_partial_ignore', true ) > strtotime( '-1 min' ) ) {
+		if ( get_option( 'tg_pro_theme_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'flash_pro_theme_notice_temporary_ignore_nag', true ) > strtotime( '-1 min' ) ) {
 			return;
 		}
 		?>
@@ -101,10 +103,18 @@ class FT_Admin_Notices {
 				);
 				?>
 			</p>
-			<a class="notice-dismiss" href="?tg_nag_pro_theme_notice_partial_ignore=1"></a>
+			<a class="notice-dismiss" href="?flash_pro_theme_notice_temporary_ignore_nag=1"></a>
 		</div>
 
 		<?php
+	}
+
+	public static function pro_theme_notice_temporary_ignore() {
+		$user_id = self::$current_user_data->ID;
+
+		if ( isset( $_GET['flash_pro_theme_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_theme_notice_temporary_ignore_nag'] ) {
+			update_user_meta( $user_id, 'flash_pro_theme_notice_temporary_ignore_nag', time() );
+		}
 	}
 
 	/**
