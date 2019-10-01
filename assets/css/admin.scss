@@ -548,6 +548,7 @@ img.tips {
 	padding: 20px 10px;
 	position: relative;
 }
+
 .updated.pro-theme-notice p {
 	margin: 0;
 	padding: 0;
@@ -556,4 +557,16 @@ img.tips {
 .updated.pro-theme-notice .notice-dismiss {
 	position: absolute;
 	text-decoration: none;
+}
+
+.pro-theme-notice .pro-notice-heading {
+	margin: 0 0 10px;
+}
+
+.pro-theme-notice p.pro-notice-message {
+	margin: 0 0 15px;
+}
+
+.pro-theme-notice .ft-cta .dashicons {
+	line-height: 26px;
 }
