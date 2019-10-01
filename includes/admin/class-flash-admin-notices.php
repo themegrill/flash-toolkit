@@ -52,7 +52,7 @@ class FT_Admin_Notices {
 			add_action( 'admin_print_styles', array( __CLASS__, 'add_notices' ) );
 		}
 
-		add_action( 'wp_loaded', array( __CLASS__, 'pro_theme_notice' ) );
+		add_action( 'wp_loaded', array( __CLASS__, 'pro_notice' ) );
 
 	}
 
@@ -66,7 +66,8 @@ class FT_Admin_Notices {
 	/**
 	 * Hooks for showing Pro theme notice.
 	 */
-	public static function pro_theme_notice() {
+	public static function pro_notice() {
+
 		global $current_user;
 		self::$current_user_data = $current_user;
 
@@ -74,18 +75,18 @@ class FT_Admin_Notices {
 			return;
 		}
 
-		$option = get_option( 'tg_pro_theme_notice_start_time' );
+		$option = get_option( 'flash_pro_notice_start_time' );
 		if ( ! $option ) {
-			update_option( 'tg_pro_theme_notice_start_time', time() );
+			update_option( 'flash_pro_notice_start_time', time() );
 		}
 
-		add_action( 'admin_notices', array( __CLASS__, 'pro_theme_notice_markup' ), 0 );
-		add_action( 'admin_init', array( __CLASS__, 'pro_theme_notice_temporary_ignore' ), 0 );
+		add_action( 'admin_notices', array( __CLASS__, 'pro_notice_markup' ), 0 );
+		add_action( 'admin_init', array( __CLASS__, 'pro_notice_temporary_ignore' ), 0 );
 
 	}
 
-	public static function pro_theme_notice_markup() {
-		if ( get_option( 'tg_pro_theme_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'flash_pro_theme_notice_temporary_ignore_nag', true ) > strtotime( '-1 min' ) ) {
+	public static function pro_notice_markup() {
+		if ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true ) > strtotime( '-1 min' ) ) {
 			return;
 		}
 		?>
@@ -103,17 +104,17 @@ class FT_Admin_Notices {
 				);
 				?>
 			</p>
-			<a class="notice-dismiss" href="?flash_pro_theme_notice_temporary_ignore_nag=1"></a>
+			<a class="notice-dismiss" href="?flash_pro_notice_temporary_ignore_nag=1"></a>
 		</div>
 
 		<?php
 	}
 
-	public static function pro_theme_notice_temporary_ignore() {
+	public static function pro_notice_temporary_ignore() {
 		$user_id = self::$current_user_data->ID;
 
-		if ( isset( $_GET['flash_pro_theme_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_theme_notice_temporary_ignore_nag'] ) {
-			update_user_meta( $user_id, 'flash_pro_theme_notice_temporary_ignore_nag', time() );
+		if ( isset( $_GET['flash_pro_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_temporary_ignore_nag'] ) {
+			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore_nag', time() );
 		}
 	}
 

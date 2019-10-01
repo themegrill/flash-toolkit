@@ -81,6 +81,7 @@ final class FlashToolkit {
 	 */
 	private function init_hooks() {
 		register_activation_hook( __FILE__, array( 'FT_Install', 'install' ) );
+		register_deactivation_hook( __FILE__, array( 'FT_Install', 'deactivate' ) );
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'admin_notices', array( $this, 'theme_support_missing_notice' ) );
 	}

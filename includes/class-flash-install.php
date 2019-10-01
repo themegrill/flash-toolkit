@@ -79,7 +79,7 @@ class FT_Install {
 	 */
 	public static function install() {
 		global $wpdb;
-		
+
 		// Check if we are not already running this routine.
 		if ( 'yes' === get_transient( 'ft_installing' ) ) {
 			return;
@@ -140,6 +140,19 @@ class FT_Install {
 
 		// Trigger action
 		do_action( 'flash_toolkit_installed' );
+	}
+
+	/**
+	 * Install FT.
+	 */
+	public static function deactivate() {
+
+		if ( get_option( 'flash_pro_notice_start_time' ) ) {
+			delete_option( 'flash_pro_notice_start_time' );
+		}
+
+		// Trigger action
+		do_action( 'flash_toolkit_deactivate' );
 	}
 
 	/**
