@@ -47,11 +47,12 @@ class FT_Admin_Notices {
 
 		self::$active_theme = wp_get_theme();
 
-		add_action( 'wp_loaded', array( __CLASS__, 'pro_theme_notice' ) );
 
 		if ( current_user_can( 'manage_flash_toolkit' ) ) {
 			add_action( 'admin_print_styles', array( __CLASS__, 'add_notices' ) );
 		}
+
+		add_action( 'wp_loaded', array( __CLASS__, 'pro_theme_notice' ) );
 
 	}
 
@@ -69,6 +70,10 @@ class FT_Admin_Notices {
 		global $current_user;
 		self::$current_user_data = $current_user;
 
+		if ( 'Flash' !== self::$active_theme ) {
+			return;
+		}
+
 		$option = get_option( 'tg_pro_theme_notice_start_time' );
 		if ( ! $option ) {
 			update_option( 'tg_pro_theme_notice_start_time', time() );
@@ -78,10 +83,23 @@ class FT_Admin_Notices {
 	}
 
 	public static function pro_theme_notice_markup() {
+		if ( get_option( 'tg_pro_theme_notice_start_time' ) > strtotime( '-1 min' ) || get_user_meta( self::$current_user_data->ID, 'tg_nag_pro_theme_notice_partial_ignore', true ) > strtotime( '-1 min' ) ) {
+			return;
+		}
 		?>
 
 		<div class="updated pro-theme-notice">
 			<p>
+				<?php
+				$pro_link = '<a target="_blank" href=" ' . esc_url( "https://themegrill.com/plans-pricing/" ) . ' ">' . esc_html( 'Go Pro' ) . ' </a>';
+				printf(
+					esc_html__(
+						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can %2$s ', 'themegrill-demo-importer'
+					),
+					self::$active_theme,
+					$pro_link
+				);
+				?>
 			</p>
 			<a class="notice-dismiss" href="?tg_nag_pro_theme_notice_partial_ignore=1"></a>
 		</div>
