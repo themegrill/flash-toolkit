@@ -542,3 +542,18 @@ img.tips {
 	line-height: 1.85em;
 	font-size: 14px;
 }
+
+/* Flash Pro notice */
+.updated.pro-theme-notice {
+	padding: 20px 10px;
+	position: relative;
+}
+.updated.pro-theme-notice p {
+	margin: 0;
+	padding: 0;
+}
+
+.updated.pro-theme-notice .notice-dismiss {
+	position: absolute;
+	text-decoration: none;
+}
