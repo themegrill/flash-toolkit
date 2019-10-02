@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== TBD ==
+* Fix - Default value for CTA style.
+
 == 1.1.9 - 19-06-2019 =
 * Tweak - Remove strings from translation for unrequired strings.
 
