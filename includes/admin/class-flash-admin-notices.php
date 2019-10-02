@@ -111,7 +111,7 @@ class FT_Admin_Notices {
 		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true );
 		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore_nag', true );
 
-		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) ) || ( $temporary_ignore > strtotime( '-1 min' ) ) || $permanent_ignore ) {
+		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 month' ) ) || ( $temporary_ignore > strtotime( '-1 month' ) ) || $permanent_ignore ) {
 			return;
 		}
 		?>
