@@ -31,11 +31,12 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== TBD ==
-* Add - Default values for CTA widget.
+= TBD =
+* Tweak - Default values for CTA widget.
+* Tweak - Display Flash Pro notice.
 
 == 1.1.9 - 19-06-2019 =
-* Tweak - Remove strings from translation for unrequired strings.
+* Tweak - Remove strings from translation for unnecessary strings.
 
 == 1.1.8 - 13-09-2018 =
 * Tweak - Alt, title attributes for slider image.

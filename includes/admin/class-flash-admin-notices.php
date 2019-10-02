@@ -20,12 +20,30 @@ class FT_Admin_Notices {
 
 	/**
 	 * Stores notices.
+	 *
 	 * @var array
 	 */
 	private static $notices = array();
 
 	/**
+	 * Currently logged in user data.
+	 *
+	 * @since 1.2.0
+	 * @var object
+	 */
+	public static $current_user_data;
+
+	/**
+	 * Currently activated theme name.
+	 *
+	 * @since 1.2.0
+	 * @var string
+	 */
+	protected static $active_theme;
+
+	/**
 	 * Array of notices - name => callback
+	 *
 	 * @var array
 	 */
 	private static $core_notices = array(
@@ -41,9 +59,15 @@ class FT_Admin_Notices {
 		add_action( 'wp_loaded', array( __CLASS__, 'hide_notices' ) );
 		add_action( 'shutdown', array( __CLASS__, 'store_notices' ) );
 
+		self::$active_theme = wp_get_theme();
+
+
 		if ( current_user_can( 'manage_flash_toolkit' ) ) {
 			add_action( 'admin_print_styles', array( __CLASS__, 'add_notices' ) );
 		}
+
+		add_action( 'wp_loaded', array( __CLASS__, 'pro_notice' ) );
+
 	}
 
 	/**
@@ -54,7 +78,125 @@ class FT_Admin_Notices {
 	}
 
 	/**
+	 * Hooks for showing Pro theme notice.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function pro_notice() {
+
+		global $current_user;
+		self::$current_user_data = $current_user;
+
+		if ( 'Flash' != self::$active_theme ) {
+			return;
+		}
+
+		$option = get_option( 'flash_pro_notice_start_time' );
+		if ( ! $option ) {
+			update_option( 'flash_pro_notice_start_time', time() );
+		}
+
+		add_action( 'admin_notices', array( __CLASS__, 'pro_notice_markup' ), 0 );
+		add_action( 'admin_init', array( __CLASS__, 'pro_notice_temporary_ignore' ), 0 );
+		add_action( 'admin_init', array( __CLASS__, 'pro_notice_permanent_ignore' ), 0 );
+
+	}
+
+	/**
+	 * Shows the Pro version notice as per various conditions.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function pro_notice_markup() {
+		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore', true );
+		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore', true );
+
+		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-20 day' ) ) || ( $temporary_ignore > strtotime( '-20 day' ) ) || $permanent_ignore ) {
+			return;
+		}
+		?>
+
+		<div class="updated pro-theme-notice">
+			<h3 class="pro-notice-heading"><?php esc_html_e( 'Unlock true potential of Flash!', 'flash-toolkit' ); ?></h3>
+
+			<p class="pro-notice-message">
+				<?php
+				printf(
+					esc_html__(
+						'Howdy, %1$s! You\'ve been using %2$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %3$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
+					),
+					'<strong>' . esc_html( self::$current_user_data->display_name ) . '</strong>',
+					self::$active_theme,
+					'<code>upgrade15</code>'
+				);
+				?>
+			</p> <!-- /.pro-notice-message -->
+
+			<a class="notice-dismiss" href="?flash_pro_notice_temporary_ignore_nag=1"></a>
+
+			<div class="ft-cta">
+				<?php
+				$pro_link = '<a target="_blank" href=" ' . esc_url( "https://themegrill.com/plans-pricing/" ) . ' ">' . esc_html( 'Go Pro' ) . ' </a>';
+				?>
+
+				<a href="https://themegrill.com/pricing/?pid=1294971&vid=1294974&utm_source=dashboard-message&utm_medium=view-pricing-link&utm_campaign=upgrade"
+				   class="btn button-primary" target="_blank">
+					<span class="dashicons dashicons-thumbs-up"></span>
+					<span class="cta-text"><?php esc_html_e( 'Go Pro', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="?flash_pro_notice_temporary_ignore_nag=1" class="btn button-secondary">
+					<span class="dashicons dashicons-calendar-alt"></span>
+					<span class="cta-text"><?php esc_html_e( 'Remind me later', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="?flash_pro_notice_permanent_ignore_nag=1" class="btn button-secondary">
+					<span class="dashicons dashicons-smiley"></span>
+					<span class="cta-text"><?php esc_html_e( 'I already have Pro version', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="https://themegrill.com/contact/" class="btn button-secondary" target="_blank">
+					<span class="dashicons dashicons-edit"></span>
+					<span class="cta-text"><?php esc_html_e( 'Got any queries?', 'flash-toolkit' ); ?></span>
+				</a>
+
+			</div> <!-- /.ft-cta -->
+		</div> <!-- /.pro-theme-notice -->
+
+		<?php
+	}
+
+	/**
+	 * Removes the notice temporarily for the specific user only.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function pro_notice_temporary_ignore() {
+		$user_id = self::$current_user_data->ID;
+
+		if ( isset( $_GET['flash_pro_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_temporary_ignore_nag'] ) {
+			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore', time() );
+		}
+	}
+
+	/**
+	 * Removes the notice permanently for the specific user only.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function pro_notice_permanent_ignore() {
+
+		global $current_user;
+		$user_id = $current_user->ID;
+
+		if ( isset( $_GET['flash_pro_notice_permanent_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_permanent_ignore_nag'] ) {
+			add_user_meta( $user_id, 'flash_pro_notice_permanent_ignore', 'true', true );
+		}
+	}
+
+	/**
 	 * Get notices.
+	 *
 	 * @return array
 	 */
 	public static function get_notices() {
@@ -70,6 +212,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Show a notice.
+	 *
 	 * @param string $name
 	 */
 	public static function add_notice( $name ) {
@@ -78,6 +221,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Remove a notice from being displayed.
+	 *
 	 * @param string $name
 	 */
 	public static function remove_notice( $name ) {
@@ -87,7 +231,9 @@ class FT_Admin_Notices {
 
 	/**
 	 * See if a notice is being shown.
-	 * @param  string  $name
+	 *
+	 * @param string $name
+	 *
 	 * @return boolean
 	 */
 	public static function has_notice( $name ) {
@@ -141,6 +287,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Add a custom notice.
+	 *
 	 * @param string $name
 	 * @param string $notice_html
 	 */

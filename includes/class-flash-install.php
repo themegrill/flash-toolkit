@@ -21,8 +21,8 @@ class FT_Install {
 	/** @var array DB updates and callbacks that need to be run per version */
 	private static $db_updates = array(
 		'1.0.0' => array(
-			'flash_update_100_db_version'
-		)
+			'flash_update_100_db_version',
+		),
 	);
 
 	/** @var object Background update class */
@@ -79,7 +79,7 @@ class FT_Install {
 	 */
 	public static function install() {
 		global $wpdb;
-		
+
 		// Check if we are not already running this routine.
 		if ( 'yes' === get_transient( 'ft_installing' ) ) {
 			return;
@@ -138,8 +138,34 @@ class FT_Install {
 			AND b.option_value < %d";
 		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
 
-		// Trigger action
+		// Trigger action.
 		do_action( 'flash_toolkit_installed' );
+	}
+
+	/**
+	 * Removes Pro notice data from database.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function deactivate() {
+
+		$user_id = FT_Admin_Notices::$current_user_data->ID;
+
+		if ( get_user_meta( $user_id, 'flash_pro_notice_temporary_ignore', true ) ) {
+			delete_user_meta( $user_id, 'flash_pro_notice_temporary_ignore' );
+		}
+
+		if ( get_user_meta( $user_id, 'flash_pro_notice_permanent_ignore', true ) ) {
+			delete_user_meta( $user_id, 'flash_pro_notice_permanent_ignore' );
+		}
+
+		if ( get_option( 'flash_pro_notice_start_time' ) ) {
+			delete_option( 'flash_pro_notice_start_time' );
+		}
+
+		// Trigger action.
+		do_action( 'flash_toolkit_deactivate' );
+
 	}
 
 	/**
@@ -173,6 +199,7 @@ class FT_Install {
 
 	/**
 	 * Update DB version to current.
+	 *
 	 * @param string $version
 	 */
 	public static function update_db_version( $version = null ) {
@@ -205,13 +232,14 @@ class FT_Install {
 
 	/**
 	 * Get capabilities for FlashToolkit.
+	 *
 	 * @return array
 	 */
-	 private static function get_core_capabilities() {
+	private static function get_core_capabilities() {
 		$capabilities = array();
 
 		$capabilities['core'] = array(
-			'manage_flash_toolkit'
+			'manage_flash_toolkit',
 		);
 
 		$capability_types = array( 'portfolio' );
@@ -238,7 +266,7 @@ class FT_Install {
 				"manage_{$capability_type}_terms",
 				"edit_{$capability_type}_terms",
 				"delete_{$capability_type}_terms",
-				"assign_{$capability_type}_terms"
+				"assign_{$capability_type}_terms",
 			);
 		}
 
@@ -270,8 +298,10 @@ class FT_Install {
 
 	/**
 	 * Display row meta in the Plugins list table.
-	 * @param  array  $plugin_meta
-	 * @param  string $plugin_file
+	 *
+	 * @param array  $plugin_meta
+	 * @param string $plugin_file
+	 *
 	 * @return array
 	 */
 	public static function plugin_row_meta( $plugin_meta, $plugin_file ) {
