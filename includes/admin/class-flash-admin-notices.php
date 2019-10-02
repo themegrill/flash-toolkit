@@ -125,6 +125,11 @@ class FT_Admin_Notices {
 					<span class="dashicons dashicons-smiley"></span>
 					<span><?php esc_html_e( 'I already have Pro version', 'flash-toolkit' ); ?></span>
 				</a>
+
+				<a href="?flash_pro_notice_temporary_ignore_nag=1" class="btn button-secondary">
+					<span class="dashicons dashicons-calendar-alt"></span>
+					<span><?php esc_html_e( 'Remind me later', 'flash-toolkit' ); ?></span>
+				</a>
 			</div> <!-- /.ft-cta -->
 		</div> <!-- /.pro-theme-notice -->
 
