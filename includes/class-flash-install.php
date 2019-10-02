@@ -138,12 +138,14 @@ class FT_Install {
 			AND b.option_value < %d";
 		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
 
-		// Trigger action
+		// Trigger action.
 		do_action( 'flash_toolkit_installed' );
 	}
 
 	/**
-	 * Install FT.
+	 * Removes Pro notice data from database.
+	 *
+	 * @since 1.2.0
 	 */
 	public static function deactivate() {
 
@@ -151,8 +153,9 @@ class FT_Install {
 			delete_option( 'flash_pro_notice_start_time' );
 		}
 
-		// Trigger action
+		// Trigger action.
 		do_action( 'flash_toolkit_deactivate' );
+
 	}
 
 	/**

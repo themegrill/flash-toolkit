@@ -20,12 +20,25 @@ class FT_Admin_Notices {
 
 	/**
 	 * Stores notices.
+	 *
 	 * @var array
 	 */
 	private static $notices = array();
 
+	/**
+	 * Currently logged in user data.
+	 *
+	 * @since 1.2.0
+	 * @var object
+	 */
 	private static $current_user_data;
 
+	/**
+	 * Currently activated theme name.
+	 *
+	 * @since 1.2.0
+	 * @var string
+	 */
 	protected static $active_theme;
 
 	/**
@@ -65,6 +78,8 @@ class FT_Admin_Notices {
 
 	/**
 	 * Hooks for showing Pro theme notice.
+	 *
+	 * @since 1.2.0
 	 */
 	public static function pro_notice() {
 
@@ -86,6 +101,11 @@ class FT_Admin_Notices {
 
 	}
 
+	/**
+	 * Shows the Pro version notice as per various conditions.
+	 *
+	 * @since 1.2.0
+	 */
 	public static function pro_notice_markup() {
 		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true );
 		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore_nag', true );
@@ -130,12 +150,18 @@ class FT_Admin_Notices {
 					<span class="dashicons dashicons-calendar-alt"></span>
 					<span><?php esc_html_e( 'Remind me later', 'flash-toolkit' ); ?></span>
 				</a>
+
 			</div> <!-- /.ft-cta -->
 		</div> <!-- /.pro-theme-notice -->
 
 		<?php
 	}
 
+	/**
+	 * Removes the notice temporarily for the specific user only.
+	 *
+	 * @since 1.2.0
+	 */
 	public static function pro_notice_temporary_ignore() {
 		$user_id = self::$current_user_data->ID;
 
@@ -144,6 +170,11 @@ class FT_Admin_Notices {
 		}
 	}
 
+	/**
+	 * Removes the notice permanently for the specific user only.
+	 *
+	 * @since 1.2.0
+	 */
 	public static function pro_notice_permanent_ignore() {
 
 		global $current_user;
@@ -156,6 +187,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Get notices.
+	 *
 	 * @return array
 	 */
 	public static function get_notices() {
@@ -171,6 +203,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Show a notice.
+	 *
 	 * @param string $name
 	 */
 	public static function add_notice( $name ) {
@@ -179,6 +212,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Remove a notice from being displayed.
+	 *
 	 * @param string $name
 	 */
 	public static function remove_notice( $name ) {
@@ -188,6 +222,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * See if a notice is being shown.
+	 *
 	 * @param  string  $name
 	 * @return boolean
 	 */
