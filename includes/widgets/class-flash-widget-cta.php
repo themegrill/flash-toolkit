@@ -72,7 +72,7 @@ class FT_Widget_CTA extends FT_Widget {
 			),
 			'style' => array(
 				'type'    => 'radio-image',
-				'std'     => 'tg-cta-layout-1',
+				'std'     => 'call-to-action-section-layout-1',
 				'label'   => __( 'Widget Style', 'flash-toolkit' ),
 				'options' => array(
 					'call-to-action-section-layout-1' => FT()-> plugin_url() . '/assets/images/call-to-action-with-two-button.png',
