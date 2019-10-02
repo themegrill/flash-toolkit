@@ -21,8 +21,8 @@ class FT_Install {
 	/** @var array DB updates and callbacks that need to be run per version */
 	private static $db_updates = array(
 		'1.0.0' => array(
-			'flash_update_100_db_version'
-		)
+			'flash_update_100_db_version',
+		),
 	);
 
 	/** @var object Background update class */
@@ -189,6 +189,7 @@ class FT_Install {
 
 	/**
 	 * Update DB version to current.
+	 *
 	 * @param string $version
 	 */
 	public static function update_db_version( $version = null ) {
@@ -221,13 +222,14 @@ class FT_Install {
 
 	/**
 	 * Get capabilities for FlashToolkit.
+	 *
 	 * @return array
 	 */
-	 private static function get_core_capabilities() {
+	private static function get_core_capabilities() {
 		$capabilities = array();
 
 		$capabilities['core'] = array(
-			'manage_flash_toolkit'
+			'manage_flash_toolkit',
 		);
 
 		$capability_types = array( 'portfolio' );
@@ -254,7 +256,7 @@ class FT_Install {
 				"manage_{$capability_type}_terms",
 				"edit_{$capability_type}_terms",
 				"delete_{$capability_type}_terms",
-				"assign_{$capability_type}_terms"
+				"assign_{$capability_type}_terms",
 			);
 		}
 
@@ -286,8 +288,10 @@ class FT_Install {
 
 	/**
 	 * Display row meta in the Plugins list table.
-	 * @param  array  $plugin_meta
-	 * @param  string $plugin_file
+	 *
+	 * @param array  $plugin_meta
+	 * @param string $plugin_file
+	 *
 	 * @return array
 	 */
 	public static function plugin_row_meta( $plugin_meta, $plugin_file ) {

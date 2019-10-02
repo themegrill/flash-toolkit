@@ -43,6 +43,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Array of notices - name => callback
+	 *
 	 * @var array
 	 */
 	private static $core_notices = array(
@@ -223,7 +224,8 @@ class FT_Admin_Notices {
 	/**
 	 * See if a notice is being shown.
 	 *
-	 * @param  string  $name
+	 * @param string $name
+	 *
 	 * @return boolean
 	 */
 	public static function has_notice( $name ) {
@@ -277,6 +279,7 @@ class FT_Admin_Notices {
 
 	/**
 	 * Add a custom notice.
+	 *
 	 * @param string $name
 	 * @param string $notice_html
 	 */
