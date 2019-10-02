@@ -26,14 +26,6 @@ class FT_Admin_Notices {
 	private static $notices = array();
 
 	/**
-	 * Currently logged in user data.
-	 *
-	 * @since 1.2.0
-	 * @var object
-	 */
-	public static $current_user_data;
-
-	/**
 	 * Currently activated theme name.
 	 *
 	 * @since 1.2.0
@@ -84,9 +76,6 @@ class FT_Admin_Notices {
 	 */
 	public static function pro_notice() {
 
-		global $current_user;
-		self::$current_user_data = $current_user;
-
 		if ( 'Flash' != self::$active_theme ) {
 			return;
 		}
@@ -108,8 +97,11 @@ class FT_Admin_Notices {
 	 * @since 1.2.0
 	 */
 	public static function pro_notice_markup() {
-		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore', true );
-		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore', true );
+
+		$current_user = wp_get_current_user();
+
+		$temporary_ignore = get_user_meta( $current_user->ID, 'flash_pro_notice_temporary_ignore', true );
+		$permanent_ignore = get_user_meta( $current_user->ID, 'flash_pro_notice_permanent_ignore', true );
 
 		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-20 day' ) ) || ( $temporary_ignore > strtotime( '-20 day' ) ) || $permanent_ignore ) {
 			return;
@@ -121,11 +113,12 @@ class FT_Admin_Notices {
 
 			<p class="pro-notice-message">
 				<?php
+
 				printf(
 					esc_html__(
 						'Howdy, %1$s! You\'ve been using %2$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %3$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
 					),
-					'<strong>' . esc_html( self::$current_user_data->display_name ) . '</strong>',
+					'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
 					self::$active_theme,
 					'<code>upgrade15</code>'
 				);
@@ -172,11 +165,11 @@ class FT_Admin_Notices {
 	 * @since 1.2.0
 	 */
 	public static function pro_notice_temporary_ignore() {
-		$user_id = self::$current_user_data->ID;
 
 		if ( isset( $_GET['flash_pro_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_temporary_ignore_nag'] ) {
-			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore', time() );
+			update_user_meta( get_current_user_id(), 'flash_pro_notice_temporary_ignore', time() );
 		}
+
 	}
 
 	/**
@@ -186,12 +179,10 @@ class FT_Admin_Notices {
 	 */
 	public static function pro_notice_permanent_ignore() {
 
-		global $current_user;
-		$user_id = $current_user->ID;
-
 		if ( isset( $_GET['flash_pro_notice_permanent_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_permanent_ignore_nag'] ) {
-			add_user_meta( $user_id, 'flash_pro_notice_permanent_ignore', 'true', true );
+			add_user_meta( get_current_user_id(), 'flash_pro_notice_permanent_ignore', 'true', true );
 		}
+
 	}
 
 	/**

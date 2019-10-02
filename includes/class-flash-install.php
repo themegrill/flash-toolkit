@@ -149,14 +149,16 @@ class FT_Install {
 	 */
 	public static function deactivate() {
 
-		$user_id = FT_Admin_Notices::$current_user_data->ID;
+		$users = get_users();
 
-		if ( get_user_meta( $user_id, 'flash_pro_notice_temporary_ignore', true ) ) {
-			delete_user_meta( $user_id, 'flash_pro_notice_temporary_ignore' );
-		}
+		foreach ( $users as $user ) {
+			if ( get_user_meta( $user->ID, 'flash_pro_notice_temporary_ignore', true ) ) {
+				delete_user_meta( $user->ID, 'flash_pro_notice_temporary_ignore' );
+			}
 
-		if ( get_user_meta( $user_id, 'flash_pro_notice_permanent_ignore', true ) ) {
-			delete_user_meta( $user_id, 'flash_pro_notice_permanent_ignore' );
+			if ( get_user_meta( $user->ID, 'flash_pro_notice_permanent_ignore', true ) ) {
+				delete_user_meta( $user->ID, 'flash_pro_notice_permanent_ignore' );
+			}
 		}
 
 		if ( get_option( 'flash_pro_notice_start_time' ) ) {
