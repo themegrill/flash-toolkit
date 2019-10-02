@@ -71,10 +71,6 @@ $project_query = new WP_Query(
 	)
 );
 
-	// echo '<pre>';
-	// print_r($project_query);
-	// echo '</pre>';
-
 while ( $project_query->have_posts() ): $project_query->the_post();
    global $post;
 
