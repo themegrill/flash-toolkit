@@ -117,14 +117,15 @@ class FT_Admin_Notices {
 		?>
 
 		<div class="updated pro-theme-notice">
-			<h3 class="pro-notice-heading"><?php esc_html_e( 'Unlock true potential of Flash', 'flash-toolkit' ); ?></h3>
+			<h3 class="pro-notice-heading"><?php esc_html_e( 'Unlock true potential of Flash!', 'flash-toolkit' ); ?></h3>
 
 			<p class="pro-notice-message">
 				<?php
 				printf(
 					esc_html__(
-						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %2$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
+						'Howdy, %1$s! You\'ve been using %2$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %3$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
 					),
+					'<strong>' . esc_html( self::$current_user_data->display_name ) . '</strong>',
 					self::$active_theme,
 					'<code>upgrade15</code>'
 				);
@@ -138,19 +139,25 @@ class FT_Admin_Notices {
 				$pro_link = '<a target="_blank" href=" ' . esc_url( "https://themegrill.com/plans-pricing/" ) . ' ">' . esc_html( 'Go Pro' ) . ' </a>';
 				?>
 
-				<a href="https://themegrill.com/plans-pricing/" class="btn button-primary" target="_blank">
+				<a href="https://themegrill.com/pricing/?pid=1294971&vid=1294974&utm_source=dashboard-message&utm_medium=view-pricing-link&utm_campaign=upgrade"
+				   class="btn button-primary" target="_blank">
 					<span class="dashicons dashicons-thumbs-up"></span>
-					<span><?php esc_html_e( 'Go Pro', 'flash-toolkit' ); ?></span>
-				</a>
-
-				<a href="?flash_pro_notice_permanent_ignore_nag=1" class="btn button-secondary">
-					<span class="dashicons dashicons-smiley"></span>
-					<span><?php esc_html_e( 'I already have Pro version', 'flash-toolkit' ); ?></span>
+					<span class="cta-text"><?php esc_html_e( 'Go Pro', 'flash-toolkit' ); ?></span>
 				</a>
 
 				<a href="?flash_pro_notice_temporary_ignore_nag=1" class="btn button-secondary">
 					<span class="dashicons dashicons-calendar-alt"></span>
-					<span><?php esc_html_e( 'Remind me later', 'flash-toolkit' ); ?></span>
+					<span class="cta-text"><?php esc_html_e( 'Remind me later', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="?flash_pro_notice_permanent_ignore_nag=1" class="btn button-secondary">
+					<span class="dashicons dashicons-smiley"></span>
+					<span class="cta-text"><?php esc_html_e( 'I already have Pro version', 'flash-toolkit' ); ?></span>
+				</a>
+
+				<a href="https://themegrill.com/contact/" class="btn button-secondary" target="_blank">
+					<span class="dashicons dashicons-edit"></span>
+					<span class="cta-text"><?php esc_html_e( 'Got any queries?', 'flash-toolkit' ); ?></span>
 				</a>
 
 			</div> <!-- /.ft-cta -->
