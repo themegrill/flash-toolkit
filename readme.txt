@@ -32,7 +32,7 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 == TBD ==
-* Fix - Default value for CTA style.
+* Add - Default values for CTA widget.
 
 == 1.1.9 - 19-06-2019 =
 * Tweak - Remove strings from translation for unrequired strings.
