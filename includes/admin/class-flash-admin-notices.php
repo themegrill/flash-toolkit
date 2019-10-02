@@ -113,7 +113,6 @@ class FT_Admin_Notices {
 
 			<p class="pro-notice-message">
 				<?php
-
 				printf(
 					esc_html__(
 						'Howdy, %1$s! You\'ve been using %2$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %3$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
