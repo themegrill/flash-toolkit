@@ -123,9 +123,10 @@ class FT_Admin_Notices {
 				<?php
 				printf(
 					esc_html__(
-						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code upgrade15 to get 15% discount while making the purchase. Enjoy!', 'flash-toolkit'
+						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code %2$s to get 15 percent discount while making the purchase. Enjoy!', 'flash-toolkit'
 					),
-					self::$active_theme
+					self::$active_theme,
+					'<code>upgrade15</code>'
 				);
 				?>
 			</p> <!-- /.pro-notice-message -->
