@@ -11,7 +11,7 @@ Flash Toolkit is a companion for Flash WordPress theme by ThemeGrill
 
 == Description ==
 Flash Toolkit is a companion for Flash WordPress theme by ThemeGrill
-This plugin registers custom post types and widgets that adds extra funtionality and features to Flash WordPress theme. You need to download and install <a href="https://themegrill.com/themes/flash/" target="_blank">Flash</a> theme.
+This plugin registers custom post types and widgets that adds extra functionality and features to Flash WordPress theme. You need to download and install <a href="https://themegrill.com/themes/flash/" target="_blank">Flash</a> theme.
 
 Get free support at https://themegrill.com/support-forum/
 
