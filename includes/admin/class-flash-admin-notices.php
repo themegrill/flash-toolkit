@@ -31,7 +31,7 @@ class FT_Admin_Notices {
 	 * @since 1.2.0
 	 * @var object
 	 */
-	private static $current_user_data;
+	public static $current_user_data;
 
 	/**
 	 * Currently activated theme name.
@@ -108,10 +108,10 @@ class FT_Admin_Notices {
 	 * @since 1.2.0
 	 */
 	public static function pro_notice_markup() {
-		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore_nag', true );
-		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore_nag', true );
+		$temporary_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_temporary_ignore', true );
+		$permanent_ignore = get_user_meta( self::$current_user_data->ID, 'flash_pro_notice_permanent_ignore', true );
 
-		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 month' ) ) || ( $temporary_ignore > strtotime( '-1 month' ) ) || $permanent_ignore ) {
+		if ( ( get_option( 'flash_pro_notice_start_time' ) > strtotime( '-1 min' ) ) || ( $temporary_ignore > strtotime( '-1 min' ) ) || $permanent_ignore ) {
 			return;
 		}
 		?>
@@ -123,7 +123,7 @@ class FT_Admin_Notices {
 				<?php
 				printf(
 					esc_html__(
-						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the Premium features, you can click link below: ', 'flash-toolkit'
+						'Howdy, You\'ve been using %1$s for a while now, and we hope you\'re happy with it. If you need more options and want to get access to the premium features, check the pricing by clicking link below. Also, you can use the coupon code upgrade15 to get 15% discount while making the purchase. Enjoy!', 'flash-toolkit'
 					),
 					self::$active_theme
 				);
@@ -167,7 +167,7 @@ class FT_Admin_Notices {
 		$user_id = self::$current_user_data->ID;
 
 		if ( isset( $_GET['flash_pro_notice_temporary_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_temporary_ignore_nag'] ) {
-			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore_nag', time() );
+			update_user_meta( $user_id, 'flash_pro_notice_temporary_ignore', time() );
 		}
 	}
 
@@ -182,7 +182,7 @@ class FT_Admin_Notices {
 		$user_id = $current_user->ID;
 
 		if ( isset( $_GET['flash_pro_notice_permanent_ignore_nag'] ) && '1' == $_GET['flash_pro_notice_permanent_ignore_nag'] ) {
-			add_user_meta( $user_id, 'flash_pro_notice_permanent_ignore_nag', 'true', true );
+			add_user_meta( $user_id, 'flash_pro_notice_permanent_ignore', 'true', true );
 		}
 	}
 
