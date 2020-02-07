@@ -47,7 +47,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 				'type'  => 'number',
 				'step'  => 1,
 				'min'   => 1,
-				'max'   => 'max'   => apply_filters( 'flash_toolkit_portfolio_max_number', '100' ),
+				'max'   => apply_filters( 'flash_toolkit_portfolio_max_number', '100' ),
 				'std'   => '',
 				'label' => __( 'Number', 'flash-toolkit' ),'group' => __( 'General', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
