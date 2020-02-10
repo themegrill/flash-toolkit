@@ -32,6 +32,10 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 == 1.2.0 - 02-10-2019 =
+* Tweak - Portfolio widget max no. changed to infinite.
+* Tweak - Toolkit compatibility upto wordpress version 5.3.2.
+
+== 1.2.0 - 02-10-2019 =
 * Tweak - Default values for CTA widget.
 * Tweak - Display Flash Pro notice.
 
