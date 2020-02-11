@@ -49,7 +49,7 @@ class FT_Widget_Portfolio extends FT_Widget {
 				'min'   => 1,
 				'max'   => apply_filters( 'flash_toolkit_portfolio_max_number', '100' ),
 				'std'   => '',
-				'label' => __( 'Number', 'flash-toolkit' ),'group' => __( 'General', 'flash-toolkit' ),
+				'label' => __( 'Number', 'flash-toolkit' ),
 				'group' => __( 'General', 'flash-toolkit' ),
 				'field_width'	=> 'col-half',
 			),
