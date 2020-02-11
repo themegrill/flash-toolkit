@@ -3,7 +3,7 @@ Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 5.3.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,10 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== 1.2.1 - 02-11-2020 =
+* Tweak - Toolkit compatibility upto WordPress version 5.3.2.
+* Enhancement - Added filter for maximum portfolio number in Portfolio widget.
+
 == 1.2.0 - 02-10-2019 =
 * Tweak - Default values for CTA widget.
 * Tweak - Display Flash Pro notice.
