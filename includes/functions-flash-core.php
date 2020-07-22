@@ -384,6 +384,11 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Widget_ProgressBar' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'waypoints' );
 			}
+
+			// For FT: Tabs widget.
+			if ( 'FT_Tabs' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery-ui-tabs' );
+			}
 		}
 	}
 }
