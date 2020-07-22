@@ -33,6 +33,7 @@ Get free support at https://themegrill.com/support-forum/
 == Changelog ==
 == TBD ==
 * Fix - Slider widget not loading on certain conditions.
+* FIx - PHP Warning: count(): Parameter must be an array or an object that implements Countable
 
 == 1.2.1 - 11-02-2020 =
 * Tweak - Toolkit compatibility upto WordPress version 5.3.2.
