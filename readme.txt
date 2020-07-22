@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== TBD ==
+* Fix - Slider widget not loading on certain conditions.
+
 == 1.2.1 - 11-02-2020 =
 * Tweak - Toolkit compatibility upto WordPress version 5.3.2.
 * Enhancement - Added filter for maximum portfolio number in Portfolio widget.
