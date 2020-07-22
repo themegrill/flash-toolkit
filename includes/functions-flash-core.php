@@ -356,6 +356,12 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Accordion' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
 			}
+
+			// For FT: Countdown widget.
+			if ( 'FT_Widget_Countdown' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery.plugin' );
+				wp_enqueue_script( 'jquery.countdown' );
+			}
 		}
 	}
 }
