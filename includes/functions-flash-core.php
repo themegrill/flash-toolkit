@@ -328,6 +328,12 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_style( 'swiper' );
 				wp_enqueue_script( 'swiper' );
 			}
+
+			// For FT: Animated Number Counter widget.
+			if ( 'FT_Widget_Counter' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'waypoints' );
+				wp_enqueue_script( 'counterup' );
+			}
 		}
 	}
 }
