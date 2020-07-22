@@ -373,6 +373,12 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_style( 'swiper' );
 				wp_enqueue_script( 'swiper' );
 			}
+
+			// For FT: Post Slider widget.
+			if ( 'FT_Widget_PostSlider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
 		}
 	}
 }
