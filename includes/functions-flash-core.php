@@ -334,6 +334,12 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_script( 'waypoints' );
 				wp_enqueue_script( 'counterup' );
 			}
+
+			// For FT: Logo widget.
+			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
 		}
 	}
 }
