@@ -389,6 +389,12 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Tabs' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'jquery-ui-tabs' );
 			}
+
+			// For FT: Video Player widget.
+			if ( 'FT_Video_Player' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'jquery-swipebox' );
+				wp_enqueue_script( 'jquery-swipebox' );
+			}
 		}
 	}
 }
