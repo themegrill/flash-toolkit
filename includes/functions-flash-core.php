@@ -362,6 +362,11 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_script( 'jquery.plugin' );
 				wp_enqueue_script( 'jquery.countdown' );
 			}
+
+			// For FT: Google Map widget.
+			if ( 'FT_Widget_GoogleMap' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'googlemap' );
+			}
 		}
 	}
 }
