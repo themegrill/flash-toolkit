@@ -351,6 +351,11 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_style( 'swiper' );
 				wp_enqueue_script( 'swiper' );
 			}
+
+			// For FT: Accordion widget.
+			if ( 'FT_Accordion' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery-ui-accordion' );
+			}
 		}
 	}
 }
