@@ -313,3 +313,23 @@ function flash_has_manual_excerpt( $post ) {
 
 	return true;
 }
+
+/**
+ * Enqueue custom library files, which should be used for widgets.
+ */
+function flashtoolkit_enqueue_script() {
+	global $post;
+	$panels_data = get_post_meta( $post->ID, 'panels_data', true );
+
+	if ( ! empty( $panels_data['widgets'] ) ) {
+		foreach ( $panels_data['widgets'] as $widget ) {
+			// For FT: Slider widget.
+			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
+		}
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'flashtoolkit_enqueue_script', 20 );
