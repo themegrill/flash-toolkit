@@ -367,6 +367,12 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Widget_GoogleMap' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'googlemap' );
 			}
+
+			// For FT: Instagram Slider widget.
+			if ( 'FT_Widget_InstagramSlider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
 		}
 	}
 }
