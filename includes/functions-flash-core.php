@@ -345,6 +345,12 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Widget_Portfolio' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'isotope' );
 			}
+
+			// For FT: Testimonial widget.
+			if ( 'FT_Widget_Testimonial' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
 		}
 	}
 }
