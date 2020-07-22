@@ -322,9 +322,10 @@ function flashtoolkit_enqueue_script() {
 	$panels_data = get_post_meta( $post->ID, 'panels_data', true );
 
 	if ( ! empty( $panels_data['widgets'] ) ) {
+
 		foreach ( $panels_data['widgets'] as $widget ) {
-			// For FT: Slider widget.
-			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] ) {
+			// For FT: Slider widget, For FT: Logo widget, For FT: Testimonial widget, For FT: Instagram Slider widget, For FT: Post Slider widget, For FT: WooCommerce Category Slider widget.
+			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] || 'FT_Widget_Logo' == $widget['panels_info']['class'] || 'FT_Widget_Testimonial' == $widget['panels_info']['class'] || 'FT_Widget_InstagramSlider' == $widget['panels_info']['class'] || 'FT_Widget_PostSlider' == $widget['panels_info']['class'] || 'FT_Widget_WcCatSlider' == $widget['panels_info']['class'] ) {
 				wp_enqueue_style( 'swiper' );
 				wp_enqueue_script( 'swiper' );
 			}
@@ -335,21 +336,9 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_script( 'counterup' );
 			}
 
-			// For FT: Logo widget.
-			if ( 'FT_Widget_Logo' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
-			}
-
 			// For FT: Portfolio widget.
 			if ( 'FT_Widget_Portfolio' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'isotope' );
-			}
-
-			// For FT: Testimonial widget.
-			if ( 'FT_Widget_Testimonial' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
 			}
 
 			// For FT: Accordion widget.
@@ -368,25 +357,13 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_script( 'googlemap' );
 			}
 
-			// For FT: Instagram Slider widget.
-			if ( 'FT_Widget_InstagramSlider' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
-			}
-
-			// For FT: Post Slider widget.
-			if ( 'FT_Widget_PostSlider' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
-			}
-
 			// For FT: Progress Bar widget.
 			if ( 'FT_Widget_ProgressBar' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'waypoints' );
 			}
 
-			// For FT: Tabs widget.
-			if ( 'FT_Tabs' == $widget['panels_info']['class'] ) {
+			// For FT: Tabs widget, For FT: WooCommerce Product Tab widget.
+			if ( 'FT_Tabs' == $widget['panels_info']['class'] || 'FT_Widget_WcProductTab' == $widget['panels_info']['class'] ) {
 				wp_enqueue_script( 'jquery-ui-tabs' );
 			}
 
@@ -394,17 +371,6 @@ function flashtoolkit_enqueue_script() {
 			if ( 'FT_Video_Player' == $widget['panels_info']['class'] ) {
 				wp_enqueue_style( 'jquery-swipebox' );
 				wp_enqueue_script( 'jquery-swipebox' );
-			}
-
-			// For FT: WooCommerce Category Slider widget.
-			if ( 'FT_Widget_WcCatSlider' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
-			}
-
-			// For FT: WooCommerce Product Tab widget.
-			if ( 'FT_Widget_WcProductTab' == $widget['panels_info']['class'] ) {
-				wp_enqueue_script( 'jquery-ui-tabs' );
 			}
 		}
 	}
