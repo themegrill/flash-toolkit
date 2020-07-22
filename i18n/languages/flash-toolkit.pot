@@ -1,20 +1,20 @@
-# Copyright (C) 2019 ThemeGrill
+# Copyright (C) 2020 ThemeGrill
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flash Toolkit 1.1.8\n"
+"Project-Id-Version: Flash Toolkit 1.2.2\n"
 "Report-Msgid-Bugs-To: themegrill@gmail.com\n"
-"POT-Creation-Date: 2019-06-17 10:01:09+00:00\n"
+"POT-Creation-Date: 2020-07-22 06:33:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: grunt-wp-i18n1.0.1\n"
 
-#: flash-toolkit.php:57 flash-toolkit.php:65
-#: includes/admin/class-flash-admin-notices.php:107
+#: flash-toolkit.php:62 flash-toolkit.php:71
+#: includes/admin/class-flash-admin-notices.php:243
 #: includes/class-flash-sidebars.php:98
 msgid "Cheatin&#8217; huh?"
 msgstr ""
@@ -23,16 +23,16 @@ msgstr ""
 msgid "Flash Toolkit"
 msgstr ""
 
-#: flash-toolkit.php:176
+#: flash-toolkit.php:185
 msgid "This plugin requires %s by ThemeGrill to work."
 msgstr ""
 
-#: flash-toolkit.php:176
+#: flash-toolkit.php:185
 msgid "Flash Theme"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:236
-#: includes/abstracts/abstract-flash-widget.php:258
+#: includes/abstracts/abstract-flash-widget.php:239
+#: includes/abstracts/abstract-flash-widget.php:261
 #: includes/admin/meta-boxes/class-flash-meta-box-portfolio-data.php:34
 #: includes/widgets/class-flash-widget-about.php:37
 #: includes/widgets/class-flash-widget-about.php:43
@@ -53,7 +53,6 @@ msgstr ""
 #: includes/widgets/class-flash-widget-cta.php:63
 #: includes/widgets/class-flash-widget-cta.php:70
 #: includes/widgets/class-flash-widget-portfolio.php:44
-#: includes/widgets/class-flash-widget-portfolio.php:52
 #: includes/widgets/class-flash-widget-portfolio.php:53
 #: includes/widgets/class-flash-widget-portfolio.php:61
 #: includes/widgets/class-flash-widget-service.php:37
@@ -76,45 +75,45 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:362
-#: includes/abstracts/abstract-flash-widget.php:555
+#: includes/abstracts/abstract-flash-widget.php:365
+#: includes/abstracts/abstract-flash-widget.php:573
 msgid "Remove media"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:370
-#: includes/abstracts/abstract-flash-widget.php:563
+#: includes/abstracts/abstract-flash-widget.php:373
+#: includes/abstracts/abstract-flash-widget.php:581
 msgid "Choose an image"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:370
-#: includes/abstracts/abstract-flash-widget.php:563
+#: includes/abstracts/abstract-flash-widget.php:373
+#: includes/abstracts/abstract-flash-widget.php:581
 msgid "Use image"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:370
-#: includes/abstracts/abstract-flash-widget.php:563
+#: includes/abstracts/abstract-flash-widget.php:373
+#: includes/abstracts/abstract-flash-widget.php:581
 msgid "Select an Image"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:397
-#: includes/abstracts/abstract-flash-widget.php:573
+#: includes/abstracts/abstract-flash-widget.php:400
+#: includes/abstracts/abstract-flash-widget.php:591
 msgid "Choose icons&hellip;"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:397
-#: includes/abstracts/abstract-flash-widget.php:573
+#: includes/abstracts/abstract-flash-widget.php:400
+#: includes/abstracts/abstract-flash-widget.php:591
 msgid "Icon"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:411
+#: includes/abstracts/abstract-flash-widget.php:414
 msgid "Choose fonts&hellip;"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:411
+#: includes/abstracts/abstract-flash-widget.php:414
 msgid "Font"
 msgstr ""
 
-#: includes/abstracts/abstract-flash-widget.php:425
+#: includes/abstracts/abstract-flash-widget.php:428
 msgid "Choose"
 msgstr ""
 
@@ -158,7 +157,36 @@ msgstr ""
 msgid "%s Layout"
 msgstr ""
 
-#: includes/admin/class-flash-admin-notices.php:103
+#: includes/admin/class-flash-admin-notices.php:112
+msgid "Unlock true potential of Flash!"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:117
+msgid ""
+"Howdy, %1$s! You've been using %2$s for a while now, and we hope you're "
+"happy with it. If you need more options and want to get access to the "
+"premium features, check the pricing by clicking link below. Also, you can "
+"use the coupon code %3$s to get 15 percent discount while making the "
+"purchase. Enjoy!"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:137
+msgid "Go Pro"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:142
+msgid "Remind me later"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:147
+msgid "I already have Pro version"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:152
+msgid "Got any queries?"
+msgstr ""
+
+#: includes/admin/class-flash-admin-notices.php:239
 #: includes/class-flash-sidebars.php:94
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
@@ -499,19 +527,19 @@ msgstr ""
 msgid "Taking a while? Click here to run it now."
 msgstr ""
 
-#: includes/class-flash-install.php:280
+#: includes/class-flash-install.php:312
 msgid "View Flash Toolkit Documentation"
 msgstr ""
 
-#: includes/class-flash-install.php:280
+#: includes/class-flash-install.php:312
 msgid "Docs"
 msgstr ""
 
-#: includes/class-flash-install.php:281
+#: includes/class-flash-install.php:313
 msgid "Visit Free Customer Support Forum"
 msgstr ""
 
-#: includes/class-flash-install.php:281
+#: includes/class-flash-install.php:313
 msgid "Free Support"
 msgstr ""
 
@@ -843,12 +871,25 @@ msgstr ""
 msgid "FT: CTA"
 msgstr ""
 
+#: includes/widgets/class-flash-widget-cta.php:35
+msgid "This is the title"
+msgstr ""
+
 #: includes/widgets/class-flash-widget-cta.php:36
 msgid "Call to action Title"
 msgstr ""
 
+#: includes/widgets/class-flash-widget-cta.php:41
+msgid "This is the subtitle"
+msgstr ""
+
 #: includes/widgets/class-flash-widget-cta.php:42
 msgid "Call to Action Subtitle"
+msgstr ""
+
+#: includes/widgets/class-flash-widget-cta.php:47
+#: includes/widgets/class-flash-widget-cta.php:61
+msgid "Button %s"
 msgstr ""
 
 #: includes/widgets/class-flash-widget-cta.php:48
