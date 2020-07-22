@@ -395,6 +395,12 @@ function flashtoolkit_enqueue_script() {
 				wp_enqueue_style( 'jquery-swipebox' );
 				wp_enqueue_script( 'jquery-swipebox' );
 			}
+
+			// For FT: WooCommerce Category Slider widget.
+			if ( 'FT_Widget_WcCatSlider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
 		}
 	}
 }
