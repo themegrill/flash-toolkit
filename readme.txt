@@ -3,7 +3,7 @@ Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== TBD ==
+== 1.2.2 - 11-02-2020 ==
 * Fix - Slider widget not loading on certain conditions.
 * FIx - PHP Warning: count(): Parameter must be an array or an object that implements Countable
 
