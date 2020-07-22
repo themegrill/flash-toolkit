@@ -313,3 +313,67 @@ function flash_has_manual_excerpt( $post ) {
 
 	return true;
 }
+
+/**
+ * Enqueue custom library files, which should be used for widgets.
+ */
+function flashtoolkit_enqueue_script() {
+	global $post;
+	$panels_data = get_post_meta( $post->ID, 'panels_data', true );
+
+	if ( ! empty( $panels_data['widgets'] ) ) {
+
+		foreach ( $panels_data['widgets'] as $widget ) {
+			// For FT: Slider widget, For FT: Logo widget, For FT: Testimonial widget, For FT: Instagram Slider widget, For FT: Post Slider widget, For FT: WooCommerce Category Slider widget.
+			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] || 'FT_Widget_Logo' == $widget['panels_info']['class'] || 'FT_Widget_Testimonial' == $widget['panels_info']['class'] || 'FT_Widget_InstagramSlider' == $widget['panels_info']['class'] || 'FT_Widget_PostSlider' == $widget['panels_info']['class'] || 'FT_Widget_WcCatSlider' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'swiper' );
+				wp_enqueue_script( 'swiper' );
+			}
+
+			// For FT: Animated Number Counter widget.
+			if ( 'FT_Widget_Counter' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'waypoints' );
+				wp_enqueue_script( 'counterup' );
+			}
+
+			// For FT: Portfolio widget.
+			if ( 'FT_Widget_Portfolio' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'isotope' );
+			}
+
+			// For FT: Accordion widget.
+			if ( 'FT_Accordion' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery-ui-accordion' );
+			}
+
+			// For FT: Countdown widget.
+			if ( 'FT_Widget_Countdown' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery.plugin' );
+				wp_enqueue_script( 'jquery.countdown' );
+			}
+
+			// For FT: Google Map widget.
+			if ( 'FT_Widget_GoogleMap' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'googlemap' );
+			}
+
+			// For FT: Progress Bar widget.
+			if ( 'FT_Widget_ProgressBar' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'waypoints' );
+			}
+
+			// For FT: Tabs widget, For FT: WooCommerce Product Tab widget.
+			if ( 'FT_Tabs' == $widget['panels_info']['class'] || 'FT_Widget_WcProductTab' == $widget['panels_info']['class'] ) {
+				wp_enqueue_script( 'jquery-ui-tabs' );
+			}
+
+			// For FT: Video Player widget.
+			if ( 'FT_Video_Player' == $widget['panels_info']['class'] ) {
+				wp_enqueue_style( 'jquery-swipebox' );
+				wp_enqueue_script( 'jquery-swipebox' );
+			}
+		}
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'flashtoolkit_enqueue_script', 20 );
