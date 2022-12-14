@@ -31,7 +31,7 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== 1.2.4 - 14-12-2022 ==
+== TBD ==
 * Tweak - Updated `Tested up to` to 6.1.1.
 
 == 1.2.3 - 22-04-2021 ==
