@@ -32,7 +32,7 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 == TBD ==
-* Tweak - Updated `Tested up to` to 6.1.1.
+* Tweak - Updated `Tested up to` to 6.1.
 
 == 1.2.3 - 22-04-2021 ==
 * Tweak - Updated `Tested up to` to 5.7.1.
