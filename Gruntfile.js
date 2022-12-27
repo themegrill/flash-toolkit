@@ -1,3 +1,4 @@
+const sass = require('node-sass');
 /* jshint node:true */
 module.exports = function( grunt ){
 	'use strict';
@@ -68,6 +69,7 @@ module.exports = function( grunt ){
 		// Compile all .scss files.
 		sass: {
 			options: {
+				implementation: sass,
 				sourcemap: 'none'
 			},
 			compile: {
