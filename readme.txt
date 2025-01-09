@@ -2,8 +2,8 @@
 Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
 Requires at least: 4.0
-Tested up to: 6.1
-Stable tag: 1.2.4
+Tested up to: 6.7
+Stable tag: 1.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== 1.2.5 - 09-01-2025 ==
+* Tweak - Updated `Tested up to` to 6.7.
+
 == 1.2.4 - 15-12-2022 ==
 * Tweak - Updated `Tested up to` to 6.1.
 

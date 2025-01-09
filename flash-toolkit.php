@@ -3,7 +3,7 @@
  * Plugin Name: Flash Toolkit
  * Plugin URI: http://themegrill.com/theme/flash
  * Description: Flash Toolkit is a companion for Flash WordPress theme by ThemeGrill
- * Version: 1.2.4
+ * Version: 1.2.5
  * Author: ThemeGrill
  * Author URI: http://themegrill.com
  * License: GPLv3 or later
@@ -30,7 +30,7 @@ if ( ! class_exists( 'FlashToolkit' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '1.2.4';
+		public $version = '1.2.5';
 
 		/**
 		 * Instance of this class.
@@ -97,7 +97,7 @@ if ( ! class_exists( 'FlashToolkit' ) ) :
 		 */
 		private function define_constants() {
 			$this->define( 'FT_PLUGIN_FILE', __FILE__ );
-			$this->define( 'FT_ABSPATH', dirname( __FILE__ ) . '/' );
+			$this->define( 'FT_ABSPATH', __DIR__ . '/' );
 			$this->define( 'FT_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 			$this->define( 'FT_VERSION', $this->version );
 			$this->define( 'FT_TEMPLATE_DEBUG_MODE', false );
@@ -124,9 +124,9 @@ if ( ! class_exists( 'FlashToolkit' ) ) :
 		 */
 		private function is_request( $type ) {
 			switch ( $type ) {
-				case 'admin' :
+				case 'admin':
 					return is_admin();
-				case 'frontend' :
+				case 'frontend':
 					return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
 			}
 		}
@@ -135,22 +135,22 @@ if ( ! class_exists( 'FlashToolkit' ) ) :
 		 * Includes.
 		 */
 		private function includes() {
-			include_once( FT_ABSPATH . 'includes/functions-flash-core.php' );
-			include_once( FT_ABSPATH . 'includes/functions-flash-widget.php' );
-			include_once( FT_ABSPATH . 'includes/class-flash-autoloader.php' );
-			include_once( FT_ABSPATH . 'includes/class-flash-install.php' );
-			include_once( FT_ABSPATH . 'includes/class-flash-ajax.php' );
-			include_once( FT_ABSPATH . 'includes/class-flash-inline-style.php' );
+			include_once FT_ABSPATH . 'includes/functions-flash-core.php';
+			include_once FT_ABSPATH . 'includes/functions-flash-widget.php';
+			include_once FT_ABSPATH . 'includes/class-flash-autoloader.php';
+			include_once FT_ABSPATH . 'includes/class-flash-install.php';
+			include_once FT_ABSPATH . 'includes/class-flash-ajax.php';
+			include_once FT_ABSPATH . 'includes/class-flash-inline-style.php';
 
 			if ( $this->is_request( 'admin' ) ) {
-				include_once( FT_ABSPATH . 'includes/admin/class-flash-admin.php' );
+				include_once FT_ABSPATH . 'includes/admin/class-flash-admin.php';
 			}
 
 			if ( is_flash_pro_active() ) {
-				include_once( FT_ABSPATH . 'includes/class-flash-sidebars.php' );
+				include_once FT_ABSPATH . 'includes/class-flash-sidebars.php';
 			}
 
-			include_once( FT_ABSPATH . 'includes/class-flash-post-types.php' ); // Registers post types
+			include_once FT_ABSPATH . 'includes/class-flash-post-types.php'; // Registers post types
 		}
 
 		/**
@@ -168,7 +168,7 @@ if ( ! class_exists( 'FlashToolkit' ) ) :
 
 			unload_textdomain( 'flash-toolkit' );
 			load_textdomain( 'flash-toolkit', WP_LANG_DIR . '/flash-toolkit/flash-toolkit-' . $locale . '.mo' );
-			load_plugin_textdomain( 'flash-toolkit', false, plugin_basename( dirname( __FILE__ ) ) . '/i18n/languages' );
+			load_plugin_textdomain( 'flash-toolkit', false, plugin_basename( __DIR__ ) . '/i18n/languages' );
 		}
 
 		/**
