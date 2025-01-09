@@ -7,3 +7,4 @@ phpcs.xml export-ignore
 README.md export-ignore
 .github export-ignore
 .editorconfig export-ignore
+phpcs.xml export-ignore
