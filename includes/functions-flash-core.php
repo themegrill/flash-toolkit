@@ -319,6 +319,11 @@ function flash_has_manual_excerpt( $post ) {
  */
 function flashtoolkit_enqueue_script() {
 	global $post;
+
+	if ( ! $post instanceof \WP_Post ) {
+		return;
+	}
+
 	$panels_data = get_post_meta( $post->ID, 'panels_data', true );
 
 	if ( ! empty( $panels_data['widgets'] ) ) {

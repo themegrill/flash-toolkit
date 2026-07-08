@@ -471,10 +471,13 @@ abstract class FT_Widget extends WP_Widget {
 	/**
 	 * Output the repeater field settings update form.
 	 *
-	 * @param string $settings
+	 * @param array  $settings
 	 * @param array  $instance
+	 * @param string $setting_key
+	 * @param string $field_key
+	 * @param array  $setting_std
 	 */
-	public function output_repeater_field( $settings = array(), $instance, $setting_key, $field_key, $setting_std ) {
+	public function output_repeater_field( $settings, $instance, $setting_key, $field_key, $setting_std ) {
 		if ( empty( $settings ) ) {
 			return;
 		}
