@@ -1,9 +1,10 @@
 === Flash Toolkit ===
 Contributors: ThemeGrill, shivapoudel
 Tags: theme, flash, toolkit, themegrill
-Requires at least: 4.0
-Tested up to: 7.0
-Stable tag: 1.2.6
+Requires at least: 5.5
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 1.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +32,8 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
-== 1.2.7 - TBD ==
+== 1.2.7 - 01-10-2026 ==
+* Fix - Repeater based widget forms fataling in the block Widgets screen.
 * Fix - Enqueue theme Swiper under flash-swiper handle so Elementor Swiper 8 no longer breaks Flash Toolkit sliders.
 
 == 1.2.6 - 08-07-2026 ==
