@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Flash theme.
 
 == Changelog ==
+== 1.2.7 - TBD ==
+* Fix - Enqueue theme Swiper under flash-swiper handle so Elementor Swiper 8 no longer breaks Flash Toolkit sliders.
+
 == 1.2.6 - 08-07-2026 ==
 * Fix   - PHP warnings.
 * Tweak - Updated `Tested up to` to 7.0.
