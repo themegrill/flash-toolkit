@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$screen            = get_current_screen();
+$screen            = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 $screen_id         = $screen ? $screen->id : '';
 $field_widget_id   = in_array( $screen_id, array( 'widgets', 'customize' ), true ) ? $this->id : $this->widget_id;
 $repeater_field_id = strtolower( str_replace( ' ', '-', $setting['title'] ) ) . '-{{ data.field_id }}';
