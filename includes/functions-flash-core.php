@@ -331,8 +331,8 @@ function flashtoolkit_enqueue_script() {
 		foreach ( $panels_data['widgets'] as $widget ) {
 			// For FT: Slider widget, For FT: Logo widget, For FT: Testimonial widget, For FT: Instagram Slider widget, For FT: Post Slider widget, For FT: WooCommerce Category Slider widget.
 			if ( 'FT_Widget_Slider' == $widget['panels_info']['class'] || 'FT_Widget_Logo' == $widget['panels_info']['class'] || 'FT_Widget_Testimonial' == $widget['panels_info']['class'] || 'FT_Widget_InstagramSlider' == $widget['panels_info']['class'] || 'FT_Widget_PostSlider' == $widget['panels_info']['class'] || 'FT_Widget_WcCatSlider' == $widget['panels_info']['class'] ) {
-				wp_enqueue_style( 'swiper' );
-				wp_enqueue_script( 'swiper' );
+				wp_enqueue_style( 'flash-swiper' );
+				wp_enqueue_script( 'flash-swiper' );
 			}
 
 			// For FT: Animated Number Counter widget.

@@ -81,8 +81,8 @@ class FT_Widget_Testimonial extends FT_Widget {
 	 */
 	public function enqueue_scripts() {
 		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
-			wp_enqueue_style( 'swiper' );
-			wp_enqueue_script( 'swiper' );
+			wp_enqueue_style( 'flash-swiper' );
+			wp_enqueue_script( 'flash-swiper' );
 		}
 	}
 
